@@ -1,0 +1,3469 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="从NLP基础到智能体开发的完整学习指南">
+      
+      
+        <meta name="author" content="AI Agent Book">
+      
+      
+      
+        <link rel="prev" href="../2_%E5%8D%95%E6%9C%BA%E7%AF%87_%E6%9E%81%E8%87%B4%E4%BC%98%E5%8C%96%E6%98%BE%E5%AD%98%E7%9A%84%E9%AB%98%E6%80%A7%E8%83%BD%E5%BC%95%E6%93%8E/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>7.3 分布式篇 - AI Agent 完全指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="AI Agent 完全指南" class="md-header__button md-logo" aria-label="AI Agent 完全指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Agent 完全指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7.3 分布式篇
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至暗色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI Agent 完全指南" class="md-nav__button md-logo" aria-label="AI Agent 完全指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI Agent 完全指南
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一部分 NLP 基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第一部分 NLP 基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%AC%AC%E4%B8%80%E7%AB%A0%20NLP%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 NLP基础概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20Transformer%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 Transformer架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E9%A2%84%E8%AE%AD%E7%BB%83%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 预训练语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 大语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二部分 提示工程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第二部分 提示工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/1.%20%E7%AE%80%E4%BB%8B%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/2.%20%E6%8F%90%E7%A4%BA%E5%8E%9F%E5%88%99%20Guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 提示原则
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/3.%20%E8%BF%AD%E4%BB%A3%E4%BC%98%E5%8C%96%20Iterative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 迭代优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/4.%20%E6%96%87%E6%9C%AC%E6%A6%82%E6%8B%AC%20Summarizing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 文本概括
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/5.%20%E6%8E%A8%E6%96%AD%20Inferring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6 推断
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/6.%20%E6%96%87%E6%9C%AC%E8%BD%AC%E6%8D%A2%20Transforming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.7 文本转换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/7.%20%E6%96%87%E6%9C%AC%E6%89%A9%E5%B1%95%20Expanding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.8 文本扩展
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/8.%20%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%20Chatbot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.9 聊天机器人
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/9.%20%E6%80%BB%E7%BB%93%20Summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.10 总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三部分 模型调用与 API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三部分 模型调用与 API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%89%E7%AB%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%89%E7%AB%A0/01_%E6%A0%B8%E5%BF%83%E5%8F%82%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 核心参数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%89%E7%AB%A0/02_HTTP%20API%E3%80%81Python%20SDK%20%E4%B8%8E%20Java%20SDK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 HTTP API 与 SDK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%89%E7%AB%A0/03_%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 深度思考
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%89%E7%AB%A0/04_%E6%80%9D%E8%80%83%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 思考模式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%89%E7%AB%A0/05_%E6%B5%81%E5%BC%8F%E6%B6%88%E6%81%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 流式消息
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%89%E7%AB%A0/06_%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.7 工具调用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%89%E7%AB%A0/07_%E4%B8%8A%E4%B8%8B%E6%96%87%E7%BC%93%E5%AD%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.8 上下文缓存
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%89%E7%AB%A0/08_%E7%BB%93%E6%9E%84%E5%8C%96%E8%BE%93%E5%87%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.9 结构化输出
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四部分 RAG 检索增强生成
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第四部分 RAG 检索增强生成
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/01_RAG_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 RAG 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/02_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 准备工作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/03_get_start_rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 四步构建RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/04_data_load/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 数据加载
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/05_text_chunking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 文本分块
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/06_vector_embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6 向量嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/07_multimodal_embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.7 多模态嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/08_vector_db/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.8 向量数据库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/09_milvus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.9 Milvus 实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/10_index_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.10 索引优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/11_hybrid_search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.11 混合检索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/12_query_construction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.12 查询构建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/13_text2sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.13 文本到SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/14_query_rewriting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.14 查询重构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/15_advanced_retrieval_techniques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.15 检索进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/16_formatted_generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.16 格式化生成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/18_system_evaluation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.17 系统评估
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/19_common_tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.18 评估工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/virtualenv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附. Python虚拟环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第五部分 智能体 Agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第五部分 智能体 Agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%88%9D%E8%AF%86%E6%99%BA%E8%83%BD%E4%BD%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 初识智能体
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E5%8F%91%E5%B1%95%E5%8F%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 智能体发展史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 大语言模型基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%8F%E5%85%B8%E8%8C%83%E5%BC%8F%E6%9E%84%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 经典范式构建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%9F%BA%E4%BA%8E%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%99%BA%E8%83%BD%E4%BD%93%E6%90%AD%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 低代码平台搭建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.6 框架开发实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84Agent%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.7 构建Agent框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E8%AE%B0%E5%BF%86%E4%B8%8E%E6%A3%80%E7%B4%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.8 记忆与检索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E4%B9%9D%E7%AB%A0%20%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.9 上下文工程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E5%8D%81%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.10 智能体通信协议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0%20%E6%99%BA%E8%83%BD%E6%97%85%E8%A1%8C%E5%8A%A9%E6%89%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.11 智能旅行助手
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第六部分 本地模型部署
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第六部分 本地模型部署
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AB%E7%AB%A0/%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E6%9C%AC%E5%9C%B0%E6%A8%A1%E5%9E%8B%E8%BF%90%E8%A1%8C%E4%B8%8E%E7%AE%A1%E7%90%86%EF%BC%9A%E4%BB%8E%20Ollama%20%E5%85%A5%E9%97%A8%E5%88%B0%20vLLM%20%E6%9C%8D%E5%8A%A1%E5%8C%96%E9%83%A8%E7%BD%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 从 Ollama 到 vLLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第七部分 大模型推理工程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第七部分 大模型推理工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1_%E7%93%B6%E9%A2%88%E7%AF%87_%E4%B8%BA%E4%BB%80%E4%B9%88LLM%E6%8E%A8%E7%90%86%E5%A6%82%E6%AD%A4%E5%9B%B0%E9%9A%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 瓶颈篇
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2_%E5%8D%95%E6%9C%BA%E7%AF%87_%E6%9E%81%E8%87%B4%E4%BC%98%E5%8C%96%E6%98%BE%E5%AD%98%E7%9A%84%E9%AB%98%E6%80%A7%E8%83%BD%E5%BC%95%E6%93%8E/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 单机篇
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 分布式篇
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 分布式篇
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 大模型的分布式切分：张量、流水线与上下文并行
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 大模型的分布式切分：张量、流水线与上下文并行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1 多机必要性：显存容量的限制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-tp-pp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.2 TP 与 PP：垂直切分与水平切分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.3 自动分发：计算与内存的分布式解耦
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314-tp-pp-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.4 TP 与 PP 对核心指标（Metrics）的影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#315-context-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.5 打破序列墙：上下文并行 (Context Parallelism)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#316-tppp-cp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.6 混合并行：TP、PP 与 CP 的三维并行拓扑
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-expert-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 从算力堆叠到按需路由：专家并行 (Expert Parallelism)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 从算力堆叠到按需路由：专家并行 (Expert Parallelism)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-tp-pp-moe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1 使用传统并行的局限性：当我们试图用 TP 和 PP 解决 MoE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-tp-ep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2 切分策略的选择：跨机 TP 还是专家并行（EP）？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-moe-dp-attention-ep-moe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.3 MoE 的黄金搭档：DP Attention + EP MoE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-disaggregated-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 解耦资源的分工：分离式推理 (Disaggregated Serving)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 解耦资源的分工：分离式推理 (Disaggregated Serving)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.1 难以调和的矛盾：硬件错配与管理困境
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.2 物理分离：解耦硬件，简化管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.3 分离式推理的典型工作流
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 懂业务的交通警察：内容感知路由
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 懂业务的交通警察：内容感知路由">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.1 AI 网关：懂业务的交通警察
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.2 缓存感知路由与动态副本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343-sglang-l3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.3 SGLang 的系统级实现：网关近似树与共享 L3
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 高速互联技术：大模型推理中的网络通信与高速互联
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 高速互联技术：大模型推理中的网络通信与高速互联">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351-pcienvlink-nvswitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.1 单机内的互联：PCIe、NVLink 与 NVSwitch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352-rdma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.2 跨机桥梁：RDMA 及其实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.3 并行模式、数据量与指标影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 大模型的分布式切分：张量、流水线与上下文并行
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 大模型的分布式切分：张量、流水线与上下文并行">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.1 多机必要性：显存容量的限制
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-tp-pp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.2 TP 与 PP：垂直切分与水平切分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.3 自动分发：计算与内存的分布式解耦
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314-tp-pp-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.4 TP 与 PP 对核心指标（Metrics）的影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#315-context-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.5 打破序列墙：上下文并行 (Context Parallelism)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#316-tppp-cp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1.6 混合并行：TP、PP 与 CP 的三维并行拓扑
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-expert-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 从算力堆叠到按需路由：专家并行 (Expert Parallelism)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 从算力堆叠到按需路由：专家并行 (Expert Parallelism)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-tp-pp-moe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.1 使用传统并行的局限性：当我们试图用 TP 和 PP 解决 MoE
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-tp-ep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.2 切分策略的选择：跨机 TP 还是专家并行（EP）？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-moe-dp-attention-ep-moe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2.3 MoE 的黄金搭档：DP Attention + EP MoE
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-disaggregated-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 解耦资源的分工：分离式推理 (Disaggregated Serving)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 解耦资源的分工：分离式推理 (Disaggregated Serving)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.1 难以调和的矛盾：硬件错配与管理困境
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.2 物理分离：解耦硬件，简化管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3.3 分离式推理的典型工作流
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 懂业务的交通警察：内容感知路由
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 懂业务的交通警察：内容感知路由">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.1 AI 网关：懂业务的交通警察
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.2 缓存感知路由与动态副本
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343-sglang-l3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4.3 SGLang 的系统级实现：网关近似树与共享 L3
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 高速互联技术：大模型推理中的网络通信与高速互联
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.5 高速互联技术：大模型推理中的网络通信与高速互联">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#351-pcienvlink-nvswitch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.1 单机内的互联：PCIe、NVLink 与 NVSwitch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352-rdma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.2 跨机桥梁：RDMA 及其实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5.3 并行模式、数据量与指标影响
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="3">3. 分布式篇 —— 跨越单机的协同：并行策略与高速互联<a class="headerlink" href="#3" title="Permanent link">&para;</a></h1>
+<p>本部分将视角放大到集群级架构，以及顶级科技公司如何服务数十亿次请求。</p>
+<h2 id="31">3.1 大模型的分布式切分：张量、流水线与上下文并行<a class="headerlink" href="#31" title="Permanent link">&para;</a></h2>
+<p>当模型的参数量从 7B（70亿）飙升到 400B（4000亿）甚至更大时，单张显卡乃至单台服务器的物理限制就会被彻底击碎。我们必须将这个超大模型切分，分发到多台机器上协同推理。本章将介绍分布式推理的核心技术。</p>
+<h3 id="311">3.1.1 多机必要性：显存容量的限制<a class="headerlink" href="#311" title="Permanent link">&para;</a></h3>
+<p>为什么我们必须进行分布式推理？最直接的原因就是 <strong>显存装不下</strong> 。</p>
+<p>以一个 <span class="arithmatex">\(400\)</span>B 参数的模型为例：</p>
+<ul>
+<li>如果使用半精度（FP16）存储，仅模型权重本身就需要占用 <strong>800 GB</strong> 的显存！</li>
+<li>以经典的 <strong>NVIDIA H100</strong> 为例，其单卡显存通常为 <span class="arithmatex">\(80\)</span> GB。这意味着，你至少需要 <span class="arithmatex">\(10\)</span> 张 H100 显卡，才能勉强把这个模型“装”进去（这还没有预留任何空间给 KV Cache）。</li>
+<li>由于一台标准的 AI 服务器通常最多只能安装 <span class="arithmatex">\(8\)</span> 张显卡（整机显存 <span class="arithmatex">\(640\)</span> GB），这意味着即使只为了“装下”模型，你也必须跨越单机，使用至少 <span class="arithmatex">\(2\)</span> 台服务器。</li>
+</ul>
+<p>虽然随着硬件的飞速演进，目前 Blackwell 架构（如 B200，单卡显存达 192 GB）已经成为主流，未来还会有更强的 Rubin 架构，所需的卡数会相应减少。但“单卡装不下超大模型权重与海量 KV Cache”的物理极限依然存在。这主要体现在以下三个核心驱动力：</p>
+<ol>
+<li><strong>模型规模持续膨胀</strong>：大模型参数量在短短几年内呈指数级增长。从 2020 年 GPT-3 的 <span class="arithmatex">\(1750\)</span> 亿，到 2023 年 GPT-4 估算达 <span class="arithmatex">\(1.8\)</span> 万亿，再到 2025 年 Llama 4 等模型冲上 <span class="arithmatex">\(2\)</span> 万亿。根据供应链推算，顶尖下一代模型已指向 <span class="arithmatex">\(3\)</span> 万亿至 <span class="arithmatex">\(5\)</span> 万亿区间。单卡容量永远在和模型体积的膨胀速度赛跑。</li>
+<li><strong>上下文（Context）变长与海量 KV Cache</strong>：随着 Agent、RAG 等应用的兴起，长上下文成为刚需。上下文窗口从早期的几千 Token 飙升到 128K 甚至 1M。超长上下文在 Decode 阶段会产生极其庞大的 KV Cache（在超长文本和高并发下，其显存占用甚至可能逼近或超过模型权重本身），这使得单卡显存更加捉襟见肘。</li>
+<li><strong>硬件资产生命周期与 ROI</strong>：在生产环境中， <strong>NVIDIA H100</strong> 等 H 系列显卡目前仍被大量重度使用。企业在这些服务器上投入了巨额资金，不可能因为明年出了新卡就立刻淘汰。为了运行最新的大模型，企业必须将现有的多台服务器组合起来，通过高速网络进行多机分布式推理，以充分利用现有资产。</li>
+</ol>
+<p>因此，多机多卡分布式推理不是一种选择，而是绝对的刚需。</p>
+<hr />
+<h3 id="312-tp-pp">3.1.2 TP 与 PP：垂直切分与水平切分<a class="headerlink" href="#312-tp-pp" title="Permanent link">&para;</a></h3>
+<p>为了让多张显卡协同工作，业界主要有两种经典的切分策略：</p>
+<p><strong>1. 张量并行（Tensor Parallelism, TP）—— 垂直切分</strong></p>
+<ul>
+<li><strong>做法</strong>：把模型中的某一个巨大的矩阵乘法（张量）“竖着切一刀”或“横着切一刀”，分给不同的 GPU 去算。比如，GPU 1 算左半部分，GPU 2 算右半部分，最后通过高速互联（如 NVLink）进行结果汇总（AllReduce）。</li>
+<li><strong>特点</strong>：它发生在<strong>每一层网络内部</strong>。通信极其频繁，对带宽要求极高，因此通常被限制在<strong>单机内部</strong>的多张卡之间进行。</li>
+</ul>
+<p><strong>2. 流水线并行（Pipeline Parallelism, PP）—— 水平切分</strong></p>
+<ul>
+<li><strong>做法</strong>：把模型的层（Layers）拆开。假设模型有 80 层，机器 A 负责 1 到 40 层，机器 B 负责 41 到 80 层。机器 A 算完前 40 层的隐藏状态，通过网络发给机器 B 继续算。</li>
+<li><strong>特点</strong>：它发生在<strong>层与层之间</strong>。通信频率相对较低，非常适合跨越不同物理主机（Multi-host）进行分布式部署。</li>
+<li><strong>做法</strong>：将模型的层进行拆分。例如，服务器 A 负责前 40 层，服务器 B 负责后 40 层。服务器 A 计算完前 40 层的隐藏状态后，将数据传递给服务器 B。</li>
+<li><strong>特点</strong>：发生在层与层之间。通信频率相对较低，适合跨越不同物理主机进行分布式部署。</li>
+</ul>
+<p>通过 TP 和 PP 的结合，可以将超大模型合理地切分到多张显卡上。</p>
+<hr />
+<h3 id="313">3.1.3 自动分发：计算与内存的分布式解耦<a class="headerlink" href="#313" title="Permanent link">&para;</a></h3>
+<p>当我们将大模型切分到多张显卡上时， <strong>计算（Compute）</strong> 和 <strong>内存（Memory）</strong> 的占用都会随之发生天然的分布式解耦。</p>
+<p>我们可以从计算和内存两个维度来审视这种分发：</p>
+<p><strong>1. 计算的分布式分发</strong></p>
+<ul>
+<li><strong>张量并行（TP）</strong>：将<strong>单层内的计算</strong>打散。一个巨大的矩阵乘法被切分成几块，分给不同的 GPU 并行计算。这意味着每张卡只承担了一部分算力负荷。</li>
+<li><strong>流水线并行（PP）</strong>：将<strong>层与层之间的计算</strong>打散。机器 A 算前几层，机器 B 算后几层，计算在时间上呈现出流水线式的接力。</li>
+</ul>
+<p><strong>2. 内存的分布式分发（显存的真正构成）</strong>
+在分布式环境下，显存的占用主要由以下几部分构成，它们都会被自然隔离和分摊：</p>
+<ol>
+<li><strong>模型权重（Model Weights）</strong>：在 TP 下，每张卡只存储自己负责切分的那部分矩阵权重；在 PP 下，每台机器只存储自己负责的那几十层网络的权重。这彻底解决了“单机装不下”的终极难题。</li>
+<li><strong>KV Cache（注意力缓存）</strong>：在 TP 下，由于注意力头被切分，每个 GPU 只负责存储自己那部分头对应的 K 和 V 向量；在 PP 下，KV Cache 是与层强绑定的，只有负责处理特定层的机器，才会持有该层的 KV Cache。</li>
+<li><strong>激活值（Activations）与临时缓冲区</strong>：在模型前向传播过程中产生的中间特征图等临时数据，也会随着计算的切分而散落在各自的 GPU 上。TP 组内需要频繁同步这些激活值，而 PP 组则需要将阶段边界的激活值跨机传递。</li>
+</ol>
+<p>这种“各管各的、自然隔离”的分布式架构，避免了构建中心化巨型内存池的复杂性，但也对芯片间的高速互联（NVLink/RDMA）提出了极高的要求，以确保这些被打散的碎片能完美地拼凑出最终的智能。</p>
+<hr />
+<h3 id="314-tp-pp-metrics">3.1.4 TP 与 PP 对核心指标（Metrics）的影响<a class="headerlink" href="#314-tp-pp-metrics" title="Permanent link">&para;</a></h3>
+<p>在理解了 TP 和 PP 的基本原理后，我们来系统分析它们对我们在第四章定义的核心性能指标（TTFT、TBT、Throughput）的影响。为了更精准地分析，我们必须严格区分以下几个时间概念：</p>
+<ul>
+<li><strong>排队时间（Queueing Time）</strong>：请求在调度队列中等待 GPU 资源的时间。</li>
+<li><strong>执行 TTFT（Execution TTFT）</strong>：模型真正开始处理请求到吐出第一个 Token 的纯计算时间。</li>
+<li><strong>用户感知的 TTFT（User-facing TTFT）</strong>：从用户按下发送键到屏幕上看到第一个字的总时间（大致等于 排队时间 + 执行 TTFT + 网络传输延迟）。</li>
+</ul>
+<p><strong>1. 张量并行（TP）的指标影响：算力聚合与车道扩容</strong></p>
+<ul>
+<li><strong>对执行 TTFT 的影响</strong>：<strong>显著降低</strong>。Prefill 阶段是计算密集型的，TP 通过分摊矩阵乘法计算，直接缩短了模型运行的纯计算时间。（前提是 All-Reduce 通信带宽不是瓶颈，例如在 NVLink 等高速互联场景下）。</li>
+<li><strong>对 TBT / TPS 的影响</strong>：<strong>有所降低（提升 TPS）</strong>。在 Decode 阶段，TP 仍能加速每步计算。但由于计算量小，跨卡 All-Reduce 的通信开销占比会上升，加速比并非线性。</li>
+<li><strong>对排队时间与吞吐量的影响</strong>：<strong>双重优化但有 Trade-off</strong>。<ol>
+<li><strong>缩短服务时间</strong>：因为 TP 算得快，老请求快速下车，后请求的排队时间自然变短。</li>
+<li><strong>扩张并发容量</strong>：TP 聚合了多卡显存，允许开启更大的 Batch Size，原本排队的请求可以直接被拉入 Batch 共同处理，排队时间降为 0。</li>
+<li><em>权衡</em>：如果模型本能装进单卡，强行 TP 引入的通信开销会损耗总算力，反而降低吞吐量。</li>
+</ol>
+</li>
+</ul>
+<p><strong>2. 流水线并行（PP）的指标影响：多段接力与吞吐为王</strong></p>
+<ul>
+<li><strong>对执行 TTFT 的影响</strong>：<strong>略微增加</strong>。请求需按顺序流经不同机器层，跨机通信和流水线启动带来了固定延迟开销。</li>
+<li><strong>对 TBT / TPS 的影响</strong>：<strong>几乎没有改善</strong>。它仅是层与层之间的物理拆分，并没有加速单个 Token 的前向计算。</li>
+<li><strong>对排队时间与吞吐量的影响</strong>：<strong>显著提升</strong>。<ul>
+<li><strong>流水线效应减少排队</strong>：当请求 A 在第一台机器完成第一阶段 Prefill 并流向下一台机器时，第一台机器立刻被释放，排队中的请求 B 可以马上开始它的 Prefill。这种空间复用使得新请求能更早地进入系统。</li>
+<li><strong>侧重吞吐量</strong>：通过流水线机制（不同机器同时处理不同 Batch 的不同层），极大提升了 GPU 利用率，是做大集群吞吐的利器。高吞吐有助于消化队列，从宏观上降低平均排队时间。</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="315-context-parallelism">3.1.5 打破序列墙：上下文并行 (Context Parallelism)<a class="headerlink" href="#315-context-parallelism" title="Permanent link">&para;</a></h3>
+<p>随着大模型上下文窗口（Context Window）从早期的几千飙升到现在的百万级别，传统的张量并行（TP）和流水线并行（PP）在处理超长序列时开始显得力不从心。这就催生了第三种切分维度——<strong>上下文并行（Context Parallelism, CP）</strong>。</p>
+<p><strong>1. 它要解决什么问题？</strong>
+在极长上下文场景下，核心瓶颈不仅是模型权重，更是<strong>随序列长度线性增长的 KV Cache</strong>，以及<strong>呈二次方增长的注意力计算量</strong>。</p>
+<ul>
+<li>即使你用 TP 把模型权重切分到了 8 张卡上，单张卡依然可能塞不下长达数十万甚至上百万 Token 的 KV Cache。</li>
+<li>传统的 TP 关注的是隐藏层维度（Hidden Dimension）的切分，而无法有效分摊超长序列维度（Sequence Length）带来的显存与计算压力。</li>
+<li>因此，CP 的核心目标是 <strong>打破“序列墙”</strong> 。它不仅让系统能够容纳远超单卡显存极限的超长文本，更通过沿序列维度的切分，让指数级增长的注意力计算量能被多张显卡并行分摊，极大缩短了处理长文本的时间。</li>
+</ul>
+<p><strong>大模型并行的 3D 切分维度示意图 (L × N × d)：</strong></p>
+<p><img alt="大模型并行的 3D 切分维度示意图" src="../imgs/parallelism_dimensions.cn.svg" /></p>
+<p><strong>2. 它是怎么做的？</strong>
+上下文并行的核心思想是 <strong>沿序列维度（Sequence Dimension）进行切分</strong> ：</p>
+<ol>
+<li><strong>序列切块</strong>：将长达数万甚至数百万的 Token 序列切成 <span class="arithmatex">\(N\)</span> 个小块，分发给 <span class="arithmatex">\(N\)</span> 个 GPU。每个 GPU 只负责处理和存储自己那一段序列的 KV Cache。</li>
+<li><strong>环形注意力（Ring Attention）</strong>：由于自注意力机制要求每个 Token 都要与前面所有的 Token 做计算，序列被切断后，GPU 之间必须进行通信。典型的做法是采用 <strong>Ring Attention</strong> 机制：各个 GPU 形成一个环形拓扑，一边计算本地数据的 Attention，一边像传手绢一样在环中传递 KV Cache 的分块。这样可以在不将所有 KV Cache 集中到单卡的前提下，完成全局注意力的计算。</li>
+</ol>
+<blockquote>
+<p>[!NOTE]
+<strong>深入探讨：Ring Attention 的动态协调与负载均衡</strong></p>
+<p>环形注意力（Ring Attention）的实现并非简单的“数据切块”，它在工程上面临着通信协调和计算负载均衡的巨大挑战。</p>
+<p><strong>1. 通信与计算的“击鼓传花”式协调</strong>
+假设我们将序列切分为 3 块，由 3 个 GPU 协同计算。GPU 1 持有 <span class="arithmatex">\(Q_1, K_1, V_1\)</span> ；GPU 2 持有 <span class="arithmatex">\(Q_2, K_2, V_2\)</span> ；GPU 3 持有 <span class="arithmatex">\(Q_3, K_3, V_3\)</span> 。在 Causal Attention（自回归）模式下，协调过程如下：</p>
+<ul>
+<li><strong>步骤 1</strong>：所有 GPU 同时启动，计算本地 <span class="arithmatex">\(Q\)</span> 与本地 <span class="arithmatex">\(KV\)</span> 的注意力。同时，启动异步通信，像传手绢一样在环中传递 <span class="arithmatex">\(KV\)</span> 块：GPU 1 发送 <span class="arithmatex">\(KV_1\)</span> 给 GPU 2，GPU 2 发送 <span class="arithmatex">\(KV_2\)</span> 给 GPU 3，以此类推。</li>
+<li><strong>步骤 2</strong>：GPU 收到上游传来的 <span class="arithmatex">\(KV\)</span> 块后，计算本地 <span class="arithmatex">\(Q\)</span> 与新 <span class="arithmatex">\(KV\)</span> 的注意力。例如 GPU 2 收到 <span class="arithmatex">\(KV_1\)</span> ，计算 <span class="arithmatex">\(Q_2\)</span> 与 <span class="arithmatex">\(KV_1\)</span> 的注意力。此时 GPU 1 收到 <span class="arithmatex">\(KV_3\)</span> ，但因为是因果注意力，它不能看未来的信息，所以这次计算是无效的（或被 Mask 掉）。</li>
+<li><strong>步骤 3</strong>：继续传递 <span class="arithmatex">\(KV\)</span> 块。GPU 3 最终收到 <span class="arithmatex">\(KV_1\)</span> ，计算 <span class="arithmatex">\(Q_3\)</span> 与 <span class="arithmatex">\(KV_1\)</span> 的注意力。</li>
+</ul>
+<p>通过这种方式，每个 GPU 最终都与它所需要的所有历史 <span class="arithmatex">\(KV\)</span> 块完成了计算。由于通信是异步的，注意力计算的延迟被有效地掩盖了。<strong>为了保持数学上的等价性</strong>，各个 GPU 需要结合 Online Softmax（类似 FlashAttention 的技巧），在接收到新的 KV 块后动态更新局部 Softmax 的最大值和累加和。</p>
+<p><strong>环形注意力协调流程图：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sequenceDiagram
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    participant M1 as &quot;📟 GPU 1 (持有 Q1, KV1)&quot;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    participant M2 as &quot;📟 GPU 2 (持有 Q2, KV2)&quot;
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    participant M3 as &quot;📟 GPU 3 (持有 Q3, KV3)&quot;
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    Note over M1, M3: 步骤 1: 计算本地并传递 KV
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    par 异步通信
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        M1-&gt;&gt;M2: 发送 KV1
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    and
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        M2-&gt;&gt;M3: 发送 KV2
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    and
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        M3-&gt;&gt;M1: 发送 KV3
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    end
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    Note over M1: 计算 Q1 * KV1
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    Note over M2: 计算 Q2 * KV2
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    Note over M3: 计算 Q3 * KV3
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    Note over M1, M3: 步骤 2: 计算收到的 KV 并继续传递
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    par 异步通信
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        M1-&gt;&gt;M2: 转发 KV3
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    and
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        M2-&gt;&gt;M3: 转发 KV1
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    and
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        M3-&gt;&gt;M1: 转发 KV2
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    end
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    Note over M1: 计算 Q1 * KV3 (Causal 模式下无效)
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    Note over M2: 计算 Q2 * KV1
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>    Note over M3: 计算 Q3 * KV2
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    Note over M1, M3: 步骤 3: 最后一轮计算
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    Note over M1: 计算 Q1 * KV2 (Causal 模式下无效)
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>    Note over M2: 计算 Q2 * KV3 (Causal 模式下无效)
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    Note over M3: 计算 Q3 * KV1
+</code></pre></div>
+<p><strong>2. 负载不均衡难题与 Zig-zag 优化</strong>
+从上述过程可以看出，在 Causal Attention 中，有效的注意力计算呈下三角形状：</p>
+<ul>
+<li>GPU 1 只需要算 1 份有效计算（ <span class="arithmatex">\(Q_1\)</span> 与 <span class="arithmatex">\(KV_1\)</span> ）。</li>
+<li>GPU 2 需要算 2 份有效计算（ <span class="arithmatex">\(Q_2\)</span> 与 <span class="arithmatex">\(KV_1, KV_2\)</span> ）。</li>
+<li>GPU 3 需要算 3 份有效计算（ <span class="arithmatex">\(Q_3\)</span> 与 <span class="arithmatex">\(KV_1, KV_2, KV_3\)</span> ）。</li>
+</ul>
+<p>这会导致严重的负载不均衡，GPU 1 和 GPU 2 会提前闲置。为了解决这个问题，业界主要有两种方案：</p>
+<ul>
+<li><strong>方案 A：暴力填充（Padding/Masking）</strong>：所有 GPU 都进行满负荷计算，即使是无效的未来块也照常计算，最后用掩码强行滤除。这虽然保持了代码的简单和对称，但浪费了接近 50% 的算力。</li>
+<li><strong>方案 B：交错切分（Zig-zag Partitioning / Striping）</strong>：不再按连续区间切分序列，而是采用“发牌”或“两头凑”的方式分配。假设有 6 个块，GPU 1 拿块 1 和 6（工作量 <span class="arithmatex">\(1+6=7\)</span> ），GPU 2 拿块 2 和 5（工作量 <span class="arithmatex">\(2+5=7\)</span> ），GPU 3 拿块 3 和 4（工作量 <span class="arithmatex">\(3+4=7\)</span> ）。通过这种巧妙的编排，每个 GPU 的计算量被完美平衡，消灭了闲置时间。</li>
+</ul>
+<p><strong>负载均衡与 Zig-zag 示意图：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>graph TD
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    subgraph &quot;朴素连续切分 (Contiguous)&quot;
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        N1[&quot;📟 GPU 1: 块 [1, 2]&quot;]
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        N2[&quot;📟 GPU 2: 块 [3, 4]&quot;]
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        N3[&quot;📟 GPU 3: 块 [5, 6]&quot;]
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        N1 --&gt;|&quot;工作量: 1+2 = 3&quot;| NW1[&quot;严重闲置&quot;]
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        N2 --&gt;|&quot;工作量: 3+4 = 7&quot;| NW2[&quot;中度负载&quot;]
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        N3 --&gt;|&quot;工作量: 5+6 = 11&quot;| NW3[&quot;重度负载&quot;]
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    end
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    subgraph &quot;交错切分 (Zig-zag)&quot;
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        Z1[&quot;📟 GPU 1: 块 [1, 6]&quot;]
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>        Z2[&quot;📟 GPU 2: 块 [2, 5]&quot;]
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        Z3[&quot;📟 GPU 3: 块 [3, 4]&quot;]
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>        Z1 --&gt;|&quot;工作量: 1+6 = 7&quot;| ZW1[&quot;完美平衡&quot;]
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>        Z2 --&gt;|&quot;工作量: 2+5 = 7&quot;| ZW2[&quot;完美平衡&quot;]
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        Z3 --&gt;|&quot;工作量: 3+4 = 7&quot;| ZW3[&quot;完美平衡&quot;]
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    end
+</code></pre></div>
+</blockquote>
+<p><strong>3. 它如何影响推理性能？</strong></p>
+<ol>
+<li><strong>对执行 TTFT 的影响</strong>：<strong>大幅优化超长文本的 TTFT</strong>。在 Prefill 阶段，处理百万字 Prompt 的计算量极其恐怖。CP 通过将序列打散到多 GPU 并行计算，显著缩减了超长文本的预填充时间。</li>
+<li><strong>对 TBT / TPS 的影响</strong>：<strong>影响较小</strong>。在 Decode 阶段，每次只生成一个 Token，并不需要像 Prefill 那样处理全量长文本的矩阵乘法，因此 CP 对吐字间隔的改善有限。</li>
+<li><strong>对吞吐量与成本的影响</strong>：<strong>以高昂的通信换取“可行性”</strong>。CP 引入了大量的环形通信开销。它在普通短文本推理中毫无优势，但在超长文本场景下，它是 <strong>让任务“能跑起来”的唯一解</strong> 。</li>
+</ol>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>跨机上下文并行的跨机扩展</strong></p>
+<p>虽然本节为了简化讨论，主要以单机内的 GPU 协同为例，但这并不意味着上下文并行只能在单机内进行。<strong>当上下文长度进一步飙升（例如达到 1M 甚至更长），单机内所有 GPU 的显存总和也无法容纳全量 KV Cache 时，上下文并行完全可以跨越物理机器，在多机之间进行。</strong>
+只是此时 Ring Attention 的通信需要走跨机网络（如 InfiniBand 或 RoCE），其带宽和延迟比起机内的 NVLink 会差一个数量级，因此对计算与通信的重叠（Overlap）技术要求更高，是极致的长文本工程挑战。</p>
+</blockquote>
+<hr />
+<h3 id="316-tppp-cp">3.1.6 混合并行：TP、PP 与 CP 的三维并行拓扑<a class="headerlink" href="#316-tppp-cp" title="Permanent link">&para;</a></h3>
+<p>当面对极致的超大规模模型（如 <span class="arithmatex">\(400\text{B}\)</span> 级别）以及极致的超长上下文（如 <span class="arithmatex">\(1\text{M}\)</span> Token）时，单一的并行策略已经无法解决问题。我们必须将张量并行（TP）、流水线并行（PP）和上下文并行（CP）结合起来，形成硬核的“三维并行”拓扑。</p>
+<p>参考业界前沿的实践，一个典型的三维并行（TP + PP + CP）架构通常呈现出以下优雅的物理分层：</p>
+<ul>
+<li><strong>节点内（NVLink 域）打满 TP</strong> ：在单台 <span class="arithmatex">\(8\)</span> 卡服务器内部，通常将张量并行度设为 <span class="arithmatex">\(\text{TP}=8\)</span> 。这 <span class="arithmatex">\(8\)</span> 张卡通过极高带宽的 NVLink/NVSwitch 互联，作为最基础的“物理原子”共同持有一层网络的切片，以极致的带宽扛住高频的 All-Reduce 矩阵通信。</li>
+<li><strong>节点间纵向切分（跨机网络）做 PP</strong> ：在机器节点之间，通过流水线并行（PP）将模型的层数纵向切分。<strong>例如下图中，我们将一个 <span class="arithmatex">\(80\)</span> 层的模型切分为 <span class="arithmatex">\(2\)</span> 个 Stage，每个 Stage 负责 <span class="arithmatex">\(40\)</span> 层（Stage 1 负责 1-40 层，Stage 2 负责 41-80 层）。</strong> 机器之间只传递很小的前向激活值（Activation），对跨机网络（如 InfiniBand 或 RoCE）的压力极小。</li>
+<li><strong>节点间横向扩展（跨机网络）做 CP</strong> ：在同一个 PP Stage 的多台机器之间，由于超长上下文产生的 KV Cache 单机依然装不下，我们需要进行上下文并行（CP）。<strong>例如下图中，我们将长达 <span class="arithmatex">\(1\text{M}\)</span> 的超长上下文切分为 <span class="arithmatex">\(2\)</span> 个分块（每块 <span class="arithmatex">\(500\text{K}\)</span> Token），分别分发给两组机器（节点 A 和节点 B）。</strong> 这些机器上复制着完全相同的层权重，利用 Ring Attention 算法，通过跨机网络在这些机器之间像齿轮一样循环传递 KV Cache 块，从而拼凑出百万级别的超长上下文。</li>
+</ul>
+<p><strong>三维并行（TP + PP + CP）拓扑示意图：</strong></p>
+<p><img alt="三维并行拓扑 (TP + PP + CP) 物理图景" src="../imgs/hybrid_parallelism_topology.cn.svg" /></p>
+<p>在这个架构中，<strong>在每一个 Transformer Block 内部</strong>，数据的流动和通信模式在 Attention 层和 FFN 层呈现出不同的特征：</p>
+<ul>
+<li><strong>Attention 层</strong>：由于注意力机制要求 Token 相互“看到”，因此必须进行跨机 CP 通信（如 Ring Attention）以交换 KV Cache。</li>
+<li><strong>FFN 层</strong>：由于 FFN 对每个 Token 的计算是完全独立的，各台机器只需要独立处理本地的 Token 即可，不需要跨序列的跨机通信（只需机内 TP 同步）。</li>
+</ul>
+<p>这种 Attention 依赖 CP 而 FFN 保持独立的特征在 Dense 模型中非常清晰。但如果模型是混合专家模型（MoE），FFN 层将演变为多个专家，从而引出更复杂的<strong>专家并行（Expert Parallelism, EP）</strong>，这正是我们后续章节将要深入探讨的硬核话题。</p>
+<hr />
+<h2 id="32-expert-parallelism">3.2 从算力堆叠到按需路由：专家并行 (Expert Parallelism)<a class="headerlink" href="#32-expert-parallelism" title="Permanent link">&para;</a></h2>
+<p>在第十六章中，我们讨论了如何将一个稠密（Dense）的大模型切分到多张显卡上。无论是 TP、PP 还是 CP，它们的共同点都是 <strong>“所有人一起干所有的活”</strong> ——每个 Token 都会激活模型中的所有参数。</p>
+<p>然而，随着模型规模向万亿参数迈进，这种“稠密计算”撞上了物理极限。为了解决这个问题，<a href="https://random-liu.github.io/llm-inference-principle-to-production/parts/part1_principles.cn/#第七节ffn-的拓展混合专家模型moe">混合专家模型（MoE, Mixture of Experts）</a>应运而生。在 MoE 架构中，虽然总参数量极大，但每个 Token 只需要激活其中的一小部分专家（例如 256 个专家中激活 2 个）。这种 <strong>稀疏激活（Sparse Activation）</strong> 的特性，催生了一种全新的并行维度—— <strong>专家并行 (Expert Parallelism, EP)</strong> 。</p>
+<h3 id="321-tp-pp-moe">3.2.1 使用传统并行的局限性：当我们试图用 TP 和 PP 解决 MoE<a class="headerlink" href="#321-tp-pp-moe" title="Permanent link">&para;</a></h3>
+<p>MoE 模型的核心思想是解耦“模型容量”与“计算成本”。你可以把模型做得很庞大，拥有海量的知识，但每次推理只激活极少部分的专家。</p>
+<p>面对 MoE 模型那动辄数百 GB 甚至数 TB 的全量专家权重（例如 DeepSeek V3 拥有 <span class="arithmatex">\(671\text{B}\)</span> 参数），我们最自然的想法是使用手中现有的两把武器—— <strong>张量并行（TP）</strong> 和 <strong>流水线并行（PP）</strong> 去<strong>分割权重</strong>，以解决显存装不下的物理难题。</p>
+<p>我们沿着这条直觉走下去，推演过程如下：</p>
+<ol>
+<li><strong>第一步：模型尚小时，单机 TP 扛下一切</strong>
+   如果这是一个小型 MoE 模型（例如 <span class="arithmatex">\(47\text{B}\)</span> 的 Mixtral 8x7B），它的全量专家加起来只有几十 GB。最简单高效的办法就是把它装进一台 8 卡机器中，用机内 <strong>张量并行（TP=8）</strong> 跑通。在 NVLink 高达 <span class="arithmatex">\(900\text{GB/s}\)</span> 的极速带宽下，所有 GPU 共同参与所有专家的计算，虽然牺牲了部分的稀疏性，但胜在简单且没有复杂的跨机通信。</li>
+<li><strong>第二步：模型膨胀后，叠加跨机 PP 切分层</strong>
+   当模型的总参数量扩大数倍，单机装不下全量层时，我们自然会引入 <strong>流水线并行（PP）</strong> ——按网络层（Layer）把模型切分为多个 Stage，分发到多台物理机器上。因为层与层之间的接力通信频率低、数据量小，这能完美避开跨机网络带宽较窄的弱点。</li>
+<li><strong>第三步：撞上流水线气泡，推演陷入死角</strong>
+   然而，流水线（PP）不能被无限切深。PP 会带来流水线气泡（Pipeline Bubble），尤其在逐字生成（Decode）阶段，气泡会直接把吐字间隔（TBT）拉长到用户无法忍受的程度。因此，在生产环境中，PP 的 Stage 深度通常被严格限制在 4 或 8 以内。</li>
+</ol>
+<p><strong>这引出了一个核心工程挑战</strong>：
+由于不敢把 PP 切得太深，分配到某一台物理机器上的“层组”里，MoE 的 FFN 层（全量专家）依然大到超出了这台机器的显存容量！我们必须对 <strong>“同一层网络内的专家”</strong> 进行 <strong>跨机器</strong> 的切分。</p>
+<hr />
+<h3 id="322-tp-ep">3.2.2 切分策略的选择：跨机 TP 还是专家并行（EP）？<a class="headerlink" href="#322-tp-ep" title="Permanent link">&para;</a></h3>
+<p>面对同一层网络跨机器切分的绝境，摆在工程师面前的有两种完全不同的设计哲学：</p>
+<ol>
+<li><strong>方案 A：跨机张量并行（Cross-host TP）</strong><ul>
+<li><strong>做法</strong>：延续 TP 的逻辑，把这一层内的所有专家横着或竖着“切碎”，均匀散布在不同的物理机器上。</li>
+<li><strong>物理比喻</strong>：相当于 <strong>“所有人一起砍同一棵树”</strong> ——权重切碎，Token 激活值原地不动，算力分布式协作。</li>
+<li><strong>致命代价</strong>：<ul>
+<li><strong>计算效率暴跌</strong>：由于矩阵被切得太碎，无法触发高效的大块矩阵乘法，GPU 会退化为极低效的矩阵向量乘法（GEMV），导致算力被严重浪费。</li>
+<li><strong>跨机网络瘫痪</strong>：每一层都需要多次触发跨机器的全员通信。在带宽只有 50-100GB/s 的跨机网络（IB/RoCE）面前，网络流量会瞬间被引爆。</li>
+<li><strong>强同步阻塞</strong>：跨机 All-Reduce 是一种强同步操作。后一步的计算必须等待全集群通信彻底结束才能继续，任何一台机器的网络微小抖动都会导致整个集群的 CUDA 核心挂起等待。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>方案 B：专家并行（Expert Parallelism, EP）</strong><ul>
+<li><strong>做法</strong>： <strong>权重原地不动，只转 Token</strong> 。我们保持每个专家的物理完整性，将专家 A 完整地放在机器 1，专家 B 完整地放在机器 2。当 Token 准备运算时，通过网络（All-to-All）将 Token 激活值投递到对应的专家所在的 GPU 上，算完再投递回来。</li>
+<li><strong>物理比喻</strong>：相当于 <strong>“把不同的树分给不同的人去砍”</strong> ——权重原地不动，依靠路由在网络中转移 Token 激活值。</li>
+<li><strong>核心优势</strong>：<ul>
+<li><strong>对齐算法的稀疏路由</strong>：保持了专家的物理完整性，让网络投递承担分拣角色，使硬件的分发逻辑与 MoE 算法的稀疏映射完全同构。</li>
+<li><strong>极高硬件效率（GEMM 优化）</strong>：虽然在宏观高并发下所有 GPU 都在同时忙碌，但 EP 依靠网络分流把要去同一个专家的 Token 汇聚到一台特定的 GPU 上。这避免了 TP 切碎后导致 GPU 频繁读取不同专家权重、退化为低效 GEMV 的尴尬，触发完美的大块 GEMM 运算，充分利用 Tensor Core。</li>
+<li><strong>通信与计算重叠（Compute-Comm Overlap）</strong>：MoE 层的 All-to-All 通信是天然可异步的。当那些被路由到本地专家的 Token 在 GPU 上执行密集的本地矩阵乘法（GEMM）时，网卡正在后台将需要跨机的 Token 异步搬运到目标机器。这种 <strong>极致的异步掩盖（Overlap）</strong> ，使得跨机网络通信的延迟几乎被本地计算的时间完全隐藏。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>这种设计哲学的差异，使得 EP 天然适合跨机器扩展，因为在大规模集群中，“让 Token 激活值找权重”的通信开销，往往远小于“把权重切碎再跨机缝合”的强同步开销。</p>
+<p><strong>跨机 TP 与专家并行（EP）的核心差异对比：</strong></p>
+<blockquote>
+<p>[!NOTE]
+<strong>硬核定量：EP 与 TP 的通信量之争</strong></p>
+<p>很多工程师凭直觉会认为 EP 的乱序 All-to-All 通信量是灾难性的。但如果进行严格的数学定量推导，会得出一个反直觉的结论。
+假设 <span class="arithmatex">\(M\)</span> 为并行机器数， <span class="arithmatex">\(K\)</span> 为每个 Token 激活的 Top-K 专家数。在未优化的理论模型下，EP 的跨机通信量仅为 TP 的 <span class="arithmatex">\(1/M\)</span> 。即使在实际工程中对 TP 进行了疯狂的算子融合（Operator Fusion）将通信量缩减了 <span class="arithmatex">\(K\)</span> 倍，EP 的总通信体积也依然只有 TP 的 <span class="arithmatex">\(K/M\)</span> 。</p>
+</blockquote>
+<hr />
+<h3 id="323-moe-dp-attention-ep-moe">3.2.3 MoE 的黄金搭档：DP Attention + EP MoE<a class="headerlink" href="#323-moe-dp-attention-ep-moe" title="Permanent link">&para;</a></h3>
+<p>在真实的生产环境（如 DeepSeek V3/R1 的 Serving 架构）中，MoE 模型的推理通常采用一种精巧的混合拓扑： <strong>Attention 层用数据并行（DP），而 FFN（MoE）层用专家并行（EP）</strong> 。</p>
+<p>为什么要在同一层网络里切换两种并行角色？这源于 MoE 模型内部的 <strong>异质性（Heterogeneity）</strong> ：</p>
+<ol>
+<li><strong>Attention 层（小而稠密）</strong>：在现代架构中（如在 <a href="https://random-liu.github.io/llm-inference-principle-to-production/parts/part3_single_node.cn/#第九章模型架构层面的显存优化gqa">第九章：模型架构层面的显存优化：GQA</a> 中学过的 GQA 或是 MLA 技术），Attention 层的权重被大幅压缩（通常占总参数量的不到 10%），小到每张卡都可以轻松复制一份完整副本。因此，Attention 环节非常适合用 <strong>DP（数据并行）</strong> —— 每张卡独立处理自己那部分 Request，互不通信，完美避免了 TP 的 All-Reduce 开销。</li>
+<li><strong>FFN 层（大而稀疏）</strong>：到了 MoE 环节，全量专家权重巨大，必须用 EP 切分到不同机器上，通过网络路由 Token。</li>
+</ol>
+<p>这种混合策略式的切换（Attention 时横向数据并行，FFN 时纵向专家路由），将 MoE 模型的算法优势与分布式硬件的物理特性结合到了极致。</p>
+<p><strong>DP Attention + EP MoE 架构拓扑示意图：</strong></p>
+<p><img alt="DP Attention + EP MoE 架构拓扑图" src="../imgs/dp_attention_ep_moe.cn.svg" /></p>
+<blockquote>
+<p>[!NOTE]
+<strong>核心权衡：DP 与 CP 的切分维度与长短文本博弈</strong></p>
+<p>我们之所以将 DP（数据并行）与 CP（上下文并行）放在一起进行比较，是因为两者切分的都是 <strong>“输入的请求与数据”</strong> 本身，而非模型的权重维度。但它们切分的具体方向完全不同：</p>
+<ul>
+<li><strong>DP Attention</strong>：切分的是 <strong>批次（Batch / Request 维度）</strong>。不同请求在各节点的 Attention 层内互不通信，追求极致的并发吞吐量。</li>
+<li><strong>CP Attention</strong>：切分的是 <strong>序列（Sequence Dimension 维度）</strong>。同一个超长请求的 KV Cache 被物理切开，依赖 Ring Attention 在卡间频繁进行环形同步。</li>
+</ul>
+<p>在推理集群中，如何在这两者间做出抉择，是一场精妙的<strong>长短文本工程博弈</strong>：</p>
+<ul>
+<li><strong>短文本的代价</strong>：如果对原本一两千 Token 的短文本“无脑”开启 CP，每张卡分到的计算量微乎其微，GPU 算力会被频繁的跨机环形通信开销彻底拖垮。</li>
+<li><strong>长文本的红线</strong>：相反，面对数十万 Token 的长文本，如果不开 CP，庞大的 KV Cache 会瞬间撑爆单卡显存导致 OOM。</li>
+</ul>
+<p><strong>工程落地的权衡考量</strong>：
+在面对实际生产交付时，工程师通常需要依据具体的 <strong>业务特征（Profile）</strong> 做出权衡。以下是两个折中考量的例子：</p>
+<ul>
+<li><strong>例子一：牺牲效率换取一致性</strong>：在统一集群中开启微量的 CP（如 CP=2 或 4）。虽然短文本的推理效率会折损 10%-20%，但这能以极少的硬件投入，换来对长短文本的全面兼容以及运维层面的高稳定性。</li>
+<li><strong>例子二：物理隔离换取性能</strong>：通过网关层（Gateway）依据长度做物理分流。高频短交互走纯 <code>DP Attention + EP MoE</code> 拓扑，Attention 环节零跨机通信，以压榨极限吞吐；长文本走专属的 <code>CP Attention + EP MoE</code> 拓扑，牺牲小文本效率，确保系统不会 OOM。</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="33-disaggregated-serving">3.3 解耦资源的分工：分离式推理 (Disaggregated Serving)<a class="headerlink" href="#33-disaggregated-serving" title="Permanent link">&para;</a></h2>
+<p>什么是<strong>分离式推理（Disaggregated Serving）</strong>？简单来说，它是一种将大模型推理的 <strong>Prefill（预填充）</strong> 阶段和 <strong>Decode（解码）</strong> 阶段，彻底剥离并运行在不同硬件配置的物理集群上的架构。</p>
+<p>在第三部分中，我们介绍了<strong>连续批处理</strong>和<strong>分块预填充</strong>，它们在单机层面实现了 Prefill 和 Decode 的“完美拼车”，极大地压榨了单张显卡的性能。你可能会问：既然单机问题已经解决了，为什么还要大费周章搞分离式推理？</p>
+<p>答案是：单机优化只是 <strong>“战术级”</strong> 的极限压榨。在单机内部试图完美平衡 Prefill 和 Decode，不仅受制于<strong>硬件错配</strong>的物理极限，更带来了<strong>系统管理和调度的极高复杂度</strong>。当服务规模达到工业级量级时，单机内的“完美”反而变成了宏观上的“负担”。本章将揭秘<strong>分离式推理 (Disaggregated Serving)</strong>，看它是如何同时解决硬件错配并极大简化资源管理的。</p>
+<h3 id="331">3.3.1 难以调和的矛盾：硬件错配与管理困境<a class="headerlink" href="#331" title="Permanent link">&para;</a></h3>
+<p>我们在 <a href="https://random-liu.github.io/llm-inference-principle-to-production/parts/part2_bottlenecks.cn/#第八章核心不对称性prefill-与-decode">第八章：核心不对称性：Prefill 与 Decode</a> 提到过，Prefill 和 Decode 对硬件的需求是完全相反的：</p>
+<ul>
+<li><strong>Prefill</strong>：处理海量输入，需要极高的<strong>计算算力（FLOPs）</strong>，但对显存容量要求相对较小。</li>
+<li><strong>Decode</strong>：逐字吐出 Token，计算量很小（算力闲置），但需要频繁从显存搬运庞大的 KV Cache，极度渴望<strong>显存带宽</strong>和<strong>显存容量</strong>。</li>
+</ul>
+<p>如果使用传统的统一架构（混合部署），系统将面临双重打击：</p>
+<ol>
+<li><strong>硬件错配的浪费</strong>：当你用昂贵的 B200 显卡去跑 Decode 阶段时，它那毁天灭地的 Tensor Core 算力绝大多数时间都在“睡大觉”等显存搬数据。这无异于用屠龙刀去砍柴，造成了极大的成本浪费。</li>
+<li><strong>管理与调度的“走钢丝”</strong>：为了在单机上解决这个矛盾，工程师们发明了连续批处理、分块预填充等极其复杂的调度算法（如前几章所述）。这无异于在单张显卡上“走钢丝”——系统必须小心翼翼地平衡两者的资源占用，稍有不慎就会引发首字延迟（TTFT）或吐字间隔（TBT）的抖动。这种多维度（算力、显存、带宽）的混合优化，让集群的资源规划和容量管理变得异常复杂。</li>
+</ol>
+<hr />
+<h3 id="332">3.3.2 物理分离：解耦硬件，简化管理<a class="headerlink" href="#332" title="Permanent link">&para;</a></h3>
+<p>为了从根本上破局，顶级科技公司开始采用 <strong>Disaggregated Serving（分离式推理）</strong> 架构（如 Google 内部的各种系统和开源的 DistServe）。</p>
+<p>核心思想是<strong>物理隔离</strong>：</p>
+<ol>
+<li><strong>Prefill 集群</strong>：由算力极强但显存一般的机器组成，专门负责接收用户的长 Prompt，以最快的速度完成预填充，生成初始的 KV Cache。</li>
+<li><strong>Decode 集群</strong>：由算力一般、但配备了海量 HBM 显存和超高显存带宽的机器组成，专门负责存储 KV Cache 并逐字吐出 Token。</li>
+</ol>
+<p>这种分工带来了双重收益：</p>
+<p><strong>1. 解决硬件错配，释放硬件潜力</strong>
+我们可以针对不同的集群进行独立的硬件采购，<strong>在 Prefill 集群追求极致的 TTFT，在 Decode 集群追求极致的 TPS 和 TBT 稳定性</strong>，将每一种硬件的特性压榨到极致，大幅降低了整体 TCO（总拥有成本）。</p>
+<p><strong>2. 简化资源匹配与管理（降维打击）</strong>
+更重要的是，分离式推理<strong>将复杂的混合调度问题，降维成了简单的容量规划问题</strong>：</p>
+<ul>
+<li><strong>告别“微操”</strong>：Prefill 节点只管闷头算 Prompt，Decode 节点只管流畅吐字。系统不再需要在单机内做复杂的资源平衡，极大地提升了系统的稳定性和可维护性。</li>
+<li><strong>业务驱动的极简扩缩容</strong>：资源管理不再是黑盒的算法调优，而是直接与业务画像挂钩。<ul>
+<li><strong>RAG（检索增强生成）与长文档问答</strong>：用户通常会上传几万字的背景资料，但只要求模型回答几百字。这是一种 <strong>“重 Prefill、轻 Decode”</strong> 的场景。在分离架构下，我们只需定向扩容 Prefill 集群即可。</li>
+<li><strong>Agent（智能体）与思维链（CoT）推理</strong>：用户可能只输入了一句简短的指令，但模型在背后需要进行复杂的工具调用或长达数万字的“内心独白”。这是一种 <strong>“轻 Prefill、重 Decode”</strong> 的场景。此时，我们只需定向扩容配备海量显存的 Decode 集群，避免了为 Prefill 算力买单的冤枉钱。</li>
+</ul>
+</li>
+</ul>
+<p>通过这种精细化的资源匹配，分离式推理不仅解决了屠龙刀砍柴的尴尬，更让整个集群的资源匹配和管理变得清爽、可控。</p>
+<h3 id="333">3.3.3 分离式推理的典型工作流<a class="headerlink" href="#333" title="Permanent link">&para;</a></h3>
+<p>理解了分离式推理的优势后，我们来看看一个请求在分离架构下是如何流转的。它就像一场精心安排的接力赛，<strong>AI 网关</strong> 扮演“媒人（Matchmaker）”的角色，而 <strong>Prefill 节点</strong> 和 <strong>Decode 节点</strong> 则进行点对点的交接：</p>
+<ol>
+<li><strong>请求接入与撮合</strong>：用户发送 Prompt 请求到达 <strong>AI 网关</strong>。网关根据策略挑选出一组 <strong>Prefill 节点</strong> 和 <strong>Decode 节点</strong>，并为它们生成一个全局唯一的会话标识（如 Room ID）。</li>
+<li><strong>并发派发</strong>：AI 网关将带有连接信息（目标节点地址以及 Room ID）的请求，<strong>并发地</strong>同时发送给选定的 Prefill 节点和 Decode 节点。</li>
+<li><strong>点对点握手与预分配</strong>：</li>
+<li><strong>Decode 节点</strong> 收到请求后，首先在本地 KV 池中为该请求<strong>预分配</strong>好显存空间，并将这些目标内存地址通过控制流发送给 Prefill 节点（“往这儿写”）。</li>
+<li>此时，两节点完成了点对点的握手。</li>
+<li><strong>Prefill 计算与直推</strong>：</li>
+<li><strong>Prefill 节点</strong> 全速计算，计算 Prompt 并生成 KV Cache。</li>
+<li>计算完成后，Prefill 节点拿到 Decode 节点发过来的目标地址，通过 <strong>RDMA</strong> 高速网络（如 Mooncake 传输引擎），将全量 KV Cache <strong>直接推送（Push）</strong> 到 Decode 节点的显存中。</li>
+<li><strong>Decode 解码生成</strong>：</li>
+<li>Decode 节点确认数据接收完成后，直接跳过 Prefill 阶段，接管后续的自回归生成工作，逐字吐出 Token。</li>
+<li>生成的 Token 实时流式返回给用户。</li>
+</ol>
+<p>为了让你更直观地看清这个“网关撮合、节点直连”的过程，我们可以用下面这张图来表示：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sequenceDiagram
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    autonumber
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    actor User as 🧑 用户
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    participant Gateway as 🚦 AI 网关 / 调度器
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    participant Prefill as 🚀 Prefill 节点&lt;br/&gt;(算力密集型)
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    participant Decode as 💾 Decode 节点&lt;br/&gt;(显存/带宽密集型)
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    User-&gt;&gt;Gateway: 1. 发送 Prompt 请求
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    Note over Gateway: 媒人角色：挑选 P/D 对&lt;br/&gt;生成 Room ID 与地址信息
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    par 并发派发
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        Gateway-&gt;&gt;Prefill: 2. 发送请求 (含 Decode 地址与 Room ID)
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    and
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>        Gateway-&gt;&gt;Decode: 2. 发送请求 (含 Prefill 地址与 Room ID)
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    end
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    Note over Decode: 3. 预分配本地 KV 显存空间
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    Decode-&gt;&gt;Prefill: 4. 发送目标内存地址 (告诉 P 往哪写)
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    Note over Prefill: 5. 密集计算处理 Prompt&lt;br/&gt;生成 KV Cache
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>    Note over Prefill, Decode: 关键交接：点对点极速推送 (通过 RDMA)
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>    Prefill-&gt;&gt;Decode: 6. 直接 Push KV Cache 到 Decode 显存
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>    Prefill-&gt;&gt;Gateway: 7. 汇报完成 (可返回首字 TTFT)
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>    Note over Decode: 8. 确认数据就位，开始自回归解码！
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>    loop 逐字生成
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>        Decode-&gt;&gt;User: 9. 流式返回 Token (TBT)
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>    end
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>    Decode-&gt;&gt;Gateway: 10. 生成结束，释放资源
+</code></pre></div>
+<p>这种“网关只控流、节点点对点直连”的去中心化数据交接机制，成功避免了网关成为海量 KV 数据传输的瓶颈，将单机内的资源竞争转化为了集群间的高效流水线作业。</p>
+<hr />
+<h2 id="34">3.4 懂业务的交通警察：内容感知路由<a class="headerlink" href="#34" title="Permanent link">&para;</a></h2>
+<p>在第十八章中，我们把集群拆分成了 Prefill 池和 Decode 池。那么，当海量的 HTTP 请求涌入时，谁来决定哪个请求去哪台机器？本章将介绍大模型集群中的“交通警察” —— <strong>内容感知路由</strong> 。</p>
+<h3 id="341-ai">3.4.1 AI 网关：懂业务的交通警察<a class="headerlink" href="#341-ai" title="Permanent link">&para;</a></h3>
+<p>传统的负载均衡器（如 Nginx 或 F5）只关心网络流量、并发连接数以及服务器的 CPU/内存利用率等基础物理指标。它们看一个 HTTP 请求，只是一堆无意义的字节。</p>
+<p>但在 LLM 推理集群中，这种“盲目”的路由会导致灾难。因为大模型推理的成本很大程度上由 <strong>Prompt 的内容和长度</strong> 决定。</p>
+<p>于是， <strong>AI 网关（AI Gateway）</strong> 应运而生。它是懂业务的交通警察：</p>
+<ul>
+<li><strong>请求检查</strong>：在请求到达 GPU 之前，网关会先对其进行解析，看它包含多少个 Token，属于什么业务类型。</li>
+<li><strong>智能分流决策</strong>：由于大模型请求在 Prefill 和 Decode 阶段的资源消耗差异巨大，网关不能简单地按“轮询”分发，而是需要根据 <strong>请求画像（Prompt 长度与预期输出长度）</strong> ，对 Prefill 节点和 Decode 节点进行组合路由。</li>
+</ul>
+<p>我们可以用下表来梳理 AI 网关在不同请求场景下的路由决策逻辑：</p>
+<blockquote>
+<p>[!NOTE]
+<strong>防死锁与防线头阻塞（HOL Blocking）</strong>：当长短请求同时到达时，AI 网关会极力避免将短请求排在长请求后面。如果 Prefill 节点都在忙，网关甚至可能会将短请求插队（Priority Queue）或者分流到专门预留的“快车道”节点，以保证短请求的极致体验。</p>
+</blockquote>
+<hr />
+<h3 id="342">3.4.2 缓存感知路由与动态副本<a class="headerlink" href="#342" title="Permanent link">&para;</a></h3>
+<p>在大模型集群中， <strong>缓存感知路由（Cache-aware Routing）</strong> 是 AI 网关核心技术。</p>
+<p><strong>1. 为什么需要它？</strong>
+结合我们在 <a href="https://random-liu.github.io/llm-inference-principle-to-production/parts/part3_single_node.cn/#第十二章基于基数树的前缀缓存机制-radixattention">第十二章：基于基数树的前缀缓存机制 (RadixAttention)</a> 中学过的 <strong>RadixAttention（前缀缓存）</strong> ，如果多个请求共享相同的 System Prompt、长文档背景或历史对话，节点本地会缓存这些前缀的 KV Cache。
+如果网关只是盲目地轮询分发，带有相同前缀的请求会被散落到不同节点，导致每个节点都要重复计算一遍 Prefill。这不仅浪费了海量的 GPU 算力，还极大地拉长了 TTFT。
+因此，我们需要网关能够感知请求的前缀内容，把请求精准路由到已经持有该缓存的节点。</p>
+<p><strong>2. 它的工作流程</strong></p>
+<ul>
+<li><strong>前缀匹配</strong>：网关在全局维护一张“缓存索引表”，记录哪台节点上缓存了哪些文本前缀。新请求进来时，网关扫描其前缀，把它发送给命中率最高的节点，直接复用 KV Cache。</li>
+<li><strong>动态副本（解决惊群效应）</strong>：如果某个前缀（如全网爆火的系统提示词）成了超级热点，所有请求都集中请求持有该缓存的节点，会导致该节点瞬间过载。此时网关必须具备 <strong>动态副本（Dynamic Replication）</strong> 的能力，检测到负载失衡后，将流量分流到空闲节点，并促使空闲节点也建立该缓存的副本，实现负载均衡。</li>
+</ul>
+<hr />
+<h3 id="343-sglang-l3">3.4.3 SGLang 的系统级实现：网关近似树与共享 L3<a class="headerlink" href="#343-sglang-l3" title="Permanent link">&para;</a></h3>
+<p>理解了原理后，我们以目前前沿的推理引擎 <strong>SGLang</strong> 为例，看看它是如何以极低的系统开销落地这套机制的。SGLang 的设计非常巧妙，它并没有使用复杂的中心化“显式复制”指令，而是通过 <strong>网关的软路由</strong> 与 <strong>后端的层次化缓存</strong> 自然结合。</p>
+<p><strong>1. 网关层的“近似前缀树”（解决匹配开销）</strong>
+在 SGLang 的 Rust 网关中，维护了一个全局的 <strong>近似前缀树（Approximate Radix Tree）</strong> 。</p>
+<ul>
+<li><strong>无 Tokenizer 优化</strong>：为了保证网关的超高吞吐，这个树<strong>直接存储 Raw Text 字符串</strong>，而不是 Token ID。这样网关就不需要加载庞大的词表进行分词，直接用字符串匹配就能快速定位缓存。</li>
+<li><strong>双模切换</strong>：当系统负载均衡时，网关按缓存匹配率路由（直奔记忆节点）；当检测到某个节点因为热点请求导致负载过高时，网关会 <strong>强制切换为“最短队列（Shortest Queue）”</strong> 策略，直接把新请求撇给空闲节点，瞬间化解惊群效应。</li>
+</ul>
+<p><strong>2. 后端的“L3 共享缓存”（解决副本生成）</strong>
+被网关分流到空闲节点的请求，本地并没有 KV Cache，重新计算又太慢，怎么办？
+SGLang 引入了 <strong>HiCache</strong> 机制，将缓存分为 GPU(L1)、CPU(L2) 和 <strong>分布式共享存储(L3)</strong> （如 Mooncake 或 DeepSeek 3FS）。</p>
+<ul>
+<li>当热点节点的缓存被触发写回 L3 后，空闲节点收到网关分流过来的请求，发现本地无缓存，就会 <strong>直接从 L3 共享存储中拉取（Prefetch）</strong> 这份 KV Cache。</li>
+<li>Node B 处理完后，本地自然也拥有了该缓存。网关在收到反馈后，更新前缀树，Node B 就正式成为了该热点前缀的新“副本”。</li>
+</ul>
+<p>这种“网关只做软路由分流，数据靠共享 L3 自动按需拉取”的机制，用最小的系统耦合，实现了极其优雅的缓存路由与动态副本。</p>
+<blockquote>
+<p>[!NOTE]
+<strong>深入探讨：什么是 HiCache？它与单机分层卸载（Tiered Offloading）有何异同？</strong></p>
+<p>读者可能会发现，HiCache 的分层思想与我们在第十四章讲过的“单机分层卸载（Tiered Offloading）”如出一辙。它们的底层物理逻辑是一致的，都是利用“GPU <span class="arithmatex">\(\rightarrow\)</span> CPU <span class="arithmatex">\(\rightarrow\)</span> 外部存储”的硬件金字塔来扩充 KV Cache 容量。</p>
+<p>但 HiCache 是 Tiered Offloading 的 <strong>“集群放大版”</strong> 与 <strong>“缓存复用版”</strong> ：</p>
+<ol>
+<li><strong>从单机防溢出到集群共享</strong>：传统的 Tiered Offloading 侧重于单机显存不够时被动地将 KV Cache 换出到 CPU；而 HiCache 不仅支持本地 CPU（L2），还支持分布式存储（L3），目的是让整个集群的节点都能共享和复用这些缓存。</li>
+<li><strong>与前缀树深度绑定</strong>：传统 Offloading 管理的是独立的请求 KV，而 HiCache 管理的是 Radix Tree 上的结构化公共前缀，支持主动预取（Prefetch）以掩盖网络延迟。</li>
+</ol>
+</blockquote>
+<hr />
+<h2 id="35">3.5 高速互联技术：大模型推理中的网络通信与高速互联<a class="headerlink" href="#35" title="Permanent link">&para;</a></h2>
+<p>无论是在分布式推理中实现模型切分，还是在 Disaggregated Serving 中进行数据搬运， <strong>计算在被切分的同时，通信开销也随之产生</strong> 。网络通信是决定系统成败的“生命线”。</p>
+<p>本章将分析大模型推理中依赖的核心互联技术、带宽特性，以及它们与各种并行模式的适配关系。</p>
+<h3 id="351-pcienvlink-nvswitch">3.5.1 单机内的互联：PCIe、NVLink 与 NVSwitch<a class="headerlink" href="#351-pcienvlink-nvswitch" title="Permanent link">&para;</a></h3>
+<p>在单台服务器内部，多张 GPU 之间的互联技术经历了巨大的演进：</p>
+<ol>
+<li><strong>PCIe (Peripheral Component Interconnect Express)</strong>:<ul>
+<li><strong>特点</strong>：传统的通用总线，GPU 通过 PCIe 与 CPU 及其他设备通信。目前主流的 PCIe 5.0 x16 单向带宽约为 64 GB/s。</li>
+<li><strong>局限</strong>：在张量并行（TP）这种需要极高频、海量数据同步的场景下，PCIe 带宽会成为严重瓶颈。</li>
+</ul>
+</li>
+<li><strong>NVLink + NVSwitch（现代高速互联方案）</strong>: NVLink 和 NVSwitch 是配合使用的两个层次，共同构成单机内的全互联高速网络。<ul>
+<li><strong>NVLink（传输介质）</strong>：NVIDIA 专为 GPU 互联开发的高速点对点链路，允许两张 GPU 之间直接读写对方显存（P2P），绕过 CPU。带宽极高，如 NVLink 4.0 在 H100 上可提供高达 900 GB/s 的双向总带宽。</li>
+<li><strong>NVSwitch（交换节点）</strong>：NVLink 是点对点连接，若要让 8 张 GPU 两两全速互联，理论上需要 C(8,2)=28 条独立链路，GPU 的物理接口根本不够用。NVSwitch 解决了这个扩展性问题——每张 GPU 通过 NVLink 连到 NVSwitch 这颗专用交换芯片，由它在内部做路由，使任意两张 GPU 之间都能以完整的 NVLink 带宽通信。</li>
+<li><strong>整体效果</strong>：8 张 GPU 各自只需连到 NVSwitch，就能获得等同于两两直连的全速全互联网络，是实现高效张量并行（TP）的物理基石。</li>
+</ul>
+</li>
+</ol>
+<h3 id="352-rdma">3.5.2 跨机桥梁：RDMA 及其实现<a class="headerlink" href="#352-rdma" title="Permanent link">&para;</a></h3>
+<p>当分布式推理跨越物理节点（Multi-host）时，传统的以太网和 TCP/IP 协议栈无法满足需求。数据从 GPU 出发，要经过 GPU 显存 → CPU 内存 → 内核网络栈 → 网卡，路径极长，CPU 全程参与搬运，延迟高、消耗大。</p>
+<p><strong>RDMA：从根本上解决问题</strong></p>
+<p>RDMA（Remote Direct Memory Access，远程直接内存访问）允许网卡直接读写远端机器的 GPU 显存，<strong>绕过 CPU 和内核</strong>，实现零拷贝（Zero-copy）。收益是双重的：延迟从毫秒级降至微秒级，同时释放 CPU 的调度与控制流算力。</p>
+<p><strong>两种实现：InfiniBand vs RoCE</strong></p>
+<p>RDMA 是一种能力，可以跑在不同的物理网络上，目前主流有两种实现：</p>
+<ol>
+<li><strong>InfiniBand (IB)</strong>：专为 HPC 设计的私有网络，软硬件一体，原生支持 RDMA。天然无损（基于信用的流控，不会丢包），提供极高带宽（400Gbps NDR、800Gbps XDR）和极低延迟（亚微秒级）。代价是成本高，需要专用 IB 网卡和交换机，无法复用现有以太网基础设施。</li>
+<li><strong>RoCE (RDMA over Converged Ethernet)</strong>：将 RDMA 语义搬到以太网上运行，可复用现有基础设施，成本显著降低。代价是以太网本身会丢包，必须通过配置 PFC（优先级流控）和 ECN（显式拥塞通知）构建”无损以太网”，网络运维复杂度较高，一旦配置不当，拥塞丢包会导致性能急剧下降。</li>
+</ol>
+<p><strong>NVLink Switch：跨机的 NVLink 延伸</strong></p>
+<p>NVLink Switch（如 GB200 NVL72 系统中的 NVSwitch）通过铜缆将多台物理机柜的 GPU 连成一个超大 NVLink 域，突破单机 8 卡的物理限制，可将 72 张 GPU 组成全互联集群，跨机带宽和延迟接近单机 NVLink 水平。它并没有改变并行的本质策略，但极高的带宽改变了许多工程权衡，例如允许更大规模的跨机 TP，这也使得原本为了应对显存不足而强行跨多机切分权重的流水线并行（PP）应用明显减少。</p>
+<h3 id="353">3.5.3 并行模式、数据量与指标影响<a class="headerlink" href="#353" title="Permanent link">&para;</a></h3>
+<p>为了让你对不同模式下的网络通信有一个全局的量化认知，我们将分布式推理的各种并行模式以及分离式推理的跨机传输特性总结在下表中：</p>
+<blockquote>
+<p>[!NOTE]
+<strong>参数说明</strong>： <span class="arithmatex">\(L\)</span> 为模型层数； <span class="arithmatex">\(L_{\text{MoE}}\)</span> 为 MoE 层数； <span class="arithmatex">\(K\)</span> 为每个 Token 激活的专家数； <span class="arithmatex">\(N\)</span> 为序列长度； <span class="arithmatex">\(d\)</span> 为隐藏层维度； <span class="arithmatex">\(P\)</span> 为流水线阶段数（ <span class="arithmatex">\(P \le L\)</span> ）； <span class="arithmatex">\(M\)</span> 为并行机器数（或 GPU 数）。 <strong>“每步”（Step）</strong> 指单次前向传播迭代。以 Llama 3 405B (<span class="arithmatex">\(d=16384\)</span>) 为例，在 <span class="arithmatex">\(B=1, N=1024\)</span> 时， <span class="arithmatex">\(O(N \cdot d)\)</span> 的 FP16 激活值大小约为 <span class="arithmatex">\(32\)</span> MB。</p>
+</blockquote>
+<p><strong>尺度差异（核心洞察）</strong>：</p>
+<ul>
+<li><strong>区分时间尺度</strong>：TP、PP 和 EP 是 <strong>常态化（步级）</strong> 的，绑定在单次前向传播的尺度上，高频的通信会极度压榨网络延迟；而 CP 和分离式推理是 <strong>事件化（请求级）</strong> 的，仅在特定阶段触发一次，不会在持续吐字（Decode）时卡住 GPU。</li>
+<li><strong>通信量的数学实质</strong>：表中的 EP 与 TP 总数据量呈 <span class="arithmatex">\(K : 1\)</span> 的比例关系，这仅限于“单机内 NVLink TP”。若采用多机跨机 TP（Cross-host TP），跨机数据量会因全员 All-Reduce 的广播效应而被放大 <span class="arithmatex">\(M\)</span> 倍，此时 EP 与跨机 TP 的通信体积之比为 <span class="arithmatex">\(K / M\)</span>。</li>
+<li><strong>计算与通信的重叠能力（Overlap）</strong>：<strong>张量并行 (TP)</strong> 是分布式推理中唯一完全无法实现“边算边传”的模式。它属于强同步屏障（Synchronous Barrier），下一步的矩阵计算必须死等前一步的同步结束；而 PP、CP、EP 以及分离式推理均能通过流水线、异步网络分拣或事件化单次直推，将通信时间完美掩盖在本地计算的耗时之中。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
