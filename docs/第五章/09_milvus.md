@@ -95,7 +95,7 @@ Schema 通常包含以下几类字段：
 - **向量字段 (Vector Field)**: 用于存储核心的向量数据。一个 Collection 可以有一个或多个向量字段，以满足多模态等复杂场景的需求。
 - **标量字段 (Scalar Field)**: 用于存储除向量之外的元数据，如字符串、数字、布尔值、JSON 等。这些字段可以用于过滤查询，实现更精确的检索。
 
-![Schema 设计剖析](imgs/3_4_1.webp)
+![Schema 设计剖析](../imgs/3_4_1.webp)
 
 上图以一篇新闻文章为例，展示了一个典型的多模态、混合向量 Schema 设计。它将一篇文章拆解为：唯一的 `Article (ID)`、文本元数据（如 `Title`、`Author Info`）、图像信息（`Image URL`），并为图像和摘要内容分别生成了密集向量（`Image Embedding`, `Summary Embedding`）和稀疏向量（`Summary Sparse Embedding`）。
 
@@ -125,7 +125,7 @@ Schema 通常包含以下几类字段：
 
 如果说 Collection 是 Milvus 的骨架，那么**索引 (Index)** 就是其加速检索的神经系统。从宏观上看，索引本身就是一种**为了加速查询而设计的复杂数据结构**。对向量数据创建索引后，Milvus 可以极大地提升向量相似性搜索的速度，代价是会占用额外的存储和内存资源。
 
-![Milvus 索引结构与工作原理](imgs/3_4_2.webp)
+![Milvus 索引结构与工作原理](../imgs/3_4_2.webp)
 
 上图清晰地展示了 Milvus 向量索引的内部组件及其工作流程：
 - **数据结构**：这是索引的骨架，定义了向量的组织方式（如 HNSW 中的图结构）。
@@ -510,7 +510,7 @@ milvus_client.drop_collection(COLLECTION_NAME)
 print(f"已删除 Collection: '{COLLECTION_NAME}'")
 ```
 
-![检索结果可视化](imgs/3_4_3.png)
+![检索结果可视化](../imgs/3_4_3.png)
 
 通过上图可以看出，这个多模态检索引擎成功地理解了“一条龙”这个图文组合查询的意图，并从图库中找到了最相关的几张图片并进行排序。
 

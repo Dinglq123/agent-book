@@ -6,7 +6,7 @@
 
 下图展示了查询构建在一个高级RAG流程中所处的位置：
 
-![Advanced RAG Pipeline](imgs/4_2_1.webp)
+![Advanced RAG Pipeline](../imgs/4_2_1.webp)
 
 ## 一、文本到元数据过滤器
 

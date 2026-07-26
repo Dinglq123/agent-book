@@ -10,7 +10,7 @@
 
 本节将探讨RAG评估的理念与方法，并围绕 **“RAG三元组（RAG Triad）”** 展开。
 
-![RAG Triad](imgs/6_1_1.webp)
+![RAG Triad](../imgs/6_1_1.webp)
 
 ## 一、RAG评估三元组
 

@@ -85,7 +85,7 @@ RAG 系统中，**数据加载**是整个流水线的第一步，也是不可或
 **Unstructured** [^1]是一个专业的文档处理库，专门设计用于RAG和AI微调场景的非结构化数据预处理。提供了统一的接口来处理多种文档格式，是目前应用较广泛的文档加载解决方案之一。Unstructured 在格式支持和内容解析方面具有明显优势，它一方面支持 PDF、Word、Excel、HTML、Markdown 等多种文档格式，并通过统一的 API 接口避免为不同格式分别编写代码，另一方面可以自动识别标题、段落、表格、列表等文档结构，同时保留相应的元数据信息。
 
 <div align="center">
-  <img src="imgs/2_1_1.png" width="80%" alt="Unstructured 官网界面">
+  <img src="../imgs/2_1_1.png" width="80%" alt="Unstructured 官网界面">
   <p>图 2-1 Unstructured 官网界面</p>
 </div>
 

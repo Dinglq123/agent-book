@@ -20,7 +20,7 @@ capturedAt: "2026-07-26T05:25:01.094Z"
 3. 在 [API Keys](https://bigmodel.cn/usercenter/proj-mgmt/apikeys) 管理页面创建 API Key
 4. 复制您的 API Key 以供使用
 
-![创建 API Key](imgs/02-api-key-create.png)
+![创建 API Key](../imgs/02-api-key-create.png)
 
 建议将 API Key 设置为环境变量替代硬编码到代码中，以提高安全性。
 

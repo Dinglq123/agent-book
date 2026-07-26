@@ -14,7 +14,7 @@ AIHubmix 是一个美国平台，公司注册在美国的特拉华州，一站�
 
     打开浏览器，访问 [AIHubmix](https://aihubmix.com/?aff=anNj)。
 
-    ![AIHubmix](imgs/1.png)
+    ![AIHubmix](../imgs/1.png)
 
 2.  **登录或注册账号**
 
@@ -24,13 +24,13 @@ AIHubmix 是一个美国平台，公司注册在美国的特拉华州，一站�
 
     注册完成后，来到[模型页面](https://aihubmix.com/models)。标签选择`免费`，可以看到官方提供了一定数量的免费模型。而且 AIHubmix 还提供了很多嵌入和重排序的国内外模型选择，这些在 RAG 领域都很常用。
 
-    ![模型页面](imgs/2.png)
+    ![模型页面](../imgs/2.png)
 
 4.  **管理 API 密钥**
 
     接着进入[密钥管理页面](https://console.aihubmix.com/token)，如下图所示，默认已经有了一个密钥可以直接复制使用。当然也可以点击 `创建 Key` 填写名称后重新创建一个。
 
-    ![密钥管理](imgs/3.png)
+    ![密钥管理](../imgs/3.png)
 
 ### 1.2 DeepSeek API 申请
 
@@ -40,7 +40,7 @@ AIHubmix 是一个美国平台，公司注册在美国的特拉华州，一站�
 
     打开浏览器，访问 [Deepseek 开放平台](https://platform.deepseek.com/)。
 
-    ![Deepseek 平台首页](imgs/1_2_1.webp)
+    ![Deepseek 平台首页](../imgs/1_2_1.webp)
 
 2.  **登录或注册账号**
 
@@ -50,7 +50,7 @@ AIHubmix 是一个美国平台，公司注册在美国的特拉华州，一站�
 
     登录成功后，在页面左侧的导航栏中找到并点击 `API Keys`。在 API 管理页面，点击 `创建 API key` 按钮。输入一个跟其他api key不重复的名称后点击创建。
 
-    ![创建新密钥按钮](imgs/1_2_2.webp)
+    ![创建新密钥按钮](../imgs/1_2_2.webp)
 
 4.  **保存 API Key**
 
@@ -58,7 +58,7 @@ AIHubmix 是一个美国平台，公司注册在美国的特拉华州，一站�
 
     > 注意：出于安全原因，这个密钥只会完整显示一次，关闭弹窗后就没法再看到了。
 
-    ![复制并保存密钥](imgs/1_2_3.webp)
+    ![复制并保存密钥](../imgs/1_2_3.webp)
 
 ## 二、GitHub Codespaces 环境配置（推荐）
 
@@ -75,30 +75,30 @@ GitHub Codespaces 是 GitHub 提供的一项服务，允许开发者在云端创
 2.  **创建新分支**
     在项目页面的右上角，点击 `Fork` 按钮，创建一个新的分支。稍等一会儿即可创建成功。
 
-    ![创建新分支1](imgs/1_2_4.webp)
+    ![创建新分支1](../imgs/1_2_4.webp)
 
-    ![创建新分支2](imgs/1_2_5.webp)
+    ![创建新分支2](../imgs/1_2_5.webp)
 
 3.  **创建Codespaces**
     在项目页面的右上角，点击 `Code` 按钮，然后选择 `Codespaces` 选项卡。点击 `New codespace` 按钮，等待新的 Codespaces 环境创建成功。
 
-    ![创建Codespaces](imgs/1_2_6.webp)
+    ![创建Codespaces](../imgs/1_2_6.webp)
 
 4.  **再次进入Codespaces**
     网页关闭后，找到刚才新建的存储库，点击红框框选内容即可重新进入 codespace 环境。
 
-    ![再次进入Codespaces](imgs/1_2_7.webp)
+    ![再次进入Codespaces](../imgs/1_2_7.webp)
 
 5.  **额度设置**
     找到 GitHub 的账户设置中的 codespace 设置，挂起时间建议根据自己情况调整（时间过长会浪费额度，免费账号提供了单核120小时的额度）
 
-    ![额度设置](imgs/1_2_8.webp)
+    ![额度设置](../imgs/1_2_8.webp)
 
 ### 2.2 python环境配置
 
 进入 IDE 后先选择下方终端
 
-![进入终端](imgs/1_2_9.webp)
+![进入终端](../imgs/1_2_9.webp)
 
 1.  **更新系统软件包**
 
@@ -203,20 +203,20 @@ Cloud Studio 是腾讯云推出的一款基于浏览器的集成开发环境（I
 3.  **创建应用**
     在页面上方的导航栏中找到并点击 `创建应用`。选择 `从 Git 仓库导入` ，在项目地址栏输入 `https://github.com/datawhalechina/all-in-rag.git` 后回车，将会自动为你创建标题和描述。
 
-    ![创建应用](imgs/1_2_10.webp)
+    ![创建应用](../imgs/1_2_10.webp)
 
     > 注意描述中不要包含网址
 
 4.  **再次进入**
     后续在[应用管理页面](https://cloudstudio.net/my-app)找到之前创建的应用，点击后选择右上角编写代码即可再次进入。
 
-    ![再次进入应用](imgs/1_2_11.webp)
+    ![再次进入应用](../imgs/1_2_11.webp)
 
 ### 3.2 python环境配置
 
 进入 IDE 后先选择右侧终端
 
-![进入终端](imgs/1_2_12.webp)
+![进入终端](../imgs/1_2_12.webp)
 
 1.  **更新系统软件包**
 
@@ -326,13 +326,13 @@ Cloud Studio 是腾讯云推出的一款基于浏览器的集成开发环境（I
 
 3.  在 “系统属性” 对话框中，点击 “高级” 选项卡，然后点击下方的 “环境变量” 按钮。
 
-    ![高级系统设置](imgs/1_2_13.webp)
+    ![高级系统设置](../imgs/1_2_13.webp)
 
 4.  在 “环境变量” 对话框中，点击 “新建”（在 “用户变量” 部分下），然后输入以下信息：
     - 变量名：DEEPSEEK_API_KEY
     - 变量值：[你的 Deepseek API 密钥]
 
-    ![高级系统设置](imgs/1_2_14.webp)
+    ![高级系统设置](../imgs/1_2_14.webp)
 
 ### 4.2 安装Miniconda
 
@@ -340,7 +340,7 @@ Cloud Studio 是腾讯云推出的一款基于浏览器的集成开发环境（I
 
     优先推荐访问[清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/)，以获得更快的下载速度。根据你的系统选择最新的 `.exe` 版本下载。
 
-    ![选择Miniconda版本](imgs/1_2_15.webp)
+    ![选择Miniconda版本](../imgs/1_2_15.webp)
 
     你也可以从 [Miniconda 官方网站](https://docs.conda.io/en/latest/miniconda.html)下载。
 
@@ -350,23 +350,23 @@ Cloud Studio 是腾讯云推出的一款基于浏览器的集成开发环境（I
 
     *   **Welcome**: 点击 `Next`。
 
-        ![Welcome](imgs/1_2_16.webp)
+        ![Welcome](../imgs/1_2_16.webp)
 
     *   **License Agreement**: 点击 `I Agree`。
 
-        ![License Agreement](imgs/1_2_17.webp)
+        ![License Agreement](../imgs/1_2_17.webp)
 
     *   **Installation Type**: 选择 `Just Me`，点击 `Next`。
 
-        ![Installation Type](imgs/1_2_18.webp)
+        ![Installation Type](../imgs/1_2_18.webp)
 
     *   **Choose Install Location**: 建议保持默认路径，或选择一个不含中文和空格的路径。点击 `Next`。
 
-        ![Install Location](imgs/1_2_19.webp)
+        ![Install Location](../imgs/1_2_19.webp)
 
     *   **Advanced Installation Options**: **请不要勾选** “Add Miniconda3 to my PATH environment variable”。我们将稍后手动配置环境变量。点击 `Install`。
 
-        ![Advanced Options](imgs/1_2_20.webp)
+        ![Advanced Options](../imgs/1_2_20.webp)
 
     *   **Installation Complete**: 安装完成后，点击 `Next`，然后取消勾选 “Learn more” 并点击 `Finish` 完成安装。
 
@@ -376,15 +376,15 @@ Cloud Studio 是腾讯云推出的一款基于浏览器的集成开发环境（I
 
     *   在Windows搜索栏中搜索“编辑系统环境变量”并打开。
 
-        ![编辑系统环境变量](imgs/1_2_21.webp)
+        ![编辑系统环境变量](../imgs/1_2_21.webp)
 
     *   在“系统属性”窗口中，点击“环境变量”。
 
-        ![环境变量按钮](imgs/1_2_22.webp)
+        ![环境变量按钮](../imgs/1_2_22.webp)
 
     *   在“环境变量”窗口中，找到“系统变量”下的 `Path` 变量，选中并点击“编辑”。
 
-        ![编辑Path变量](imgs/1_2_23.webp)
+        ![编辑Path变量](../imgs/1_2_23.webp)
 
     *   在“编辑环境变量”窗口中，新建三个路径，将它们指向你 Miniconda 的安装目录下的相应文件夹。如果你的安装路径是 `D:\Miniconda3`，则需要添加：
         ```
@@ -392,7 +392,7 @@ Cloud Studio 是腾讯云推出的一款基于浏览器的集成开发环境（I
         D:\Miniconda3\Scripts
         D:\Miniconda3\Library\bin
         ```
-        ![添加路径](imgs/1_2_24.webp)
+        ![添加路径](../imgs/1_2_24.webp)
         
     *   完成后，一路点击“确定”保存更改。
 

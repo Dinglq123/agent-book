@@ -449,7 +449,7 @@ Compared to the basic implementation in Section 4.1.3, the current HelloAgentsLL
 
 <div align="center">
   <p>Table 7.1 Comparison of HelloAgentLLM Different Version Features</p>
-  <img src="imgs/7-figures/table-01.png" alt="" width="90%"/>
+  <img src="../imgs/7-figures/table-01.png" alt="" width="90%"/>
 </div>
 
 As shown in Table 7.1 above, this evolution embodies an important principle of framework design: **start simple, gradually improve**. We enhanced functional completeness while maintaining interface simplicity.
@@ -1277,7 +1277,7 @@ As shown in Table 7.2, through this framework refactoring, we not only maintaine
 
 <div align="center">
   <p>Table 7.2 Comparison of Agent Implementations Across Chapters</p>
-  <img src="imgs/7-figures/table-02.png" alt="" width="90%"/>
+  <img src="../imgs/7-figures/table-02.png" alt="" width="90%"/>
 </div>
 
 ### 7.4.5 FunctionCallAgent
@@ -1607,7 +1607,7 @@ if __name__ == "__main__":
 Through this simplified mathematical calculation tool case, we learned how to quickly develop custom tools: write a simple calculation function, register it through ToolRegistry, and then integrate it with SimpleAgent. For more intuitive observation, Figure 7.1 is provided here to clearly understand the code's running logic.
 
 <div align="center">
-  <img src="imgs/7-figures/01.png" alt="" width="90%"/>
+  <img src="../imgs/7-figures/01.png" alt="" width="90%"/>
   <p>Figure 7.1 SimpleAgent Workflow Based on HelloAgents</p>
 </div>
 

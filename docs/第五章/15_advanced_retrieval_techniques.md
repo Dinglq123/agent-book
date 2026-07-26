@@ -2,7 +2,7 @@
 
 在基础的 RAG 流程中，依赖向量相似度从知识库中检索信息。不过，这种方法存在一些固有的局限性，例如最相关的文档不总是在检索结果的顶端，以及语义理解的偏差等。为了构建更强大、更精准的生产级 RAG 应用，需要引入更高级的检索技术。
 
-![retrieval](imgs/4_5_1.webp)
+![retrieval](../imgs/4_5_1.webp)
 
 ## 一、重排序 (Re-ranking)
 
@@ -14,7 +14,7 @@
 
 ### 1.2 RankLLM / LLM-based Reranker
 
-![rankllm](imgs/4_5_2.webp)
+![rankllm](../imgs/4_5_2.webp)
 
 RankLLM 代表了一类直接利用大型语言模型本身来进行重排的方法[^1]。其基本逻辑非常直观：既然 LLM 最终要负责根据上下文来生成答案，那么为什么不直接让它来判断哪些上下文最相关呢？
 
@@ -46,7 +46,7 @@ Cross-Encoder（交叉编码器）能提供出色的重排精度[^2]。它的工
 > 注：**[SEP]** 是在 BERT 这类基于 Transformer 架构的模型中，用于分隔不同文本片段（如查询和文档）的特殊标记。
 
 <div align="center">
-<img src="imgs/4_5_3.svg" alt="cross-encoder" width="600">
+<img src="../imgs/4_5_3.svg" alt="cross-encoder" width="600">
 </div>
 
 上图清晰地展示了 Cross-Encoder 的工作流程：
@@ -316,7 +316,7 @@ LlamaIndex 同样提供了封装好的压缩功能，其代表是 `SentenceEmbed
 
 C-RAG 的工作流程可以概括为 **“检索-评估-行动”** 三个阶段：
 
-![C-RAG](imgs/4_5_4.webp)
+![C-RAG](../imgs/4_5_4.webp)
 
 1.  **检索 (Retrieve)** ：与标准 RAG 一样，首先根据用户查询从知识库中检索一组文档。
 

@@ -5,7 +5,7 @@
 > 💡 **一句话总结**：本章要解决的问题是：从零开始，学会把大模型接入自己的应用，并理解常用能力背后的调用方式。
 
 <div align="center">
-  <img src="imgs/README-cover.png" width="85%" alt="模型调用基础与能力实践导读图">
+  <img src="../imgs/README-cover.png" width="85%" alt="模型调用基础与能力实践导读图">
   <p>图 3-0 模型调用基础与能力实践</p>
 </div>
 

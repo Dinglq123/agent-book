@@ -27,7 +27,7 @@ After years of Prompt Engineering becoming the focus of applied AI, a new term h
 The so-called "context" refers to the set of tokens included when sampling a large language model (LLM). The engineering problem at hand is to **optimize the utility of these tokens** under the inherent constraints of the LLM, in order to stably obtain expected results. To effectively harness LLMs, it is often necessary to "think in context"—that is: at any call, examine the overall state visible to the LLM and predict the behavior this state might induce.
 
 <div align="center">
-  <img src="imgs/9-figures/9-1.webp" alt="" width="85%"/>
+  <img src="../imgs/9-figures/9-1.webp" alt="" width="85%"/>
   <p>Figure 9.1 Prompt engineering vs Context engineering</p>
 </div>
 
@@ -73,7 +73,7 @@ Under the constraint of "limited attention budget", the goal of excellent contex
 The overall guiding principle is: **sufficient but compact information**. As shown in Figure 9.2, this is dynamic retrieval entering runtime.
 
 <div align="center">
-  <img src="imgs/9-figures/9-2.webp" alt="" width="85%"/>
+  <img src="../imgs/9-figures/9-2.webp" alt="" width="85%"/>
   <p>Figure 9.2 Calibrating the system prompt</p>
 </div>
 
@@ -2045,7 +2045,7 @@ This scenario faces several typical long-horizon task challenges. First is the p
 Our codebase maintenance assistant adopts a three-layer architecture, as shown in Figure 9.3:
 
 <div align="center">
-  <img src="imgs/9-figures/9-3.png" alt="" width="85%"/>
+  <img src="../imgs/9-figures/9-3.png" alt="" width="85%"/>
   <p>Figure 9.3 Three-layer architecture of codebase maintenance assistant</p>
 </div>
 
