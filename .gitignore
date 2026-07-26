@@ -4,3 +4,4 @@ __MACOSX
 __pycache__/
 *.pyc
 site/
+agent-book-image.tar
