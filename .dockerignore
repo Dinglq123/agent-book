@@ -1,0 +1,8 @@
+docs/
+mkdocs.yml
+Dockerfile
+__MACOSX
+._*
+.DS_Store
+*.pyc
+__pycache__
