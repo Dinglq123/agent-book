@@ -2656,7 +2656,7 @@
 <li>前馈神经网络（Feedforward Neural Network，FNN），即数据从输入层单向流动到输出层，无循环结构，各层之间通过全连接或特定方式传递信息，其中多层感知机（Multi-Layer Perceptron，MLP）是最常见的形式，每一层的神经元都和上下两层的每一个神经元完全连接，如图2.1所示:</li>
 </ul>
 <div align="center">
-  <img src="imgs/2-figures/1-0.png" alt="图片描述" width="90%"/>
+  <img src="../imgs/2-figures/1-0.png" alt="图片描述" width="90%"/>
   <p>图2.1 全连接神经网络</p>
 </div>
 
@@ -2664,7 +2664,7 @@
 <li>卷积神经网络（Convolutional Neural Network，CNN），即训练参数量远小于全连接神经网络的卷积层来进行特征提取和学习，如图2.2所示:</li>
 </ul>
 <div align="center">
-  <img src="imgs/2-figures/1-1.png" alt="图片描述" width="90%"/>
+  <img src="../imgs/2-figures/1-1.png" alt="图片描述" width="90%"/>
   <p>图2.2 卷积神经网络</p>
 </div>
 
@@ -2672,7 +2672,7 @@
 <li>循环神经网络（Recurrent Neural Network，RNN），能够使用历史信息作为输入、包含环和自重复的网络，如图2.3所示:</li>
 </ul>
 <div align="center">
-  <img src="imgs/2-figures/1-2.png" alt="图片描述" width="90%"/>
+  <img src="../imgs/2-figures/1-2.png" alt="图片描述" width="90%"/>
   <p>图2.3 循环神经网络</p>
 </div>
 
@@ -2809,7 +2809,7 @@ Step 4：输入 【BOS】I like you，输出 【EOS】
 <p>注意力机制可以实现并行化与长期依赖关系拟合，但一次注意力计算只能拟合一种相关关系，单一的注意力机制很难全面拟合语句序列里的相关关系。因此 Transformer 使用了多头注意力机制（Multi-Head Attention），即同时对一个语料进行多次注意力计算，每次注意力计算都能拟合不同的关系，将最后的多次结果拼接起来作为最后的输出，即可更全面深入地拟合语言信息。</p>
 <p>在原论文中，作者也通过实验证实，多头注意力计算中，每个不同的注意力头能够拟合语句中的不同信息，如图2.4所示：</p>
 <div align="center">
-  <img src="imgs/2-figures/1-3.jpeg" alt="图片描述" width="90%"/>
+  <img src="../imgs/2-figures/1-3.jpeg" alt="图片描述" width="90%"/>
   <p>图2.4 多头注意力机制</p>
 </div>
 
@@ -2914,7 +2914,7 @@ $$</p>
 <p>对于 Seq2Seq 任务，一般的思路是对自然语言序列进行编码再解码。所谓编码，就是将输入的自然语言序列通过隐藏层编码成能够表征语义的向量（或矩阵），可以简单理解为更复杂的词向量表示。而解码，就是对输入的自然语言序列编码得到的向量或矩阵通过隐藏层输出，再解码成对应的自然语言目标序列。通过编码再解码，就可以实现 Seq2Seq 任务。</p>
 <p>Transformer 中的 Encoder，就是用于上述的编码过程；Decoder 则用于上述的解码过程。Transformer 结构，如图2.5所示：</p>
 <div align="center">
-  <img src="imgs/2-figures/2-0.jpg" alt="图片描述" width="90%"/>
+  <img src="../imgs/2-figures/2-0.jpg" alt="图片描述" width="90%"/>
   <p>图2.5 编码器-解码器结构</p>
 </div>
 
@@ -3215,7 +3215,7 @@ $$</p>
 <p>说明该编码仍然可以表示相对位置。</p>
 <p>上述​编码结果，如图2.6所示：</p>
 <div align="center">
-  <img src="imgs/2-figures/3-0.png" alt="图片描述" width="90%"/>
+  <img src="../imgs/2-figures/3-0.png" alt="图片描述" width="90%"/>
   <p>图2.6 编码结果</p>
 </div>
 
@@ -3249,7 +3249,7 @@ $$</p>
 <h3 id="233-transformer">2.3.3 一个完整的 Transformer<a class="headerlink" href="#233-transformer" title="Permanent link">&para;</a></h3>
 <p>上述所有组件，再按照下图的 Tranfromer 结构拼接起来就是一个完整的 Transformer 模型了，如图2.7所示：</p>
 <div align="center">
-  <img src="imgs/2-figures/3-1.png" alt="图片描述" width="80%"/>
+  <img src="../imgs/2-figures/3-1.png" alt="图片描述" width="80%"/>
   <p>图2.7 Transformer 模型结构</p>
 </div>
 

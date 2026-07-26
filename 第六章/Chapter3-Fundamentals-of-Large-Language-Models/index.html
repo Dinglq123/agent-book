@@ -2356,7 +2356,7 @@
 <p>$$P(S)=P(w_1,w_2,…,w_m)=P(w_1)⋅P(w_2∣w_1)⋅P(w_3∣w_1,w_2)⋯P(w_m∣w_1,…,w_{m−1})$$</p>
 <p>This formula is called the chain rule of probability. However, directly calculating this formula is almost impossible because conditional probabilities like $P(w_m∣w_1,\cdots,w_{m−1})$ are too difficult to estimate from a corpus, as the word sequence $w_1,\cdots,w_{m−1}$ may have never appeared in the training data.</p>
 <div align="center">
-  <img src="imgs/3-figures/1757249275674-0.png" alt="Figure description" width="90%"/>
+  <img src="../imgs/3-figures/1757249275674-0.png" alt="Figure description" width="90%"/>
   <p>Figure 3.1 Schematic diagram of Markov assumption</p>
 </div>
 
@@ -2436,7 +2436,7 @@
 <li><strong>Learn the mapping from context to the next word</strong>: Utilize the powerful fitting ability of neural networks to learn a function. The input of this function is the word vectors of the previous $n−1$ words, and the output is the probability distribution of each word in the vocabulary appearing after the current context.</li>
 </ol>
 <div align="center">
-  <img src="imgs/3-figures/1757249275674-1.png" alt="Figure description" width="90%"/>
+  <img src="../imgs/3-figures/1757249275674-1.png" alt="Figure description" width="90%"/>
   <p>Figure 3.2 Schematic diagram of neural network language model architecture</p>
 </div>
 
@@ -2483,7 +2483,7 @@
 <p>Although the neural network language model in the previous section introduced word embeddings to solve the generalization problem, like N-gram models, its context window is of fixed size. To predict the next word, it can only see the previous n−1 words, and earlier historical information is discarded. This obviously does not conform to how we humans understand language. To break the limitation of fixed windows, <strong>Recurrent Neural Networks (RNN)</strong> emerged, with a very intuitive core idea: add "memory" capability to the network<sup>[2]</sup>.</p>
 <p>As shown in Figure 3.3, RNN's design introduces a <strong>hidden state</strong> vector, which we can understand as the network's short-term memory. At each step of processing the sequence, the network reads the current input word and combines it with its memory from the previous moment (i.e., the hidden state from the previous time step), then generates a new memory (i.e., the hidden state of the current time step) to pass to the next moment. This cyclical process allows information to continuously propagate backward through the sequence.</p>
 <div align="center">
-  <img src="imgs/3-figures/1757249275674-2.png" alt="Figure description" width="90%"/>
+  <img src="../imgs/3-figures/1757249275674-2.png" alt="Figure description" width="90%"/>
   <p>Figure 3.3 Schematic diagram of RNN structure</p>
 </div>
 
@@ -2499,7 +2499,7 @@
 <p><strong>(1) Overall Encoder-Decoder Structure</strong></p>
 <p>The original Transformer model was designed for the end-to-end task of machine translation. As shown in Figure 3.4, it follows a classic <strong>Encoder-Decoder</strong> architecture at the macro level.</p>
 <div align="center">
-  <img src="imgs/3-figures/1757249275674-3.png" alt="Figure description" width="50%"/>
+  <img src="../imgs/3-figures/1757249275674-3.png" alt="Figure description" width="50%"/>
   <p>Figure 3.4 Overall Transformer architecture diagram</p>
 </div>
 
@@ -2608,7 +2608,7 @@
 <p>If only one attention calculation is performed (i.e., single-head), the model may only learn to focus on one type of association. For example, when processing "it," it might only learn to focus on the subject. But relationships in language are complex, and we want the model to simultaneously focus on multiple relationships (such as referential relationships, tense relationships, subordinate relationships, etc.). Multi-head attention mechanism emerged. Its idea is simple: instead of doing it all at once, divide it into several groups, do them separately, then merge.</p>
 <p>It splits the original Q, K, V vectors into h parts along the dimension (h is the number of "heads"), and each part independently performs a single-head attention calculation. This is like having h different "experts" examine the sentence from different perspectives, with each expert capturing a different feature relationship. Finally, the "opinions" (i.e., output vectors) of these h experts are concatenated, then integrated through a linear transformation to obtain the final output.</p>
 <div align="center">
-  <img src="imgs/3-figures/1757249275674-4.png" alt="Figure description" width="50%"/>
+  <img src="../imgs/3-figures/1757249275674-4.png" alt="Figure description" width="50%"/>
   <p>Figure 3.5 Multi-head attention mechanism</p>
 </div>
 
@@ -2909,7 +2909,7 @@ Note that if temperature is set to 0, Top-k and Top-p become irrelevant because 
 <p><strong>Case Demonstration:</strong> Suppose our mini corpus is <code>{"hug": 1, "pug": 1, "pun": 1, "bun": 1}</code>, and we want to build a vocabulary of size 10. The BPE training process can be represented by Table 3.1:</p>
 <div align="center">
   <p>Table 3.1 Example of BPE Algorithm Merging Process</p>
-  <img src="imgs/3-figures/1757249275674-5.png" alt="Figure description" width="90%"/>
+  <img src="../imgs/3-figures/1757249275674-5.png" alt="Figure description" width="90%"/>
 </div>
 
 <p>After training ends, when the vocabulary size reaches 10, we get new tokenization rules. Now, for an unseen word "bug," the tokenizer will first check if "bug" is in the vocabulary and find it's not; then check "bu" and find it's not; finally check "b" and "ug," find both are in, and thus split it into <code>['b', 'ug']</code>.</p>

@@ -2579,7 +2579,7 @@
 <h3 id="1112-technical-architecture-overview">11.1.2 Technical Architecture Overview<a class="headerlink" href="#1112-technical-architecture-overview" title="Permanent link">&para;</a></h3>
 <p>The system adopts the classic <strong>front-end and back-end separation architecture</strong>, divided into four layers, as shown in Figure 11.1:</p>
 <div align="center">
-  <img src="imgs/13-figures/13-1.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-1.png" alt="" width="85%"/>
   <p>Figure 11.1 Intelligent Travel Assistant Technical Architecture</p>
 </div>
 
@@ -2655,24 +2655,24 @@
 <p>Experience core functions:</p>
 <p>First, fill in the destination city, travel dates, preferences, budget, transportation and accommodation types in the homepage form. After clicking the "Start Planning" button, the system will display a loading progress bar and quickly generate a result page, as shown in Figure 11.2.</p>
 <div align="center">
-  <img src="imgs/13-figures/13-2.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-2.png" alt="" width="85%"/>
   <p>Figure 11.2 Travel Assistant Planning Progress Page</p>
 </div>
 
 <p>After successful loading, the page will clearly display itinerary overview, budget details, attraction map, daily itinerary details and weather information, as shown in Figures 11.3 and 11.4.</p>
 <div align="center">
-  <img src="imgs/13-figures/13-3.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-3.png" alt="" width="85%"/>
   <p>Figure 11.3 Travel Assistant Planning Completion Page</p>
 </div>
 
 <div align="center">
-  <img src="imgs/13-figures/13-4.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-4.png" alt="" width="85%"/>
   <p>Figure 11.4 Travel Assistant Planning Completion Page</p>
 </div>
 
 <p>If users need personalized adjustments, they can click the "Edit Itinerary" button to freely adjust the order of attractions or delete certain attractions, as shown in Figure 11.5. After planning is complete, through the "Export Itinerary" dropdown menu, the final plan can be easily saved as an image or PDF file for convenient reference at any time.</p>
 <div align="center">
-  <img src="imgs/13-figures/13-5.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-5.png" alt="" width="85%"/>
   <p>Figure 11.5 Travel Assistant Planning Completion Page</p>
 </div>
 
@@ -2916,7 +2916,7 @@
 <h3 id="1132-agent-role-design">11.3.2 Agent Role Design<a class="headerlink" href="#1132-agent-role-design" title="Permanent link">&para;</a></h3>
 <p>Based on the task decomposition principle, we designed four specialized Agents, as shown in Figure 11.6:</p>
 <div align="center">
-  <img src="imgs/13-figures/13-6.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-6.png" alt="" width="85%"/>
   <p>Figure 11.6 Multi-Agent Collaboration Flow</p>
 </div>
 
@@ -3091,14 +3091,14 @@
 <h3 id="1142-amap-mcp-integration">11.4.2 Amap MCP Integration<a class="headerlink" href="#1142-amap-mcp-integration" title="Permanent link">&para;</a></h3>
 <p>MCP (Model Context Protocol) is a standardized protocol proposed by Anthropic for connecting LLMs and external tools. This section will introduce how to integrate the Amap MCP server in the project. Our project uses <code>amap-mcp-server</code>, which is an MCP server implemented in Node.js:</p>
 <div align="center">
-  <img src="imgs/13-figures/13-7.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-7.png" alt="" width="85%"/>
   <p>Figure 11.7 amap-mcp-server Tools</p>
 </div>
 
 <p>The Amap MCP server provides various tools, mainly divided into the following categories, as shown in Table 11.1:</p>
 <div align="center">
   <p>Table 11.1 Amap MCP Tool Categories</p>
-  <img src="imgs/13-figures/13-table-1.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-table-1.png" alt="" width="85%"/>
 </div>
 
 <p>Through the MCP protocol, we can easily integrate in HelloAgents:</p>
@@ -3130,7 +3130,7 @@
 </code></pre></div>
 <p>As shown in Figure 11.8, suppose the user wants to search for attractions in Beijing. AttractionSearchAgent receives the query "Please search for historical and cultural attractions in Beijing". The Agent analyzes this query and decides to call the <code>amap_maps_text_search</code> tool with parameters <code>keywords=attraction, city=Beijing</code>.</p>
 <div align="center">
-  <img src="imgs/13-figures/13-8.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-8.png" alt="" width="85%"/>
   <p>Figure 11.8 MCP Tool Call Flow</p>
 </div>
 
@@ -3290,7 +3290,7 @@
 <p>The choice of front-end technology stack needs to consider several factors: development efficiency, performance, ecosystem, and learning curve. As shown in Table 11.2, the project chose the following technology stack:</p>
 <div align="center">
   <p>Table 11.2 Front-End Technology Stack</p>
-  <img src="imgs/13-figures/13-table-2.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-table-2.png" alt="" width="85%"/>
 </div>
 
 <p>The project's directory structure is as follows:</p>

@@ -2598,14 +2598,14 @@
 -   <strong>上下文整合</strong>：<strong>生成模块</strong>接收检索阶段送来的相关文档片段以及用户的原始问题。
 -   <strong>指令引导生成</strong>：该模块会遵循预设的 <strong>Prompt</strong> 指令，将上下文与问题有效整合，并引导 LLM（如 DeepSeek）进行可控的、有理有据的文本生成。</p>
 <div align="center">
-   <img src="imgs/1_1_1.svg" width="60%" alt="RAG 双阶段架构示意图">
+   <img src="../imgs/1_1_1.svg" width="60%" alt="RAG 双阶段架构示意图">
    <p>图 1-1 RAG 双阶段架构示意图</p>
 </div>
 
 <h3 id="13">1.3 技术演进分类<a class="headerlink" href="#13" title="Permanent link">&para;</a></h3>
 <p>RAG 的技术架构经历了从简单到复杂的演进，如图 1-2 大致可分为三个阶段 [^4]。</p>
 <div align="center">
-   <img src="imgs/1_1_2.png" width="80%" alt="RAG 技术演进分类">
+   <img src="../imgs/1_1_2.png" width="80%" alt="RAG 技术演进分类">
    <p>图 1-2 RAG 技术演进分类</p>
 </div>
 
@@ -2654,7 +2654,7 @@
 <p>在选择具体的技术路径时，一个重要的考量是成本与效益的平衡。通常，我们应优先选择对模型改动最小、成本最低的方案，所以技术选型路径往往遵循的顺序是<strong>提示词工程（Prompt Engineering） -&gt; 检索增强生成 -&gt; 微调（Fine-tuning）</strong>。</p>
 <p>我们可以从两个维度来理解这些技术的区别。如图 1-3 所示，<strong>横轴代表“LLM 优化”</strong>，即对模型本身进行多大程度的修改。从左到右，优化的程度越来越深，其中提示工程和 RAG 完全不改变模型权重，而微调则直接修改模型参数。<strong>纵轴代表“上下文优化”</strong>，是对输入给模型的信息进行多大程度的增强。从下到上，增强的程度越来越高，其中提示工程只是优化提问方式，而 RAG 则通过引入外部知识库，极大地丰富了上下文信息。</p>
 <div align="center">
-  <img src="imgs/1_1_3.svg" width="60%" alt="技术选型路径" />
+  <img src="../imgs/1_1_3.svg" width="60%" alt="技术选型路径" />
   <p>图 1-3 选型路径图</p>
 </div>
 

@@ -3031,7 +3031,7 @@
 <h3 id="1112">11.1.2 技术架构概览<a class="headerlink" href="#1112" title="Permanent link">&para;</a></h3>
 <p>系统采用经典的<strong>前后端分离架构</strong>，分为四个层次，如图 11.1 所示：</p>
 <div align="center">
-  <img src="imgs/13-figures/13-1.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-1.png" alt="" width="85%"/>
   <p>图 11.1 智能旅行助手技术架构</p>
 </div>
 
@@ -3107,24 +3107,24 @@
 <p>体验核心功能：</p>
 <p>首先需在首页表单中填写目的地城市、旅行日期、偏好、预算、交通及住宿类型等信息。点击“开始规划”按钮后，系统会显示加载进度条，并很快生成结果页面，如图 11.2 所示。</p>
 <div align="center">
-  <img src="imgs/13-figures/13-2.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-2.png" alt="" width="85%"/>
   <p>图 11.2 旅行助手规划进行页面</p>
 </div>
 
 <p>随后加载成功，该页面会清晰展示行程概览、预算明细、景点地图、每日行程详情和天气信息，如图 11.3，11.4 所示。</p>
 <div align="center">
-  <img src="imgs/13-figures/13-3.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-3.png" alt="" width="85%"/>
   <p>图 11.3 旅行助手规划完成页面</p>
 </div>
 
 <div align="center">
-  <img src="imgs/13-figures/13-4.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-4.png" alt="" width="85%"/>
   <p>图 11.4 旅行助手规划完成页面</p>
 </div>
 
 <p>如果用户需要个性化调整，可以点击“编辑行程”按钮，自由调整景点顺序或删除某个景点，如图 11.5 所示。规划完成后，通过“导出行程”下拉菜单，即可将最终方案轻松保存为图片或 PDF 文件，方便随时查阅。</p>
 <div align="center">
-  <img src="imgs/13-figures/13-5.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-5.png" alt="" width="85%"/>
   <p>图 11.5 旅行助手规划完成页面</p>
 </div>
 
@@ -3368,7 +3368,7 @@
 <h3 id="1132-agent">11.3.2 Agent 角色设计<a class="headerlink" href="#1132-agent" title="Permanent link">&para;</a></h3>
 <p>基于任务分解原则，我们设计了四个专门的 Agent，如图 11.6 所示:</p>
 <div align="center">
-  <img src="imgs/13-figures/13-6.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-6.png" alt="" width="85%"/>
   <p>图 11.6 多智能体协作流程</p>
 </div>
 
@@ -3543,14 +3543,14 @@
 <h3 id="1142-mcp">11.4.2 高德地图 MCP 集成<a class="headerlink" href="#1142-mcp" title="Permanent link">&para;</a></h3>
 <p>MCP(Model Context Protocol)是 Anthropic 提出的标准化协议，用于连接 LLM 和外部工具。本节将介绍如何在项目中集成高德地图 MCP 服务器。我们的项目用的是<code>amap-mcp-server</code>，这是一个用 Node.js 实现的 MCP 服务器：</p>
 <div align="center">
-  <img src="imgs/13-figures/13-7.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-7.png" alt="" width="85%"/>
   <p>图 11.7 amap-mcp-server 工具</p>
 </div>
 
 <p>高德地图 MCP 服务器提供了多种工具，主要分为以下类别，如表 11.1 所示:</p>
 <div align="center">
   <p>表 11.1 高德地图 MCP 工具分类</p>
-  <img src="imgs/13-figures/13-table-1.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-table-1.png" alt="" width="85%"/>
 </div>
 
 <p>通过 MCP 协议，我们可以很方便地在 HelloAgents 中集成:</p>
@@ -3582,7 +3582,7 @@
 </code></pre></div>
 <p>如图 11.8 所示，假设用户想搜索北京的景点，AttractionSearchAgent 接收到查询"请搜索北京的历史文化景点"。Agent 分析这个查询，决定调用<code>amap_maps_text_search</code>工具，参数是<code>keywords=景点，city=北京</code>。</p>
 <div align="center">
-  <img src="imgs/13-figures/13-8.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-8.png" alt="" width="85%"/>
   <p>图 11.8 MCP 工具调用流程</p>
 </div>
 
@@ -3742,7 +3742,7 @@
 <p>前端技术栈的选择需要考虑几个因素：开发效率、性能、生态系统、学习曲线。如表 11.2 所示，该项目选择了以下技术栈：</p>
 <div align="center">
   <p>表 11.2 前端技术栈</p>
-  <img src="imgs/13-figures/13-table-2.png" alt="" width="85%"/>
+  <img src="../imgs/13-figures/13-table-2.png" alt="" width="85%"/>
 </div>
 
 <p>项目的目录结构是这样的：
