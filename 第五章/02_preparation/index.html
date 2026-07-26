@@ -1,0 +1,2936 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="从NLP基础到智能体开发的完整学习指南">
+      
+      
+        <meta name="author" content="AI Agent Book">
+      
+      
+      
+        <link rel="prev" href="../01_RAG_intro/">
+      
+      
+        <link rel="next" href="../03_get_start_rag/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>3.2 准备工作 - AI Agent 完全指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="AI Agent 完全指南" class="md-header__button md-logo" aria-label="AI Agent 完全指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Agent 完全指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.2 准备工作
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至暗色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI Agent 完全指南" class="md-nav__button md-logo" aria-label="AI Agent 完全指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI Agent 完全指南
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一部分 NLP 基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第一部分 NLP 基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%80%E7%AB%A0/1.1%20NLP%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 NLP基础概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%80%E7%AB%A0/1.2%20Transformer%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 Transformer架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%80%E7%AB%A0/1.3%20%E9%A2%84%E8%AE%AD%E7%BB%83%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 预训练语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%80%E7%AB%A0/1.4%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 大语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二部分 提示工程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第二部分 提示工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/1.%20%E7%AE%80%E4%BB%8B%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/2.%20%E6%8F%90%E7%A4%BA%E5%8E%9F%E5%88%99%20Guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 提示原则
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/3.%20%E8%BF%AD%E4%BB%A3%E4%BC%98%E5%8C%96%20Iterative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 迭代优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/4.%20%E6%96%87%E6%9C%AC%E6%A6%82%E6%8B%AC%20Summarizing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 文本概括
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/5.%20%E6%8E%A8%E6%96%AD%20Inferring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6 推断
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/6.%20%E6%96%87%E6%9C%AC%E8%BD%AC%E6%8D%A2%20Transforming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.7 文本转换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/7.%20%E6%96%87%E6%9C%AC%E6%89%A9%E5%B1%95%20Expanding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.8 文本扩展
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/8.%20%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%20Chatbot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.9 聊天机器人
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/9.%20%E6%80%BB%E7%BB%93%20Summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.10 总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三部分 RAG 检索增强生成
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三部分 RAG 检索增强生成
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_RAG_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 RAG 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 准备工作
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 准备工作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、大模型 API 配置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、大模型 API 配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-aihubmix-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 AIHubmix API 申请
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-deepseek-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 DeepSeek API 申请
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-codespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、GitHub Codespaces 环境配置（推荐）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、GitHub Codespaces 环境配置（推荐）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-codespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 创建Codespaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 python环境配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 API配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 创建并激活虚拟环境
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Cloud Studio 环境配置（国内环境推荐）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、Cloud Studio 环境配置（国内环境推荐）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 应用创建
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 python环境配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 API配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 创建并激活虚拟环境
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windowscloud-studio-codespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、windows环境配置（使用Cloud Studio 或 Codespaces 可跳过此步骤）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、windows环境配置（使用Cloud Studio 或 Codespaces 可跳过此步骤）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 API配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-miniconda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 安装Miniconda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 配置 Conda 镜像源
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-studio-codespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、项目代码拉取（使用Cloud Studio 或 Codespaces 可跳过此步骤）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、项目代码拉取（使用Cloud Studio 或 Codespaces 可跳过此步骤）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 安装 Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 克隆项目代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 创建并激活虚拟环境
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_get_start_rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 四步构建RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_data_load/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 数据加载
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_text_chunking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 文本分块
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_vector_embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 向量嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_multimodal_embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.7 多模态嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_vector_db/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.8 向量数据库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_milvus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.9 Milvus 实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_index_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.10 索引优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_hybrid_search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.11 混合检索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_query_construction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.12 查询构建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_text2sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.13 文本到SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_query_rewriting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.14 查询重构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15_advanced_retrieval_techniques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.15 检索进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16_formatted_generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.16 格式化生成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18_system_evaluation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.17 系统评估
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19_common_tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.18 评估工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../virtualenv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附. Python虚拟环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四部分 智能体 Agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第四部分 智能体 Agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%88%9D%E8%AF%86%E6%99%BA%E8%83%BD%E4%BD%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 初识智能体
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E5%8F%91%E5%B1%95%E5%8F%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 智能体发展史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 大语言模型基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%8F%E5%85%B8%E8%8C%83%E5%BC%8F%E6%9E%84%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 经典范式构建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%9F%BA%E4%BA%8E%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%99%BA%E8%83%BD%E4%BD%93%E6%90%AD%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 低代码平台搭建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6 框架开发实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84Agent%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.7 构建Agent框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E8%AE%B0%E5%BF%86%E4%B8%8E%E6%A3%80%E7%B4%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.8 记忆与检索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E4%B9%9D%E7%AB%A0%20%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.9 上下文工程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E5%8D%81%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.10 智能体通信协议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AD%E7%AB%A0/%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0%20%E6%99%BA%E8%83%BD%E6%97%85%E8%A1%8C%E5%8A%A9%E6%89%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.11 智能旅行助手
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第五部分 本地模型部署
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第五部分 本地模型部署
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AB%E7%AB%A0/%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E6%9C%AC%E5%9C%B0%E6%A8%A1%E5%9E%8B%E8%BF%90%E8%A1%8C%E4%B8%8E%E7%AE%A1%E7%90%86%EF%BC%9A%E4%BB%8E%20Ollama%20%E5%85%A5%E9%97%A8%E5%88%B0%20vLLM%20%E6%9C%8D%E5%8A%A1%E5%8C%96%E9%83%A8%E7%BD%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 从 Ollama 到 vLLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、大模型 API 配置
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、大模型 API 配置">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-aihubmix-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 AIHubmix API 申请
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-deepseek-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 DeepSeek API 申请
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-codespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、GitHub Codespaces 环境配置（推荐）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、GitHub Codespaces 环境配置（推荐）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-codespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 创建Codespaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 python环境配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 API配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 创建并激活虚拟环境
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、Cloud Studio 环境配置（国内环境推荐）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、Cloud Studio 环境配置（国内环境推荐）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 应用创建
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 python环境配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 API配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 创建并激活虚拟环境
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windowscloud-studio-codespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、windows环境配置（使用Cloud Studio 或 Codespaces 可跳过此步骤）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、windows环境配置（使用Cloud Studio 或 Codespaces 可跳过此步骤）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 API配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-miniconda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 安装Miniconda
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 配置 Conda 镜像源
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-studio-codespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、项目代码拉取（使用Cloud Studio 或 Codespaces 可跳过此步骤）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、项目代码拉取（使用Cloud Studio 或 Codespaces 可跳过此步骤）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-git" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 安装 Git
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 克隆项目代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 创建并激活虚拟环境
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">第二节 准备工作<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>本节环境配置方面主推两种基于浏览器的集成开发环境。不管是手机、平板还是电脑，随时都可以上号运行代码。虽然手机平板可能体验不佳，但胜在能用。</p>
+</blockquote>
+<h2 id="api">一、大模型 API 配置<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<h3 id="11-aihubmix-api">1.1 AIHubmix API 申请<a class="headerlink" href="#11-aihubmix-api" title="Permanent link">&para;</a></h3>
+<p>AIHubmix 是一个美国平台，公司注册在美国的特拉华州，一站式聚合了全球主流的 AI 模型，最新的模型通常能在发布当天最晚不超过 1 周就会支持。完全对接相关模型的云厂商（OpenAI 对接的是 Azure 云，Gemini 对接的 Google 官方，Claude 对接的是 AWS，其他开源等模型是对接到各大知名云厂商或者推理公司）。AIHubmix 的服务器是在美国谷歌云上采用集群部署，同时因为完全对接云厂商，所以稳定性非常好，有多端点路由机制，可以达到比直连官方更稳定的效果。</p>
+<blockquote>
+<p>AIHubmix 提供的免费模型足够我们完成项目的学习。</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>访问 AIHubmix 平台</strong></p>
+<p>打开浏览器，访问 <a href="https://aihubmix.com/?aff=anNj">AIHubmix</a>。</p>
+<p><img alt="AIHubmix" src="../imgs/1.png" /></p>
+</li>
+<li>
+<p><strong>登录或注册账号</strong></p>
+<p>如果已有账号，可以直接登录。如果没有，请点击页面右上角的注册按钮，使用邮箱或手机号完成注册。</p>
+</li>
+<li>
+<p><strong>模型筛选</strong></p>
+<p>注册完成后，来到<a href="https://aihubmix.com/models">模型页面</a>。标签选择<code>免费</code>，可以看到官方提供了一定数量的免费模型。而且 AIHubmix 还提供了很多嵌入和重排序的国内外模型选择，这些在 RAG 领域都很常用。</p>
+<p><img alt="模型页面" src="../imgs/2.png" /></p>
+</li>
+<li>
+<p><strong>管理 API 密钥</strong></p>
+<p>接着进入<a href="https://console.aihubmix.com/token">密钥管理页面</a>，如下图所示，默认已经有了一个密钥可以直接复制使用。当然也可以点击 <code>创建 Key</code> 填写名称后重新创建一个。</p>
+<p><img alt="密钥管理" src="../imgs/3.png" /></p>
+</li>
+</ol>
+<h3 id="12-deepseek-api">1.2 DeepSeek API 申请<a class="headerlink" href="#12-deepseek-api" title="Permanent link">&para;</a></h3>
+<p>要使用 Deepseek 提供的大语言模型服务，你首先需要一个 API Key。下面是申请步骤：</p>
+<ol>
+<li>
+<p><strong>访问 Deepseek 开放平台</strong></p>
+<p>打开浏览器，访问 <a href="https://platform.deepseek.com/">Deepseek 开放平台</a>。</p>
+<p><img alt="Deepseek 平台首页" src="../imgs/1_2_1.webp" /></p>
+</li>
+<li>
+<p><strong>登录或注册账号</strong></p>
+<p>如果你已有账号，请直接登录。如果没有，请点击页面上的注册按钮，使用邮箱或手机号完成注册。</p>
+</li>
+<li>
+<p><strong>创建新的 API 密钥</strong></p>
+<p>登录成功后，在页面左侧的导航栏中找到并点击 <code>API Keys</code>。在 API 管理页面，点击 <code>创建 API key</code> 按钮。输入一个跟其他api key不重复的名称后点击创建。</p>
+<p><img alt="创建新密钥按钮" src="../imgs/1_2_2.webp" /></p>
+</li>
+<li>
+<p><strong>保存 API Key</strong></p>
+<p>系统会为你生成一个新的 API 密钥。请<strong>立即复制</strong>并将其保存在一个安全的地方。</p>
+<blockquote>
+<p>注意：出于安全原因，这个密钥只会完整显示一次，关闭弹窗后就没法再看到了。</p>
+</blockquote>
+<p><img alt="复制并保存密钥" src="../imgs/1_2_3.webp" /></p>
+</li>
+</ol>
+<h2 id="github-codespaces">二、GitHub Codespaces 环境配置（推荐）<a class="headerlink" href="#github-codespaces" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>首先确定是否具有可以流畅访问 GitHub 的网络环境，若无法流畅访问请使用下面的Cloud Studio</p>
+</blockquote>
+<p>GitHub Codespaces 是 GitHub 提供的一项服务，允许开发者在云端创建、编辑和运行代码。它提供了一个预配置的开发环境，包括代码编辑器、终端、调试工具等，可以直接在浏览器中使用。</p>
+<h3 id="21-codespaces">2.1 创建Codespaces<a class="headerlink" href="#21-codespaces" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>访问项目地址</strong></p>
+<p>打开浏览器，访问 <a href="https://github.com/datawhalechina/all-in-rag">all-in-rag</a></p>
+</li>
+<li>
+<p><strong>创建新分支</strong>
+    在项目页面的右上角，点击 <code>Fork</code> 按钮，创建一个新的分支。稍等一会儿即可创建成功。</p>
+<p><img alt="创建新分支1" src="../imgs/1_2_4.webp" /></p>
+<p><img alt="创建新分支2" src="../imgs/1_2_5.webp" /></p>
+</li>
+<li>
+<p><strong>创建Codespaces</strong>
+    在项目页面的右上角，点击 <code>Code</code> 按钮，然后选择 <code>Codespaces</code> 选项卡。点击 <code>New codespace</code> 按钮，等待新的 Codespaces 环境创建成功。</p>
+<p><img alt="创建Codespaces" src="../imgs/1_2_6.webp" /></p>
+</li>
+<li>
+<p><strong>再次进入Codespaces</strong>
+    网页关闭后，找到刚才新建的存储库，点击红框框选内容即可重新进入 codespace 环境。</p>
+<p><img alt="再次进入Codespaces" src="../imgs/1_2_7.webp" /></p>
+</li>
+<li>
+<p><strong>额度设置</strong>
+    找到 GitHub 的账户设置中的 codespace 设置，挂起时间建议根据自己情况调整（时间过长会浪费额度，免费账号提供了单核120小时的额度）</p>
+<p><img alt="额度设置" src="../imgs/1_2_8.webp" /></p>
+</li>
+</ol>
+<h3 id="22-python">2.2 python环境配置<a class="headerlink" href="#22-python" title="Permanent link">&para;</a></h3>
+<p>进入 IDE 后先选择下方终端</p>
+<p><img alt="进入终端" src="../imgs/1_2_9.webp" /></p>
+<ol>
+<li>
+<p><strong>更新系统软件包</strong></p>
+<p>在终端输入下面指令：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+</code></pre></div>
+</li>
+<li>
+<p><strong>安装Miniconda</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh<span class="w"> </span>-O<span class="w"> </span>~/miniconda.sh
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>bash<span class="w"> </span>~/miniconda.sh
+</code></pre></div>
+<ul>
+<li>按 Enter 阅读许可协议</li>
+<li>输入 <code>yes</code> 同意协议</li>
+<li>安装路径提示时直接按 Enter（使用默认路径 /home/ubuntu/miniconda3）</li>
+<li>是否初始化Miniconda：输入 <code>yes</code> 将Miniconda添加到您的PATH环境变量中。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>conda<span class="w"> </span>--version
+</code></pre></div>
+<p>如果显示版本号，说明安装成功。</p>
+</li>
+</ol>
+<h3 id="23-api">2.3 API配置<a class="headerlink" href="#23-api" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>使用 <code>vim</code> 编辑器打开你的 shell 配置文件。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>vim<span class="w"> </span>~/.bashrc
+</code></pre></div>
+</li>
+<li>
+<p>输入 <code>i</code> 进入编辑模式，在文件末尾添加以下行，将 <code>[你的大模型 API 密钥]</code> 替换为你自己的密钥：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DEEPSEEK_API_KEY</span><span class="o">=[</span>你的大模型<span class="w"> </span>API<span class="w"> </span>密钥<span class="o">]</span>
+</code></pre></div>
+<p>如果选择的是 <code>AIHubmix</code> 平台，为了增加辨识度也可以使用：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AIHUBMIX_API_KEY</span><span class="o">=[</span>你的大模型<span class="w"> </span>API<span class="w"> </span>密钥<span class="o">]</span>
+</code></pre></div>
+<blockquote>
+<p>不要带 <code>[]</code></p>
+</blockquote>
+</li>
+<li>
+<p>保存并退出 在 vim 中，按 Esc 键进入命令模式，然后输入 <code>:wq</code> 并按 Enter 键保存文件并退出。</p>
+</li>
+<li>
+<p>使配置生效 执行以下命令来立即加载更新后的配置，让环境变量生效：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div>
+</li>
+</ol>
+<h3 id="24">2.4 创建并激活虚拟环境<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>创建虚拟环境</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>all-in-rag<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12.7
+</code></pre></div>
+<p>出现选项直接回车即可。</p>
+</li>
+<li>
+<p><strong>激活虚拟环境</strong></p>
+<p>使用以下命令激活虚拟环境：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>all-in-rag
+</code></pre></div>
+</li>
+<li>
+<p><strong>依赖安装</strong>
+    如果严格安装上述流程当前应该在项目根目录，进入code目录安装依赖库</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">cd</span><span class="w"> </span>code
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+<blockquote>
+<p>如果出现关于grpcio的版本错误无需在意。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="cloud-studio">三、Cloud Studio 环境配置（国内环境推荐）<a class="headerlink" href="#cloud-studio" title="Permanent link">&para;</a></h2>
+<p>Cloud Studio 是腾讯云推出的一款基于浏览器的集成开发环境（IDE）。支持CPU与GPU的访问。</p>
+<blockquote>
+<p>听说一个月是50个小时的免费额度🤔</p>
+</blockquote>
+<h3 id="31">3.1 应用创建<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>访问 Cloud Studio</strong>
+    打开浏览器，访问 <a href="https://cloudstudio.net/">Cloud Studio</a>。</p>
+</li>
+<li>
+<p><strong>登录或注册账号</strong>
+    点击页面右上角的 <code>注册登录</code> 按钮，使用微信等方式完成登录。</p>
+</li>
+<li>
+<p><strong>创建应用</strong>
+    在页面上方的导航栏中找到并点击 <code>创建应用</code>。选择 <code>从 Git 仓库导入</code> ，在项目地址栏输入 <code>https://github.com/datawhalechina/all-in-rag.git</code> 后回车，将会自动为你创建标题和描述。</p>
+<p><img alt="创建应用" src="../imgs/1_2_10.webp" /></p>
+<blockquote>
+<p>注意描述中不要包含网址</p>
+</blockquote>
+</li>
+<li>
+<p><strong>再次进入</strong>
+    后续在<a href="https://cloudstudio.net/my-app">应用管理页面</a>找到之前创建的应用，点击后选择右上角编写代码即可再次进入。</p>
+<p><img alt="再次进入应用" src="../imgs/1_2_11.webp" /></p>
+</li>
+</ol>
+<h3 id="32-python">3.2 python环境配置<a class="headerlink" href="#32-python" title="Permanent link">&para;</a></h3>
+<p>进入 IDE 后先选择右侧终端</p>
+<p><img alt="进入终端" src="../imgs/1_2_12.webp" /></p>
+<ol>
+<li>
+<p><strong>更新系统软件包</strong></p>
+<p>在终端输入下面指令：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+</code></pre></div>
+</li>
+<li>
+<p><strong>切换普通用户</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>su<span class="w"> </span>ubuntu
+</code></pre></div>
+</li>
+<li>
+<p><strong>安装Miniconda</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh<span class="w"> </span>-O<span class="w"> </span>~/miniconda.sh
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>bash<span class="w"> </span>~/miniconda.sh
+</code></pre></div>
+<ul>
+<li>按 Enter 阅读许可协议</li>
+<li>输入 <code>yes</code> 同意协议</li>
+<li>安装路径提示时直接按 Enter（使用默认路径 /home/ubuntu/miniconda3）</li>
+<li>是否初始化Miniconda：输入 <code>yes</code> 将Miniconda添加到您的PATH环境变量中。</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>conda<span class="w"> </span>--version
+</code></pre></div>
+<p>如果显示版本号，说明安装成功。</p>
+</li>
+</ol>
+<h3 id="33-api">3.3 API配置<a class="headerlink" href="#33-api" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>使用 <code>vim</code> 编辑器打开你的 shell 配置文件。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>vim<span class="w"> </span>~/.bashrc
+</code></pre></div>
+</li>
+<li>
+<p>输入 <code>i</code> 进入编辑模式，在文件末尾添加以下行，将 <code>[你的大模型 API 密钥]</code> 替换为你自己的密钥：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DEEPSEEK_API_KEY</span><span class="o">=[</span>你的大模型<span class="w"> </span>API<span class="w"> </span>密钥<span class="o">]</span>
+</code></pre></div>
+<p>如果选择的是 <code>AIHubmix</code> 平台，为了增加辨识度也可以使用：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AIHUBMIX_API_KEY</span><span class="o">=[</span>你的大模型<span class="w"> </span>API<span class="w"> </span>密钥<span class="o">]</span>
+</code></pre></div>
+<blockquote>
+<p>不要带 <code>[]</code></p>
+</blockquote>
+</li>
+<li>
+<p>保存并退出 在 vim 中，按 Esc 键进入命令模式，然后输入 <code>:wq</code> 并按 Enter 键保存文件并退出。</p>
+</li>
+<li>
+<p>使配置生效 执行以下命令来立即加载更新后的配置，让环境变量生效：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div>
+</li>
+</ol>
+<h3 id="34">3.4 创建并激活虚拟环境<a class="headerlink" href="#34" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>创建虚拟环境</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>all-in-rag<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12.7
+</code></pre></div>
+<p>出现选项直接回车即可。</p>
+</li>
+<li>
+<p><strong>配置文件权限</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>ubuntu:ubuntu<span class="w"> </span>code<span class="w"> </span>models
+</code></pre></div>
+</li>
+<li>
+<p><strong>激活虚拟环境</strong></p>
+<p>使用以下命令激活虚拟环境：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>all-in-rag
+</code></pre></div>
+</li>
+<li>
+<p><strong>依赖安装</strong>
+    如果严格安装上述流程当前应该在项目根目录，进入code目录安装依赖库</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">cd</span><span class="w"> </span>code
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+<blockquote>
+<p>如果出现关于grpcio的版本错误无需在意。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="windowscloud-studio-codespaces">四、windows环境配置（使用Cloud Studio 或 Codespaces 可跳过此步骤）<a class="headerlink" href="#windowscloud-studio-codespaces" title="Permanent link">&para;</a></h2>
+<h3 id="41-api">4.1 API配置<a class="headerlink" href="#41-api" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>右键点击 “计算机” 或 “此电脑”，然后点击 “属性”。</p>
+</li>
+<li>
+<p>在左侧菜单中，点击 “高级系统设置”。</p>
+</li>
+<li>
+<p>在 “系统属性” 对话框中，点击 “高级” 选项卡，然后点击下方的 “环境变量” 按钮。</p>
+<p><img alt="高级系统设置" src="../imgs/1_2_13.webp" /></p>
+</li>
+<li>
+<p>在 “环境变量” 对话框中，点击 “新建”（在 “用户变量” 部分下），然后输入以下信息：</p>
+<ul>
+<li>变量名：DEEPSEEK_API_KEY</li>
+<li>变量值：[你的 Deepseek API 密钥]</li>
+</ul>
+<p><img alt="高级系统设置" src="../imgs/1_2_14.webp" /></p>
+</li>
+</ol>
+<h3 id="42-miniconda">4.2 安装Miniconda<a class="headerlink" href="#42-miniconda" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>下载安装程序</strong></p>
+<p>优先推荐访问<a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/">清华大学开源软件镜像站</a>，以获得更快的下载速度。根据你的系统选择最新的 <code>.exe</code> 版本下载。</p>
+<p><img alt="选择Miniconda版本" src="../imgs/1_2_15.webp" /></p>
+<p>你也可以从 <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda 官方网站</a>下载。</p>
+</li>
+<li>
+<p><strong>运行安装向导</strong></p>
+<p>下载完成后，双击 <code>.exe</code> 文件启动安装。按照向导提示操作：</p>
+<ul>
+<li>
+<p><strong>Welcome</strong>: 点击 <code>Next</code>。</p>
+<p><img alt="Welcome" src="../imgs/1_2_16.webp" /></p>
+</li>
+<li>
+<p><strong>License Agreement</strong>: 点击 <code>I Agree</code>。</p>
+<p><img alt="License Agreement" src="../imgs/1_2_17.webp" /></p>
+</li>
+<li>
+<p><strong>Installation Type</strong>: 选择 <code>Just Me</code>，点击 <code>Next</code>。</p>
+<p><img alt="Installation Type" src="../imgs/1_2_18.webp" /></p>
+</li>
+<li>
+<p><strong>Choose Install Location</strong>: 建议保持默认路径，或选择一个不含中文和空格的路径。点击 <code>Next</code>。</p>
+<p><img alt="Install Location" src="../imgs/1_2_19.webp" /></p>
+</li>
+<li>
+<p><strong>Advanced Installation Options</strong>: <strong>请不要勾选</strong> “Add Miniconda3 to my PATH environment variable”。我们将稍后手动配置环境变量。点击 <code>Install</code>。</p>
+<p><img alt="Advanced Options" src="../imgs/1_2_20.webp" /></p>
+</li>
+<li>
+<p><strong>Installation Complete</strong>: 安装完成后，点击 <code>Next</code>，然后取消勾选 “Learn more” 并点击 <code>Finish</code> 完成安装。</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>手动配置环境变量</strong></p>
+<p>为了能在任意终端窗口使用 <code>conda</code> 命令，需要手动配置环境变量。</p>
+<ul>
+<li>
+<p>在Windows搜索栏中搜索“编辑系统环境变量”并打开。</p>
+<p><img alt="编辑系统环境变量" src="../imgs/1_2_21.webp" /></p>
+</li>
+<li>
+<p>在“系统属性”窗口中，点击“环境变量”。</p>
+<p><img alt="环境变量按钮" src="../imgs/1_2_22.webp" /></p>
+</li>
+<li>
+<p>在“环境变量”窗口中，找到“系统变量”下的 <code>Path</code> 变量，选中并点击“编辑”。</p>
+<p><img alt="编辑Path变量" src="../imgs/1_2_23.webp" /></p>
+</li>
+<li>
+<p>在“编辑环境变量”窗口中，新建三个路径，将它们指向你 Miniconda 的安装目录下的相应文件夹。如果你的安装路径是 <code>D:\Miniconda3</code>，则需要添加：
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>D:\Miniconda3
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>D:\Miniconda3\Scripts
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>D:\Miniconda3\Library\bin
+</code></pre></div>
+    <img alt="添加路径" src="../imgs/1_2_24.webp" /></p>
+</li>
+<li>
+<p>完成后，一路点击“确定”保存更改。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="43-conda">4.3 配置 Conda 镜像源<a class="headerlink" href="#43-conda" title="Permanent link">&para;</a></h3>
+<p>为了加快后续使用 <code>conda</code> 安装包的速度，强烈建议配置国内镜像源。打开一个新的终端或 Anaconda Prompt，运行以下命令：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>conda<span class="w"> </span>config<span class="w"> </span>--add<span class="w"> </span>channels<span class="w"> </span>https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>conda<span class="w"> </span>config<span class="w"> </span>--set<span class="w"> </span>show_channel_urls<span class="w"> </span>yes
+</code></pre></div>
+<p>配置完成后，可以通过 <code>conda config --show channels</code> 命令查看已添加的源。</p>
+<h2 id="cloud-studio-codespaces">五、项目代码拉取（使用Cloud Studio 或 Codespaces 可跳过此步骤）<a class="headerlink" href="#cloud-studio-codespaces" title="Permanent link">&para;</a></h2>
+<h3 id="51-git">5.1 安装 Git<a class="headerlink" href="#51-git" title="Permanent link">&para;</a></h3>
+<p>如果你尚未安装 Git，请按照以下步骤安装。</p>
+<ul>
+<li><strong>Windows 系统</strong>：访问<a href="https://git-scm.com/download/win">Git 官方网站</a>，下载并运行安装程序，按照默认设置完成安装。</li>
+<li><strong>macOS 系统</strong>：打开终端，输入以下命令安装 Git：</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>brew<span class="w"> </span>install<span class="w"> </span>git
+</code></pre></div>
+* <strong>Linux 系统（以 Ubuntu 为例）</strong>：打开终端，输入以下命令安装 Git：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>git
+</code></pre></div>
+<p>安装完成后，验证 Git 是否安装成功，输入以下命令：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>git<span class="w"> </span>--version
+</code></pre></div>
+<p>如果成功，会显示 Git 的版本号。</p>
+<h3 id="52">5.2 克隆项目代码<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>选择存放项目的目录</strong>
+   打开终端（或 Windows 中的 Git Bash），导航到你想存放项目的目录：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nb">cd</span><span class="w"> </span><span class="o">[</span>你希望存放项目的路径<span class="o">]</span>
+</code></pre></div>
+<ol>
+<li><strong>克隆仓库</strong>
+   使用以下命令拉取 <code>all-in-rag</code> 仓库：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/datawhalechina/all-in-rag.git
+</code></pre></div>
+<p>等待下载完成，项目代码将存放在当前目录下的 <code>all-in-rag</code> 文件夹中。</p>
+<ol>
+<li><strong>进入项目目录</strong>
+   拉取代码后，进入项目目录：</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nb">cd</span><span class="w"> </span>all-in-rag
+</code></pre></div>
+<h3 id="53">5.3 创建并激活虚拟环境<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
+<p>在项目目录下，推荐使用前面配置好的 Miniconda 来创建 Python 虚拟环境。</p>
+<ol>
+<li><strong>创建虚拟环境</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>all-in-rag<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12.7
+</code></pre></div>
+<ol>
+<li><strong>激活虚拟环境</strong></li>
+</ol>
+<p>所有系统统一使用以下命令激活虚拟环境：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>all-in-rag
+</code></pre></div>
+<ol>
+<li>
+<p><strong>依赖安装</strong>
+    如果严格安装上述流程当前应该在项目根目录，进入code目录安装依赖库</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nb">cd</span><span class="w"> </span>code
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

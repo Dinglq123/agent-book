@@ -1,0 +1,2705 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="从NLP基础到智能体开发的完整学习指南">
+      
+      
+        <meta name="author" content="AI Agent Book">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Chapter 1: Introduction to Agents - AI Agent 完全指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter-1-introduction-to-agents" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="AI Agent 完全指南" class="md-header__button md-logo" aria-label="AI Agent 完全指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Agent 完全指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter 1: Introduction to Agents
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至暗色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI Agent 完全指南" class="md-nav__button md-logo" aria-label="AI Agent 完全指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI Agent 完全指南
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第一部分 NLP 基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第一部分 NLP 基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%80%E7%AB%A0/1.1%20NLP%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 NLP基础概念
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%80%E7%AB%A0/1.2%20Transformer%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 Transformer架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%80%E7%AB%A0/1.3%20%E9%A2%84%E8%AE%AD%E7%BB%83%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 预训练语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%B8%80%E7%AB%A0/1.4%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 大语言模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第二部分 提示工程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第二部分 提示工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/1.%20%E7%AE%80%E4%BB%8B%20Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/2.%20%E6%8F%90%E7%A4%BA%E5%8E%9F%E5%88%99%20Guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 提示原则
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/3.%20%E8%BF%AD%E4%BB%A3%E4%BC%98%E5%8C%96%20Iterative/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 迭代优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/4.%20%E6%96%87%E6%9C%AC%E6%A6%82%E6%8B%AC%20Summarizing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 文本概括
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/5.%20%E6%8E%A8%E6%96%AD%20Inferring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6 推断
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/6.%20%E6%96%87%E6%9C%AC%E8%BD%AC%E6%8D%A2%20Transforming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.7 文本转换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/7.%20%E6%96%87%E6%9C%AC%E6%89%A9%E5%B1%95%20Expanding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.8 文本扩展
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/8.%20%E8%81%8A%E5%A4%A9%E6%9C%BA%E5%99%A8%E4%BA%BA%20Chatbot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.9 聊天机器人
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%8C%E7%AB%A0/9.%20%E6%80%BB%E7%BB%93%20Summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.10 总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三部分 RAG 检索增强生成
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三部分 RAG 检索增强生成
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/01_RAG_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 RAG 简介
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/02_preparation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 准备工作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/03_get_start_rag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 四步构建RAG
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/04_data_load/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 数据加载
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/05_text_chunking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 文本分块
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/06_vector_embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 向量嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/07_multimodal_embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.7 多模态嵌入
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/08_vector_db/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.8 向量数据库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/09_milvus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.9 Milvus 实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/10_index_optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.10 索引优化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/11_hybrid_search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.11 混合检索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/12_query_construction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.12 查询构建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/13_text2sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.13 文本到SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/14_query_rewriting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.14 查询重构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/15_advanced_retrieval_techniques/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.15 检索进阶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/16_formatted_generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.16 格式化生成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/18_system_evaluation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.17 系统评估
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/19_common_tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.18 评估工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0/virtualenv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附. Python虚拟环境
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第四部分 智能体 Agent
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第四部分 智能体 Agent
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%88%9D%E8%AF%86%E6%99%BA%E8%83%BD%E4%BD%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 初识智能体
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E5%8F%91%E5%B1%95%E5%8F%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 智能体发展史
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 大语言模型基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E7%BB%8F%E5%85%B8%E8%8C%83%E5%BC%8F%E6%9E%84%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 经典范式构建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%9F%BA%E4%BA%8E%E4%BD%8E%E4%BB%A3%E7%A0%81%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%99%BA%E8%83%BD%E4%BD%93%E6%90%AD%E5%BB%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 低代码平台搭建
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E6%A1%86%E6%9E%B6%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6 框架开发实践
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E4%B8%83%E7%AB%A0%20%E6%9E%84%E5%BB%BA%E4%BD%A0%E7%9A%84Agent%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.7 构建Agent框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E8%AE%B0%E5%BF%86%E4%B8%8E%E6%A3%80%E7%B4%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.8 记忆与检索
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E4%B9%9D%E7%AB%A0%20%E4%B8%8A%E4%B8%8B%E6%96%87%E5%B7%A5%E7%A8%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.9 上下文工程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E5%8D%81%E7%AB%A0%20%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.10 智能体通信协议
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E5%8D%81%E4%B8%80%E7%AB%A0%20%E6%99%BA%E8%83%BD%E6%97%85%E8%A1%8C%E5%8A%A9%E6%89%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.11 智能旅行助手
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第五部分 本地模型部署
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第五部分 本地模型部署
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E5%85%AB%E7%AB%A0/%E7%AC%AC%E5%85%AB%E7%AB%A0%20%E6%9C%AC%E5%9C%B0%E6%A8%A1%E5%9E%8B%E8%BF%90%E8%A1%8C%E4%B8%8E%E7%AE%A1%E7%90%86%EF%BC%9A%E4%BB%8E%20Ollama%20%E5%85%A5%E9%97%A8%E5%88%B0%20vLLM%20%E6%9C%8D%E5%8A%A1%E5%8C%96%E9%83%A8%E7%BD%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 从 Ollama 到 vLLM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-what-is-an-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 What is an Agent?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 What is an Agent?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-agents-from-a-traditional-perspective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1.1 Agents from a Traditional Perspective
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-new-paradigm-driven-by-large-language-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1.2 New Paradigm Driven by Large Language Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-types-of-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1.3 Types of Agents
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-composition-and-operating-principles-of-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Composition and Operating Principles of Agents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 Composition and Operating Principles of Agents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-task-environment-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.1 Task Environment Definition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-agent-operating-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.2 Agent Operating Mechanism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-agent-perception-and-action" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2.3 Agent Perception and Action
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-hands-on-experience-implementing-your-first-agent-in-5-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Hands-on Experience: Implementing Your First Agent in 5 Minutes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 Hands-on Experience: Implementing Your First Agent in 5 Minutes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.1 Preparation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-connecting-to-large-language-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.2 Connecting to Large Language Models
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-executing-the-action-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.3 Executing the Action Loop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-running-case-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.4 Running Case Analysis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-collaboration-modes-of-agent-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Collaboration Modes of Agent Applications
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.4 Collaboration Modes of Agent Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#141-agents-as-developer-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.1 Agents as Developer Tools
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#142-agents-as-autonomous-collaborators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.2 Agents as Autonomous Collaborators
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#143-differences-between-workflow-and-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4.3 Differences Between Workflow and Agent
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-chapter-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 Chapter Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💬 Discussion &amp; Communication
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter-1-introduction-to-agents">Chapter 1: Introduction to Agents<a class="headerlink" href="#chapter-1-introduction-to-agents" title="Permanent link">&para;</a></h1>
+<p>Welcome to the world of agents! In today's era where the wave of artificial intelligence is sweeping across the globe, <strong>Agents</strong> have become one of the core concepts driving technological transformation and application innovation. Whether your aspiration is to become a researcher or engineer in the AI field, or you hope to deeply understand the cutting edge of technology as an observer, mastering the essence of agents will be an indispensable part of your knowledge system.</p>
+<p>Therefore, in this chapter, let's return to the fundamentals and explore several questions together: What is an agent? What are its main types? How does it interact with the world we live in? Through these discussions, we hope to lay a solid foundation for your future learning and exploration.</p>
+<div align="center">
+  <img src="imgs/1-figures/1757242319667-0.png" alt="Figure description" width="90%"/>
+  <p>Figure 1.1 Basic interaction loop between agent and environment</p>
+</div>
+
+<h2 id="11-what-is-an-agent">1.1 What is an Agent?<a class="headerlink" href="#11-what-is-an-agent" title="Permanent link">&para;</a></h2>
+<p>When exploring any complex concept, it's best to start with a concise definition. In the field of artificial intelligence, an agent is defined as any entity that can perceive its <strong>Environment</strong> through <strong>Sensors</strong>, and <strong>autonomously</strong> take <strong>Actions</strong> through <strong>Actuators</strong> to achieve specific goals.</p>
+<p>This definition contains four fundamental elements of an agent's existence. The environment is the external world in which the agent operates. For an autonomous vehicle, the environment is the dynamically changing road traffic; for a trading algorithm, the environment is the ever-changing financial market. The agent is not isolated from the environment—it continuously perceives the environmental state through its sensors. Cameras, microphones, radar, or data streams returned by various <strong>Application Programming Interfaces (APIs)</strong> are all extensions of its perceptual capabilities.</p>
+<p>After acquiring information, the agent needs to take actions to influence the environment, changing its state through actuators. Actuators can be physical devices (such as robotic arms or steering wheels) or virtual tools (such as executing code or calling a service).</p>
+<p>However, what truly endows an agent with "intelligence" is its <strong>Autonomy</strong>. An agent is not merely a program that passively responds to external stimuli or strictly executes preset instructions; it can make independent decisions based on its perceptions and internal state to achieve its design goals. This closed loop from perception to action forms the foundation of all agent behavior, as shown in Figure 1.1.</p>
+<h3 id="111-agents-from-a-traditional-perspective">1.1.1 Agents from a Traditional Perspective<a class="headerlink" href="#111-agents-from-a-traditional-perspective" title="Permanent link">&para;</a></h3>
+<p>Before the current wave of <strong>Large Language Models (LLMs)</strong>, pioneers in artificial intelligence had already spent decades exploring and building the concept of "agents." These paradigms, which we now call "traditional agents," are not a single static concept but have undergone a clear evolutionary path from simple to complex, from passive reaction to active learning.</p>
+<p>The starting point of this evolution is the structurally simplest <strong>Simple Reflex Agent</strong>. Their decision-making core consists of "condition-action" rules explicitly designed by engineers, as shown in Figure 1.2. A classic automatic thermostat works this way: if the sensor perceives that the room temperature is higher than the set value, it activates the cooling system.</p>
+<p>This type of agent relies entirely on current perceptual input and has no memory or predictive capability. It's like a digitized instinct—reliable and efficient, but therefore unable to handle complex tasks that require understanding context. Its limitations raise a key question: What should an agent do if the current state of the environment is insufficient as the sole basis for decision-making?</p>
+<div align="center">
+  <img src="imgs/1-figures/1757242319667-1.png" alt="Figure description" width="90%"/>
+  <p>Figure 1.2 Decision logic diagram of a simple reflex agent</p>
+</div>
+
+<p>To answer this question, researchers introduced the concept of "state" and developed <strong>Model-Based Reflex Agents</strong>. This type of agent has an internal <strong>World Model</strong> used to track and understand aspects of the environment that cannot be directly perceived. It attempts to answer: "What is the world like now?" For example, an autonomous vehicle driving through a tunnel, even if its camera temporarily cannot perceive the vehicle ahead, its internal model will still maintain a judgment about that vehicle's existence, speed, and estimated position. This internal model gives the agent a primitive form of "memory," making its decisions no longer solely dependent on instantaneous perception but based on a more coherent and complete understanding of the world state.</p>
+<p>However, merely understanding the world is not enough—an agent needs clear goals. This led to the development of <strong>Goal-Based Agents</strong>. Unlike the previous two types, their behavior is no longer passively reacting to the environment but actively and proactively selecting actions that can lead to a specific future state. The question this type of agent needs to answer is: "What should I do to achieve my goal?" A classic example is a GPS navigation system: your goal is to reach the office, and the agent will plan an optimal route using search algorithms (such as A*) based on map data (world model). The core capability of this type of agent is reflected in its consideration and planning for the future.</p>
+<p>Going further, real-world goals are often not singular. We not only want to reach the office but also want the shortest time, the most fuel-efficient route, and to avoid congestion. When multiple goals need to be balanced, <strong>Utility-Based Agents</strong> emerge. They assign a utility value to every possible world state, representing the level of satisfaction. The agent's core goal is no longer simply to achieve a specific state but to maximize expected utility. It needs to answer a more complex question: "Which behavior will bring me the most satisfactory result?" This architecture allows the agent to learn to balance conflicting goals, making its decisions closer to human rational choice.</p>
+<p>So far, the agents we've discussed, although increasingly complex in functionality, still rely on the prior knowledge of human designers for their core decision-making logic, whether rules, models, or utility functions. What if an agent could learn autonomously through interaction with the environment without relying on presets?</p>
+<p>This is the core idea of <strong>Learning Agents</strong>, and <strong>Reinforcement Learning (RL)</strong> is the most representative path to realizing this idea. A learning agent contains a performance element (the various types of agents we discussed earlier) and a learning element. The learning element continuously modifies the performance element's decision-making strategy by observing the results of the performance element's actions in the environment.</p>
+<p>Imagine an AI learning to play chess. It might start by making random moves, but when it finally wins a game, the system gives it a positive reward. Through extensive self-play, the learning element gradually discovers which moves are more likely to lead to ultimate victory. AlphaGo Zero is a milestone achievement of this philosophy. In the complex game of Go, through reinforcement learning, it discovered many effective strategies that surpass existing human knowledge.</p>
+<p>From simple thermostats to cars with internal models, to navigation that can plan routes, to decision-makers who know how to weigh pros and cons, and finally to learners who can self-evolve through experience. This evolutionary path demonstrates the development trajectory that traditional artificial intelligence has undergone in building machine intelligence. They have laid a solid and necessary foundation for our understanding of more cutting-edge agent paradigms today.</p>
+<h3 id="112-new-paradigm-driven-by-large-language-models">1.1.2 New Paradigm Driven by Large Language Models<a class="headerlink" href="#112-new-paradigm-driven-by-large-language-models" title="Permanent link">&para;</a></h3>
+<p>The emergence of large language models represented by <strong>GPT (Generative Pre-trained Transformer)</strong> is significantly changing the construction methods and capability boundaries of agents. LLM agents driven by large language models have fundamentally different core decision-making mechanisms from traditional agents, thus endowing them with a series of entirely new characteristics.</p>
+<p>This transformation can be clearly seen from the comparison of the two in multiple dimensions such as core engine, knowledge source, and interaction method, as shown in Table 1.1. In short, the capabilities of traditional agents stem from engineers' explicit programming and knowledge construction, and their behavior patterns are deterministic and bounded; while LLM agents, through pre-training on massive data, have acquired implicit world models and powerful emergent capabilities, enabling them to handle complex tasks in a more flexible and general way.</p>
+<div align="center">
+  <p>Table 1.1 Core comparison between traditional agents and LLM-driven agents</p>
+  <img src="imgs/1-figures/1757242319667-2.png" alt="Figure description" width="90%"/>
+</div>
+
+<p>This difference enables LLM agents to directly process high-level, ambiguous, and context-rich natural language instructions. Let's use an "intelligent travel assistant" as an example to illustrate.</p>
+<p>Before the emergence of LLM agents, planning a trip typically meant users needed to manually switch between multiple dedicated applications (such as weather, maps, booking websites), with the user themselves playing the role of information integration and decision-making. An LLM agent, however, can integrate this process. When receiving an ambiguous instruction like "plan a trip to Xiamen," its working method reflects the following points:</p>
+<ul>
+<li><strong>Planning and Reasoning</strong>: The agent first decomposes this high-level goal into a series of logical subtasks, for example: <code>[Confirm travel preferences] -&gt; [Query destination information] -&gt; [Draft itinerary] -&gt; [Book tickets and accommodation]</code>. This is an internal, model-driven planning process.</li>
+<li><strong>Tool Use</strong>: When executing the plan, the agent identifies information gaps and proactively calls external tools to fill them. For example, it will call a weather query interface to get real-time weather, and based on the information "rain is forecast," it will tend to recommend indoor activities in subsequent planning.</li>
+<li><strong>Dynamic Adjustment</strong>: During the interaction, the agent treats user feedback (such as "this hotel exceeds the budget") as new constraints and adjusts subsequent actions accordingly, re-searching and recommending options that meet the new requirements. The entire process of "<strong>check weather → adjust itinerary → book hotel</strong>" demonstrates its ability to dynamically modify its behavior based on context.</li>
+</ul>
+<p>In summary, we are shifting from developing specialized automation tools to building systems that can autonomously solve problems. The core is no longer writing code but guiding a general "brain" to plan, act, and learn.</p>
+<h3 id="113-types-of-agents">1.1.3 Types of Agents<a class="headerlink" href="#113-types-of-agents" title="Permanent link">&para;</a></h3>
+<p>Following the review of agent evolution above, this section will classify agents from three complementary dimensions.</p>
+<p>(1) <strong>Classification Based on Internal Decision Architecture</strong></p>
+<p>The first classification dimension is based on the complexity of the agent's internal decision architecture. This perspective was systematically proposed in "Artificial Intelligence: A Modern Approach"<sup>[1]</sup>. As described in Section 1.1.1, the evolutionary path of traditional agents itself constitutes the most classic classification ladder, covering from simple <strong>reactive</strong> agents to <strong>model-based</strong> agents that introduce internal models, and then to more forward-looking <strong>goal-based</strong> and <strong>utility-based</strong> agents. Additionally, <strong>learning capability</strong> is a meta-capability that can be endowed to all the above types, enabling them to self-improve through experience.</p>
+<p>(2) <strong>Classification Based on Time and Reactivity</strong></p>
+<p>In addition to the complexity of internal architecture, agents can also be classified from the time dimension of decision-making processing. This perspective focuses on whether an agent acts immediately after receiving information or acts after deliberate planning. This reveals a core trade-off in agent design: the balance between <strong>Reactivity</strong>, which pursues speed, and <strong>Deliberation</strong>, which pursues optimal solutions, as shown in Figure 1.3.</p>
+<div align="center">
+  <img src="imgs/1-figures/1757242319667-3.png" alt="Figure description" width="90%"/>
+  <p>Figure 1.3 Relationship between agent decision time and quality</p>
+</div>
+
+<ul>
+<li><strong>Reactive Agents</strong></li>
+</ul>
+<p>This type of agent makes nearly instantaneous responses to environmental stimuli with extremely low decision latency. They typically follow a direct mapping from perception to action, with no or minimal future planning. The <strong>simple reactive</strong> and <strong>model-based</strong> agents mentioned above belong to this category.</p>
+<p>Their core advantage lies in <strong>fast speed and low computational overhead</strong>, which is crucial in dynamic environments requiring rapid decision-making. For example, a vehicle's airbag system must react within milliseconds of a collision—any delay could lead to serious consequences; similarly, high-frequency trading robots must rely on reactive decision-making to capture fleeting market opportunities. However, the cost of this speed is "short-sightedness." Due to lack of long-term planning, reactive agents easily fall into local optima and struggle to complete complex tasks requiring multi-step coordination.</p>
+<ul>
+<li><strong>Deliberative Agents</strong></li>
+</ul>
+<p>In contrast to reactive agents, deliberative (or planning) agents engage in complex thinking and planning before acting. They do not immediately react to perceptions but first use their internal world model to systematically explore various future possibilities, evaluate the consequences of different action sequences, in hopes of finding an optimal path to achieve goals. <strong>Goal-based</strong> and <strong>utility-based</strong> agents are typical deliberative agents.</p>
+<p>Their decision-making process can be likened to a chess player. They don't just look at the immediate move but anticipate possible opponent responses and plan out subsequent moves, even dozens of moves ahead. This deliberative capability enables them to handle complex tasks requiring long-term vision, such as formulating a business plan or planning a long-distance trip. Their advantage lies in the strategic nature and foresight of their decisions. However, the flip side of this advantage is high time and computational costs. In rapidly changing environments, when a deliberative agent is still deep in thought, the best moment to act may have long passed.</p>
+<ul>
+<li><strong>Hybrid Agents</strong></li>
+</ul>
+<p>Complex tasks in the real world often require both immediate reactions and long-term planning. For example, the intelligent travel assistant we mentioned earlier needs to adjust recommendations based on user's immediate feedback (such as "this hotel is too expensive") (reactivity), while also being able to plan a complete multi-day travel itinerary (deliberation). Therefore, hybrid agents emerged, aiming to combine the advantages of both and achieve a balance between reaction and planning.</p>
+<p>A classic hybrid architecture is hierarchical design: the lower layer is a fast reactive module that handles emergencies and basic actions; the upper layer is a deliberative planning module responsible for formulating long-term goals. Modern LLM agents demonstrate a more flexible hybrid mode. They typically operate in a "think-act-observe" loop, cleverly integrating both modes:</p>
+<ul>
+<li><strong>Reasoning</strong>: In the "thinking" phase, the LLM analyzes the current situation and plans the next reasonable action. This is a deliberative process.</li>
+<li><strong>Acting &amp; Observing</strong>: In the "acting" and "observing" phases, the agent interacts with external tools or the environment and immediately receives feedback. This is a reactive process.</li>
+</ul>
+<p>Through this approach, the agent decomposes a grand task requiring long-term planning into a series of "planning-reaction" micro-loops. This enables it to flexibly respond to immediate environmental changes while ultimately completing complex long-term goals through coherent steps.</p>
+<p><strong>(3) Classification Based on Knowledge Representation</strong></p>
+<p>This is a more fundamental classification dimension that explores what form the knowledge used by agents for decision-making exists in their "minds." This question is at the core of a debate that has lasted more than half a century in the field of artificial intelligence and has shaped two distinctly different AI cultures.</p>
+<ul>
+<li><strong>Symbolic AI</strong></li>
+</ul>
+<p>Symbolism, often called traditional artificial intelligence, has a core belief: intelligence stems from logical operations on symbols. The symbols here are human-readable entities (such as words, concepts), and operations follow strict logical rules, as shown on the left side of Figure 1.4. This is like a meticulous librarian organizing world knowledge into clear rule bases and knowledge graphs.</p>
+<p>Its main advantage lies in transparency and interpretability. Since reasoning steps are explicit, its decision-making process can be fully traced, which is crucial in high-risk fields such as finance and healthcare. However, its "Achilles' heel" lies in fragility: it relies on a complete rule system, but in the real world full of ambiguity and exceptions, any new situation not covered can lead to system failure, which is the so-called "knowledge acquisition bottleneck."</p>
+<ul>
+<li><strong>Sub-symbolic AI</strong></li>
+</ul>
+<p>Sub-symbolism, or connectionism, provides a completely different picture. Here, knowledge is not explicit rules but implicitly distributed in a complex network composed of numerous neurons, representing statistical patterns learned from massive data. Neural networks and deep learning are its representatives.</p>
+<p>As shown in the middle of Figure 1.4, if symbolic AI is a librarian, then sub-symbolic AI is like a babbling child. They don't learn to recognize cats by learning rules like "cats have four legs, are furry, and meow," but after seeing thousands of cat pictures, the neural network in their brain can identify the visual pattern of the concept "cat." The power of this approach lies in its pattern recognition capability and robustness to noisy data. It can easily handle unstructured data such as images and sounds, which are extremely difficult tasks for symbolic AI.</p>
+<p>However, this powerful intuitive capability also comes with opacity. Sub-symbolic systems are typically viewed as a <strong>Black Box</strong>. It can identify a cat in a picture with amazing accuracy, but if you ask it "why do you think this is a cat?", it likely cannot provide a logically sound explanation. Additionally, it performs poorly on pure logical reasoning tasks and sometimes produces hallucinations that seem reasonable but are factually incorrect.</p>
+<ul>
+<li><strong>Neuro-Symbolic AI</strong></li>
+</ul>
+<p>For a long time, the two camps of symbolism and sub-symbolism developed like two parallel lines. To overcome the limitations of the above two paradigms, a "grand reconciliation" idea began to emerge, which is neuro-symbolic AI, also called neuro-symbolic hybrid. Its goal is to merge the advantages of both paradigms, creating a hybrid agent that can both learn from data like neural networks and perform logical reasoning like symbolic systems. It attempts to bridge the gap between perception and cognition, intuition and rationality. Nobel Prize-winning economist Daniel Kahneman's dual-system theory proposed in his book "Thinking, Fast and Slow" provides an excellent analogy for understanding neuro-symbolism<sup>[2]</sup>, as shown in Figure 1.4:</p>
+<ul>
+<li><strong>System 1</strong> is a fast, intuitive, parallel thinking mode, similar to the powerful pattern recognition capability of sub-symbolic AI.</li>
+<li><strong>System 2</strong> is slow, methodical, logic-based deliberative thinking, just like the reasoning process of symbolic AI.</li>
+</ul>
+<div align="center">
+  <img src="imgs/1-figures/1757242319667-4.png" alt="Figure description" width="90%"/>
+  <p>Figure 1.4 Knowledge representation paradigms of symbolism, sub-symbolism, and neuro-symbolic hybrid</p>
+</div>
+
+<p>Human intelligence stems from the collaborative work of these two systems. Similarly, a truly robust AI also needs to combine the strengths of both. Large language model-driven agents are an excellent practical example of neuro-symbolism. Its core is a huge neural network, giving it pattern recognition and language generation capabilities. However, when it works, it generates a series of structured intermediate steps, such as thoughts, plans, or API calls, which are all explicit, operable symbols. Through this approach, it achieves a preliminary fusion of perception and cognition, intuition and rationality.</p>
+<h2 id="12-composition-and-operating-principles-of-agents">1.2 Composition and Operating Principles of Agents<a class="headerlink" href="#12-composition-and-operating-principles-of-agents" title="Permanent link">&para;</a></h2>
+<h3 id="121-task-environment-definition">1.2.1 Task Environment Definition<a class="headerlink" href="#121-task-environment-definition" title="Permanent link">&para;</a></h3>
+<p>To understand how an agent operates, we must first understand the <strong>task environment</strong> in which it operates. In the field of artificial intelligence, the <strong>PEAS model</strong> is typically used to precisely describe a task environment, analyzing its <strong>Performance measure, Environment, Actuators, and Sensors</strong>. Taking the intelligent travel assistant mentioned above as an example, Table 1.2 below shows how to use the PEAS model to specify its task environment.</p>
+<div align="center">
+  <p>Table 1.2 PEAS description of intelligent travel assistant</p>
+  <img src="imgs/1-figures/1757242319667-6.png" alt="Figure description" width="90%"/>
+</div>
+
+<p>In practice, the digital environment in which LLM agents operate exhibits several complex characteristics that directly affect agent design.</p>
+<p>First, the environment is typically <strong>partially observable</strong>. For example, when a travel assistant queries flights, it cannot obtain all real-time seat information from all airlines at once. It can only see partial data returned by the flight booking API it calls, which requires the agent to have memory (remembering queried routes) and exploration (trying different query dates) capabilities.</p>
+<p>Second, the results of actions are not always deterministic. Based on the predictability of results, environments can be divided into <strong>deterministic</strong> and <strong>stochastic</strong>. The task environment of a travel assistant is a typical stochastic environment. When it searches for ticket prices, two adjacent calls may return different ticket prices and remaining seat numbers, requiring the agent to have the ability to handle uncertainty, monitor changes, and make timely decisions.</p>
+<p>Additionally, there may be other actors in the environment, forming a <strong>multi-agent</strong> environment. For a travel assistant, other users' booking behaviors, other automated scripts, and even airlines' dynamic pricing systems are all other "agents" in the environment. Their actions (for example, booking the last discounted ticket) directly change the state of the environment in which the travel assistant operates, placing higher demands on the agent's rapid response and strategy selection.</p>
+<p>Finally, almost all tasks occur in <strong>sequential</strong> and <strong>dynamic</strong> environments. "Sequential" means current actions affect the future; while "dynamic" means the environment itself may change while the agent is making decisions. This requires the agent's "perceive-think-act-observe" loop to be able to quickly and flexibly adapt to a continuously changing world.</p>
+<h3 id="122-agent-operating-mechanism">1.2.2 Agent Operating Mechanism<a class="headerlink" href="#122-agent-operating-mechanism" title="Permanent link">&para;</a></h3>
+<p>After defining the task environment in which an agent operates, let's explore its core operating mechanism. An agent does not complete tasks in one go but interacts with the environment through a continuous loop. This core mechanism is called the <strong>Agent Loop</strong>. As shown in Figure 1.5, this loop describes the dynamic interaction process between the agent and the environment, forming the foundation of its autonomous behavior.</p>
+<div align="center">
+  <img src="imgs/1-figures/1757242319667-5.png" alt="Figure description" width="90%"/>
+  <p>Figure 1.5 Basic loop of agent-environment interaction</p>
+</div>
+
+<p>This loop mainly contains the following interconnected stages:</p>
+<ol>
+<li><strong>Perception</strong>: This is the starting point of the loop. The agent receives input information from the environment through its sensors (for example, API listening ports, user input interfaces). This information, i.e., <strong>Observation</strong>, can be either the user's initial instruction or feedback on environmental state changes caused by the previous action.</li>
+<li><strong>Thought</strong>: After receiving observation information, the agent enters its core decision-making stage. For LLM agents, this is typically an internal reasoning process driven by large language models. As shown in the figure, the "thought" stage can be further subdivided into two key links:</li>
+<li><strong>Planning</strong>: Based on current observations and its internal memory, the agent updates its understanding of the task and environment and formulates or adjusts an action plan. This may involve decomposing complex goals into a series of more specific subtasks.</li>
+<li><strong>Tool Selection</strong>: Based on the current plan, the agent selects the most suitable tool from its available tool library to execute the next step and determines the specific parameters needed to call that tool.</li>
+<li><strong>Action</strong>: After decision-making is complete, the agent executes specific actions through its actuators. This typically manifests as calling a selected tool (such as a code interpreter or search engine API), thereby influencing the environment with the intent to change its state.</li>
+</ol>
+<p>Action is not the end of the loop. The agent's action causes a <strong>state change</strong> in the <strong>environment</strong>, which then produces a new <strong>observation</strong> as result feedback. This new observation is captured by the agent's perception system in the next round of the loop, forming a continuous "perceive-think-act-observe" closed loop. It is through continuously repeating this loop that the agent gradually advances the task, evolving from the initial state toward the goal state.</p>
+<h3 id="123-agent-perception-and-action">1.2.3 Agent Perception and Action<a class="headerlink" href="#123-agent-perception-and-action" title="Permanent link">&para;</a></h3>
+<p>In engineering practice, to enable LLMs to effectively drive this loop, we need a clear <strong>Interaction Protocol</strong> to regulate information exchange between it and the environment.</p>
+<p>In many modern agent frameworks, this protocol is embodied in the structured definition of each agent output. The agent's output is no longer a single natural language response but a piece of text following a specific format that explicitly shows its internal reasoning process and final decision.</p>
+<p>This structure typically contains two core parts:</p>
+<ul>
+<li><strong>Thought</strong>: This is a "snapshot" of the agent's internal decision-making. It articulates in natural language how the agent analyzes the current situation, reviews the observation results from the previous step, engages in self-reflection and problem decomposition, and ultimately plans the next specific action.</li>
+<li><strong>Action</strong>: This is the specific operation the agent decides to impose on the environment based on its thinking, typically expressed as a function call.</li>
+</ul>
+<p>For example, an agent planning a trip might generate the following formatted output:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Thought:<span class="w"> </span>The<span class="w"> </span>user<span class="w"> </span>wants<span class="w"> </span>to<span class="w"> </span>know<span class="w"> </span>the<span class="w"> </span>weather<span class="w"> </span><span class="k">in</span><span class="w"> </span>Beijing.<span class="w"> </span>I<span class="w"> </span>need<span class="w"> </span>to<span class="w"> </span>call<span class="w"> </span>the<span class="w"> </span>weather<span class="w"> </span>query<span class="w"> </span>tool.
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Action:<span class="w"> </span>get_weather<span class="o">(</span><span class="s2">&quot;Beijing&quot;</span><span class="o">)</span>
+</code></pre></div>
+<p>The <code>Action</code> field here constitutes an instruction to the external world. An external <strong>Parser</strong> will capture this instruction and call the corresponding <code>get_weather</code> function.</p>
+<p>After the action is executed, the environment returns a result. For example, the <code>get_weather</code> function might return a JSON object containing detailed weather data. However, raw machine-readable data (such as JSON) typically contains redundant information that the LLM doesn't need to focus on, and the format doesn't conform to its natural language processing habits.</p>
+<p>Therefore, an important responsibility of the perception system is to play the role of a sensor: processing and encapsulating this raw output into concise, clear natural language text, i.e., observation.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Observation:<span class="w"> </span>Beijing<span class="err">&#39;</span>s<span class="w"> </span>current<span class="w"> </span>weather<span class="w"> </span>is<span class="w"> </span>sunny,<span class="w"> </span>temperature<span class="w"> </span><span class="m">25</span><span class="w"> </span>degrees<span class="w"> </span>Celsius,<span class="w"> </span>light<span class="w"> </span>breeze.
+</code></pre></div>
+<p>This <code>Observation</code> text is fed back to the agent as the main input information for the next round of the loop, for it to conduct a new round of <code>Thought</code> and <code>Action</code>.</p>
+<p>In summary, through this rigorous loop composed of Thought, Action, and Observation, LLM agents can effectively combine their internal language reasoning capabilities with real information and tool operation capabilities from the external environment.</p>
+<h2 id="13-hands-on-experience-implementing-your-first-agent-in-5-minutes">1.3 Hands-on Experience: Implementing Your First Agent in 5 Minutes<a class="headerlink" href="#13-hands-on-experience-implementing-your-first-agent-in-5-minutes" title="Permanent link">&para;</a></h2>
+<p>In the previous sections, we learned about the agent's task environment, core operating mechanism, and the <code>Thought-Action-Observation</code> interaction paradigm. While theoretical knowledge is important, the best way to learn is through hands-on practice. In this section, we will guide you to build a working intelligent travel assistant from scratch using a few simple lines of Python code. This process will follow the theoretical loop we just learned, allowing you to intuitively experience how an agent "thinks" and interacts with external "tools." Let's get started!</p>
+<p>In this case, our goal is to build an intelligent travel assistant that can handle step-by-step tasks. The user task to be solved is defined as: "Hello, please help me check today's weather in Beijing, and then recommend a suitable tourist attraction based on the weather." To complete this task, the agent must demonstrate clear logical planning capabilities. It needs to first call the weather query tool and use the obtained observation results as the basis for the next step. In the next round of the loop, it then calls the attraction recommendation tool to arrive at the final suggestion.</p>
+<h3 id="131-preparation">1.3.1 Preparation<a class="headerlink" href="#131-preparation" title="Permanent link">&para;</a></h3>
+<p>To access web APIs from a Python program, we need an HTTP library. <code>requests</code> is the most popular and easy-to-use choice in the Python community. <code>tavily-python</code> is a powerful AI search API client for obtaining real-time web search results, which can be obtained by registering on the <a href="https://www.tavily.com/">official website</a>. <code>openai</code> is the official Python SDK provided by OpenAI for calling large language model services such as GPT. Please install them first with the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span>requests<span class="w"> </span>tavily-python<span class="w"> </span>openai
+</code></pre></div>
+<p>(1) Instruction Template</p>
+<p>The key to driving a real LLM lies in <strong>Prompt Engineering</strong>. We need to design an "instruction template" that tells the LLM what role it should play, what tools it has, and how to format its thinking and actions. This is the "manual" for our agent, which will be passed to the LLM as <code>system_prompt</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>AGENT_SYSTEM_PROMPT = &quot;&quot;&quot;
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>You are an intelligent travel assistant. Your task is to analyze user requests and use available tools to solve problems step by step.
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a># Available Tools:
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>- `get_weather(city: str)`: Query real-time weather for a specified city.
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>- `get_attraction(city: str, weather: str)`: Search for recommended tourist attractions based on city and weather.
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a># Output Format Requirements:
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>Each response must strictly follow this format, containing one Thought-Action pair:
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>Thought: [Your thinking process and next step plan]
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>Action: [The specific action you want to execute]
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>Action format must be one of the following:
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>1. Call a tool: function_name(arg_name=&quot;arg_value&quot;)
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>2. Finish task: Finish[final answer]
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a># Important Notes:
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>- Output only one Thought-Action pair each time
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>- Action must be on the same line, do not break lines
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>- When you have collected enough information to answer the user&#39;s question, you must use Action: Finish[final answer] format to end
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>Let&#39;s begin!
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>&quot;&quot;&quot;
+</code></pre></div>
+<p>(2) Tool 1: Query Real Weather</p>
+<p>We will use the free weather query service <code>wttr.in</code>, which can return weather data for a specified city in JSON format. Here is the code to implement this tool:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_weather</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="sd">    Query real weather information by calling the wttr.in API.</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="c1"># API endpoint, we request data in JSON format</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://wttr.in/</span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">?format=j1&quot;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="c1"># Make network request</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>        <span class="c1"># Check if response status code is 200 (success)</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>        <span class="c1"># Parse returned JSON data</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>        <span class="c1"># Extract current weather conditions</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>        <span class="n">current_condition</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;current_condition&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>        <span class="n">weather_desc</span> <span class="o">=</span> <span class="n">current_condition</span><span class="p">[</span><span class="s1">&#39;weatherDesc&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>        <span class="n">temp_c</span> <span class="o">=</span> <span class="n">current_condition</span><span class="p">[</span><span class="s1">&#39;temp_C&#39;</span><span class="p">]</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>        <span class="c1"># Format as natural language return</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2"> current weather: </span><span class="si">{</span><span class="n">weather_desc</span><span class="si">}</span><span class="s2">, temperature </span><span class="si">{</span><span class="n">temp_c</span><span class="si">}</span><span class="s2"> degrees Celsius&quot;</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>        <span class="c1"># Handle network errors</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Error: Network problem encountered when querying weather - </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>    <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>        <span class="c1"># Handle data parsing errors</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Error: Failed to parse weather data, city name may be invalid - </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>(3) Tool 2: Search and Recommend Tourist Attractions</p>
+<p>We will define a new tool <code>get_attraction</code> that searches the internet for suitable attractions based on city and weather conditions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tavily</span><span class="w"> </span><span class="kn">import</span> <span class="n">TavilyClient</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">get_attraction</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">weather</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="sd">    Based on city and weather, use Tavily Search API to search and return optimized attraction recommendations.</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="c1"># 1. Read API key from environment variable</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;TAVILY_API_KEY&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">api_key</span><span class="p">:</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>        <span class="k">return</span> <span class="s2">&quot;Error: TAVILY_API_KEY environment variable not configured.&quot;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="c1"># 2. Initialize Tavily client</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="n">tavily</span> <span class="o">=</span> <span class="n">TavilyClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="c1"># 3. Construct a precise query</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="n">query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">&#39; most worthwhile tourist attractions and reasons in &#39;</span><span class="si">{</span><span class="n">weather</span><span class="si">}</span><span class="s2">&#39; weather&quot;</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>        <span class="c1"># 4. Call API, include_answer=True will return a comprehensive answer</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>        <span class="n">response</span> <span class="o">=</span> <span class="n">tavily</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">search_depth</span><span class="o">=</span><span class="s2">&quot;basic&quot;</span><span class="p">,</span> <span class="n">include_answer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>        <span class="c1"># 5. Tavily&#39;s returned results are already very clean and can be used directly</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>        <span class="c1"># response[&#39;answer&#39;] is a summary answer based on all search results</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;answer&quot;</span><span class="p">):</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>            <span class="k">return</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">]</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>        <span class="c1"># If there&#39;s no comprehensive answer, format raw results</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>        <span class="n">formatted_results</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>        <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;results&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>            <span class="n">formatted_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">formatted_results</span><span class="p">:</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>             <span class="k">return</span> <span class="s2">&quot;Sorry, no relevant tourist attraction recommendations found.&quot;</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a>        <span class="k">return</span> <span class="s2">&quot;Based on search, found the following information for you:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">formatted_results</span><span class="p">)</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a>
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Error: Problem occurred when executing Tavily search - </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>Finally, we put all tool functions into a dictionary for the main loop to call:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Put all tool functions into a dictionary for easy subsequent calling</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">available_tools</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="s2">&quot;get_weather&quot;</span><span class="p">:</span> <span class="n">get_weather</span><span class="p">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="s2">&quot;get_attraction&quot;</span><span class="p">:</span> <span class="n">get_attraction</span><span class="p">,</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="132-connecting-to-large-language-models">1.3.2 Connecting to Large Language Models<a class="headerlink" href="#132-connecting-to-large-language-models" title="Permanent link">&para;</a></h3>
+<p>Currently, many LLM service providers (including OpenAI, Azure, and numerous open-source model service frameworks such as Ollama, vLLM, etc.) follow interface specifications similar to the OpenAI API. This standardization brings great convenience to developers. The agent's autonomous decision-making capability comes from the LLM. We will implement a universal client <code>OpenAICompatibleClient</code> that can connect to any LLM service compatible with the OpenAI interface specification.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">OpenAICompatibleClient</span><span class="p">:</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="sd">    A client for calling any LLM service compatible with the OpenAI interface.</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">api_key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="n">base_url</span><span class="p">)</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">system_prompt</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Call LLM API to generate response.&quot;&quot;&quot;</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Calling large language model...&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>        <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>            <span class="n">messages</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>                <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;system&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="n">system_prompt</span><span class="p">},</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>                <span class="p">{</span><span class="s1">&#39;role&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>            <span class="p">]</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>            <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>                <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>                <span class="n">messages</span><span class="o">=</span><span class="n">messages</span><span class="p">,</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>                <span class="n">stream</span><span class="o">=</span><span class="kc">False</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>            <span class="p">)</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>            <span class="n">answer</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Large language model responded successfully.&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>            <span class="k">return</span> <span class="n">answer</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error occurred when calling LLM API: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>            <span class="k">return</span> <span class="s2">&quot;Error: Error occurred when calling language model service.&quot;</span>
+</code></pre></div>
+<p>To instantiate this class, you need to provide three pieces of information: <code>API_KEY</code>, <code>BASE_URL</code>, and <code>MODEL_ID</code>. The specific values depend on the service provider you use (such as OpenAI official, Azure, or local models like Ollama). If you don't have access to these yet, you can refer to <a href="https://github.com/datawhalechina/hello-agents/blob/main/Extra-Chapter/Extra07-环境配置.md">Environment Configuration</a>.</p>
+<h3 id="133-executing-the-action-loop">1.3.3 Executing the Action Loop<a class="headerlink" href="#133-executing-the-action-loop" title="Permanent link">&para;</a></h3>
+<p>The main loop below will integrate all components and drive the LLM to make decisions through formatted prompts.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># --- 1. Configure LLM client ---</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Please replace this with the corresponding credentials and address for the service you use</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">API_KEY</span> <span class="o">=</span> <span class="s2">&quot;YOUR_API_KEY&quot;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;YOUR_BASE_URL&quot;</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">MODEL_ID</span> <span class="o">=</span> <span class="s2">&quot;YOUR_MODEL_ID&quot;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="n">TAVILY_API_KEY</span><span class="o">=</span><span class="s2">&quot;YOUR_Tavily_KEY&quot;</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;TAVILY_API_KEY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;YOUR_TAVILY_API_KEY&quot;</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="n">llm</span> <span class="o">=</span> <span class="n">OpenAICompatibleClient</span><span class="p">(</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>    <span class="n">model</span><span class="o">=</span><span class="n">MODEL_ID</span><span class="p">,</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>    <span class="n">api_key</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">,</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>    <span class="n">base_url</span><span class="o">=</span><span class="n">BASE_URL</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="p">)</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="c1"># --- 2. Initialize ---</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="n">user_prompt</span> <span class="o">=</span> <span class="s2">&quot;Hello, please help me check today&#39;s weather in Beijing, and then recommend a suitable tourist attraction based on the weather.&quot;</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="n">prompt_history</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;User request: </span><span class="si">{</span><span class="n">user_prompt</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;User input: </span><span class="si">{</span><span class="n">user_prompt</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="c1"># --- 3. Run main loop ---</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span> <span class="c1"># Set maximum number of loops</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;--- Loop </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> ---</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>    <span class="c1"># 3.1. Build Prompt</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>    <span class="n">full_prompt</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">prompt_history</span><span class="p">)</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>
+<a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>    <span class="c1"># 3.2. Call LLM for thinking</span>
+<a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>    <span class="n">llm_output</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">full_prompt</span><span class="p">,</span> <span class="n">system_prompt</span><span class="o">=</span><span class="n">AGENT_SYSTEM_PROMPT</span><span class="p">)</span>
+<a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a>    <span class="c1"># Truncate extra Thought-Action pairs that the model may generate</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a>    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(Thought:.*?Action:.*?)(?=\n\s*(?:Thought:|Action:|Observation:)|\Z)&#39;</span><span class="p">,</span> 
+<a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a>                    <span class="n">llm_output</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+<a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a>    <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+<a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a>        <span class="n">truncated</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a>        <span class="k">if</span> <span class="n">truncated</span> <span class="o">!=</span> <span class="n">llm_output</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+<a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a>            <span class="n">llm_output</span> <span class="o">=</span> <span class="n">truncated</span>
+<a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Truncated extra Thought-Action pairs&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-40" name="__codelineno-8-40" href="#__codelineno-8-40"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model output:</span><span class="se">\n</span><span class="si">{</span><span class="n">llm_output</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-41" name="__codelineno-8-41" href="#__codelineno-8-41"></a>    <span class="n">prompt_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">llm_output</span><span class="p">)</span>
+<a id="__codelineno-8-42" name="__codelineno-8-42" href="#__codelineno-8-42"></a>
+<a id="__codelineno-8-43" name="__codelineno-8-43" href="#__codelineno-8-43"></a>    <span class="c1"># 3.3. Parse and execute action</span>
+<a id="__codelineno-8-44" name="__codelineno-8-44" href="#__codelineno-8-44"></a>    <span class="n">action_match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Action: (.*)&quot;</span><span class="p">,</span> <span class="n">llm_output</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+<a id="__codelineno-8-45" name="__codelineno-8-45" href="#__codelineno-8-45"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">action_match</span><span class="p">:</span>
+<a id="__codelineno-8-46" name="__codelineno-8-46" href="#__codelineno-8-46"></a>        <span class="n">observation</span> <span class="o">=</span> <span class="s2">&quot;Error: No action found. Please explicitly use Action: finish(...) or other actions.&quot;</span>
+<a id="__codelineno-8-47" name="__codelineno-8-47" href="#__codelineno-8-47"></a>        <span class="n">observation_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Observation: </span><span class="si">{</span><span class="n">observation</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-8-48" name="__codelineno-8-48" href="#__codelineno-8-48"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">observation_str</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+<a id="__codelineno-8-49" name="__codelineno-8-49" href="#__codelineno-8-49"></a>        <span class="n">prompt_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">observation_str</span><span class="p">)</span>
+<a id="__codelineno-8-50" name="__codelineno-8-50" href="#__codelineno-8-50"></a>        <span class="k">continue</span>
+<a id="__codelineno-8-51" name="__codelineno-8-51" href="#__codelineno-8-51"></a>    <span class="n">action_str</span> <span class="o">=</span> <span class="n">action_match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<a id="__codelineno-8-52" name="__codelineno-8-52" href="#__codelineno-8-52"></a>
+<a id="__codelineno-8-53" name="__codelineno-8-53" href="#__codelineno-8-53"></a>    <span class="k">if</span> <span class="n">action_str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Finish&quot;</span><span class="p">):</span>
+<a id="__codelineno-8-54" name="__codelineno-8-54" href="#__codelineno-8-54"></a>        <span class="n">final_answer</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Finish\[(.*)\]&quot;</span><span class="p">,</span> <span class="n">action_str</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-8-55" name="__codelineno-8-55" href="#__codelineno-8-55"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Task completed, final answer: </span><span class="si">{</span><span class="n">final_answer</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-56" name="__codelineno-8-56" href="#__codelineno-8-56"></a>        <span class="k">break</span>
+<a id="__codelineno-8-57" name="__codelineno-8-57" href="#__codelineno-8-57"></a>
+<a id="__codelineno-8-58" name="__codelineno-8-58" href="#__codelineno-8-58"></a>    <span class="n">tool_name</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(\w+)\(&quot;</span><span class="p">,</span> <span class="n">action_str</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-8-59" name="__codelineno-8-59" href="#__codelineno-8-59"></a>    <span class="n">args_str</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\((.*)\)&quot;</span><span class="p">,</span> <span class="n">action_str</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-8-60" name="__codelineno-8-60" href="#__codelineno-8-60"></a>    <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\w+)=&quot;([^&quot;]*)&quot;&#39;</span><span class="p">,</span> <span class="n">args_str</span><span class="p">))</span>
+<a id="__codelineno-8-61" name="__codelineno-8-61" href="#__codelineno-8-61"></a>
+<a id="__codelineno-8-62" name="__codelineno-8-62" href="#__codelineno-8-62"></a>    <span class="k">if</span> <span class="n">tool_name</span> <span class="ow">in</span> <span class="n">available_tools</span><span class="p">:</span>
+<a id="__codelineno-8-63" name="__codelineno-8-63" href="#__codelineno-8-63"></a>        <span class="n">observation</span> <span class="o">=</span> <span class="n">available_tools</span><span class="p">[</span><span class="n">tool_name</span><span class="p">](</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<a id="__codelineno-8-64" name="__codelineno-8-64" href="#__codelineno-8-64"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-8-65" name="__codelineno-8-65" href="#__codelineno-8-65"></a>        <span class="n">observation</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Error: Undefined tool &#39;</span><span class="si">{</span><span class="n">tool_name</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+<a id="__codelineno-8-66" name="__codelineno-8-66" href="#__codelineno-8-66"></a>
+<a id="__codelineno-8-67" name="__codelineno-8-67" href="#__codelineno-8-67"></a>    <span class="c1"># 3.4. Record observation results</span>
+<a id="__codelineno-8-68" name="__codelineno-8-68" href="#__codelineno-8-68"></a>    <span class="n">observation_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Observation: </span><span class="si">{</span><span class="n">observation</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-8-69" name="__codelineno-8-69" href="#__codelineno-8-69"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">observation_str</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+<a id="__codelineno-8-70" name="__codelineno-8-70" href="#__codelineno-8-70"></a>    <span class="n">prompt_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">observation_str</span><span class="p">)</span>
+</code></pre></div>
+<p>Through the above steps, we have built a complete agent driven by a real LLM. Its core lies in the combination of "tools" and "prompt engineering," which is precisely the design essence of current mainstream agent frameworks (such as LangChain, LlamaIndex, etc.).</p>
+<h3 id="134-running-case-analysis">1.3.4 Running Case Analysis<a class="headerlink" href="#134-running-case-analysis" title="Permanent link">&para;</a></h3>
+<p>The following output fully demonstrates a successful agent execution process. Through analysis of this three-round loop, we can clearly see the core capabilities of the agent in solving problems.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>User<span class="w"> </span>input:<span class="w"> </span>Hello,<span class="w"> </span>please<span class="w"> </span><span class="nb">help</span><span class="w"> </span>me<span class="w"> </span>check<span class="w"> </span>today<span class="s1">&#39;s weather in Beijing, and then recommend a suitable tourist attraction based on the weather.</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="s1">========================================</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="s1">--- Loop 1 ---</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="s1">Calling large language model...</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="s1">Large language model responded successfully.</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="s1">Model output:</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="s1">Thought: First need to get Beijing&#39;</span>s<span class="w"> </span>weather<span class="w"> </span>today,<span class="w"> </span><span class="k">then</span><span class="w"> </span>recommend<span class="w"> </span>tourist<span class="w"> </span>attractions<span class="w"> </span>based<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>weather.
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>Action:<span class="w"> </span>get_weather<span class="o">(</span><span class="nv">city</span><span class="o">=</span><span class="s2">&quot;Beijing&quot;</span><span class="o">)</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>Observation:<span class="w"> </span>Beijing<span class="w"> </span>current<span class="w"> </span>weather:<span class="w"> </span>Sunny,<span class="w"> </span>temperature<span class="w"> </span><span class="m">26</span><span class="w"> </span>degrees<span class="w"> </span><span class="nv">Celsius</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="o">========================================</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>---<span class="w"> </span>Loop<span class="w"> </span><span class="m">2</span><span class="w"> </span>---
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>Calling<span class="w"> </span>large<span class="w"> </span>language<span class="w"> </span>model...
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>Large<span class="w"> </span>language<span class="w"> </span>model<span class="w"> </span>responded<span class="w"> </span>successfully.
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>Model<span class="w"> </span>output:
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>Thought:<span class="w"> </span>Now<span class="w"> </span>I<span class="w"> </span>know<span class="w"> </span>Beijing<span class="s1">&#39;s weather today is sunny with moderate temperature, I can recommend a suitable tourist attraction based on this information.</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="s1">Action: get_attraction(city=&quot;Beijing&quot;, weather=&quot;Sunny&quot;)</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="s1">Observation: The most worthwhile tourist attractions in Beijing on sunny days are the Summer Palace for its beautiful lake views and ancient architecture. Another recommendation is the Great Wall for its spectacular scenery and historical significance.</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="s1">========================================</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="s1">--- Loop 3 ---</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="s1">Calling large language model...</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="s1">Large language model responded successfully.</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="s1">Model output:</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="s1">Thought: I have obtained two attraction suggestions suitable for sunny days, now I can provide a satisfactory response to the user based on this information.</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="s1">Action: Finish[Today&#39;</span>s<span class="w"> </span>weather<span class="w"> </span><span class="k">in</span><span class="w"> </span>Beijing<span class="w"> </span>is<span class="w"> </span>sunny<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>temperature<span class="w"> </span>of<span class="w"> </span><span class="m">26</span><span class="w"> </span>degrees<span class="w"> </span>Celsius,<span class="w"> </span>very<span class="w"> </span>suitable<span class="w"> </span><span class="k">for</span><span class="w"> </span>outdoor<span class="w"> </span>activities.<span class="w"> </span>I<span class="w"> </span>recommend<span class="w"> </span>you<span class="w"> </span>visit<span class="w"> </span>the<span class="w"> </span>Summer<span class="w"> </span>Palace<span class="w"> </span>to<span class="w"> </span>enjoy<span class="w"> </span>the<span class="w"> </span>beautiful<span class="w"> </span>lake<span class="w"> </span>views<span class="w"> </span>and<span class="w"> </span>ancient<span class="w"> </span>architecture,<span class="w"> </span>or<span class="w"> </span>go<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>Great<span class="w"> </span>Wall<span class="w"> </span>to<span class="w"> </span>experience<span class="w"> </span>its<span class="w"> </span>spectacular<span class="w"> </span>scenery<span class="w"> </span>and<span class="w"> </span>profound<span class="w"> </span>historical<span class="w"> </span>significance.<span class="w"> </span>Hope<span class="w"> </span>you<span class="w"> </span>have<span class="w"> </span>a<span class="w"> </span>pleasant<span class="w"> </span>trip!<span class="o">]</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a>Task<span class="w"> </span>completed,<span class="w"> </span>final<span class="w"> </span>answer:<span class="w"> </span>Today<span class="err">&#39;</span>s<span class="w"> </span>weather<span class="w"> </span><span class="k">in</span><span class="w"> </span>Beijing<span class="w"> </span>is<span class="w"> </span>sunny<span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>temperature<span class="w"> </span>of<span class="w"> </span><span class="m">26</span><span class="w"> </span>degrees<span class="w"> </span>Celsius,<span class="w"> </span>very<span class="w"> </span>suitable<span class="w"> </span><span class="k">for</span><span class="w"> </span>outdoor<span class="w"> </span>activities.<span class="w"> </span>I<span class="w"> </span>recommend<span class="w"> </span>you<span class="w"> </span>visit<span class="w"> </span>the<span class="w"> </span>Summer<span class="w"> </span>Palace<span class="w"> </span>to<span class="w"> </span>enjoy<span class="w"> </span>the<span class="w"> </span>beautiful<span class="w"> </span>lake<span class="w"> </span>views<span class="w"> </span>and<span class="w"> </span>ancient<span class="w"> </span>architecture,<span class="w"> </span>or<span class="w"> </span>go<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>Great<span class="w"> </span>Wall<span class="w"> </span>to<span class="w"> </span>experience<span class="w"> </span>its<span class="w"> </span>spectacular<span class="w"> </span>scenery<span class="w"> </span>and<span class="w"> </span>profound<span class="w"> </span>historical<span class="w"> </span>significance.<span class="w"> </span>Hope<span class="w"> </span>you<span class="w"> </span>have<span class="w"> </span>a<span class="w"> </span>pleasant<span class="w"> </span>trip!
+</code></pre></div>
+<p>This simple travel assistant case concentrates on demonstrating the four basic capabilities of an agent based on the <code>Thought-Action-Observation</code> paradigm: task decomposition, tool invocation, context understanding, and result synthesis. It is through the continuous iteration of this loop that the agent can transform a vague user intent into a series of specific, executable steps and ultimately achieve the goal.</p>
+<h2 id="14-collaboration-modes-of-agent-applications">1.4 Collaboration Modes of Agent Applications<a class="headerlink" href="#14-collaboration-modes-of-agent-applications" title="Permanent link">&para;</a></h2>
+<p>In the previous section, we gained a deep understanding of the internal operating loop of an agent by building one ourselves. However, in broader application scenarios, our role is increasingly transforming into users and collaborators. Based on the agent's role in tasks and degree of autonomy, its collaboration modes are mainly divided into two types: one is as an efficient tool deeply integrated into our workflow; the other is as an autonomous collaborator working with other agents to complete complex goals.</p>
+<h3 id="141-agents-as-developer-tools">1.4.1 Agents as Developer Tools<a class="headerlink" href="#141-agents-as-developer-tools" title="Permanent link">&para;</a></h3>
+<p>In this mode, agents are deeply integrated into developers' workflows as powerful auxiliary tools. They enhance rather than replace the developer's role, automating tedious, repetitive tasks so developers can focus more on creative core work. This human-machine collaboration approach greatly improves the efficiency and quality of software development.</p>
+<p>Currently, the market has seen the emergence of multiple excellent AI programming assistance tools. While they all improve development efficiency, they differ in implementation paths and functional focus:</p>
+<ul>
+<li><strong>GitHub Copilot</strong>: As one of the most influential products in this field, Copilot was jointly developed by GitHub and OpenAI. It is deeply integrated into mainstream editors such as Visual Studio Code and is renowned for its powerful code auto-completion capabilities. When developers write code, Copilot can provide real-time suggestions for entire lines or even entire function blocks. In recent years, it has also expanded conversational programming capabilities through Copilot Chat, allowing developers to solve programming problems through chat within the editor.</li>
+<li><strong>Claude Code</strong>: Claude Code is an AI programming assistant developed by Anthropic, designed to help developers efficiently complete coding tasks in the terminal through natural language instructions. It can understand complete codebase structures, perform operations such as code editing, testing, and debugging, and supports full-process development from describing functionality to code implementation. Claude Code also provides a headless mode suitable for CI, pre-commit hooks, build scripts, and other automation scenarios, providing developers with a powerful command-line programming experience.</li>
+<li><strong>Trae</strong>: As an emerging AI programming tool, Trae focuses on providing developers with intelligent code generation and optimization services. It analyzes code patterns through deep learning technology and can provide developers with precise code suggestions and automated refactoring solutions. Trae's distinctive feature is its lightweight design and fast response capability, particularly suitable for scenarios requiring frequent iteration and rapid prototyping.</li>
+<li><strong>Cursor</strong>: Unlike the above tools that mainly exist as plugins or integrated features, Cursor has chosen a more integrated path—it is itself an AI-native code editor. Rather than adding AI functionality to existing editors, it made AI interaction a core feature from the design stage. In addition to top-tier code generation and chat capabilities, it emphasizes letting AI understand the context of the entire codebase, thereby achieving deeper Q&amp;A, refactoring, and debugging.</li>
+</ul>
+<p>Of course, there are many other excellent tools not listed here, but they all point to a clear trend: AI is deeply integrating into the entire software development lifecycle, profoundly reshaping the efficiency boundaries and development paradigms of software engineering by building efficient human-machine collaborative workflows.</p>
+<h3 id="142-agents-as-autonomous-collaborators">1.4.2 Agents as Autonomous Collaborators<a class="headerlink" href="#142-agents-as-autonomous-collaborators" title="Permanent link">&para;</a></h3>
+<p>Unlike serving as tools to assist humans, the second interaction mode elevates the automation level of agents to an entirely new level: autonomous collaborators. In this mode, we no longer guide AI step-by-step through every action but delegate a high-level goal to it. The agent, like a true project team member, independently plans, reasons, executes, and reflects until finally delivering results. This transformation from assistant to collaborator has brought LLM agents deeper into public view. It marks the evolution of our relationship with AI from "command-execute" to "goal-delegate." Agents are no longer passive tools but active goal pursuers.</p>
+<p>Currently, approaches to achieving this autonomous collaboration are flourishing, with numerous excellent frameworks and products emerging, from early BabyAGI and AutoGPT to now more mature frameworks like CrewAI, AutoGen, MetaGPT, and LangGraph, collectively driving rapid development in this field. Although specific implementations vary greatly, their architectural paradigms can be roughly summarized into several mainstream directions:</p>
+<ol>
+<li><strong>Single-Agent Autonomous Loop</strong>: This is an early typical paradigm, represented by models like <strong>AgentGPT</strong>. Its core is a general agent that continuously self-prompts and iterates through a "think-plan-execute-reflect" closed loop to complete an open-ended high-level goal.</li>
+<li><strong>Multi-Agent Collaboration</strong>: This is currently the most mainstream exploration direction, aiming to solve complex problems by simulating human team collaboration modes. It can be further subdivided into different modes: <strong>Role-Playing Dialogue</strong>: Like the <strong>CAMEL</strong> framework, which assigns clear roles and communication protocols to two agents (for example, "programmer" and "product manager"), allowing them to collaboratively complete tasks in a structured dialogue. <strong>Organized Workflow</strong>: Like <strong>MetaGPT</strong> and <strong>CrewAI</strong>, which simulate a "virtual team" with clear division of labor (such as a software company or consulting group). Each agent has preset responsibilities and workflows (SOPs), collaborating in a hierarchical or sequential manner to produce high-quality complex outputs (such as complete codebases or research reports). <strong>AutoGen</strong> and <strong>AgentScope</strong> provide more flexible dialogue modes, allowing developers to customize complex interaction networks between agents.</li>
+<li><strong>Advanced Control Flow Architecture</strong>: Frameworks such as <strong>LangGraph</strong> focus more on providing agents with more powerful underlying engineering foundations. They model the agent's execution process as a state graph, enabling more flexible and reliable implementation of complex processes such as loops, branches, backtracking, and human intervention.</li>
+</ol>
+<p>These different architectural paradigms collectively drive autonomous agents from theoretical concepts toward broader practical applications, enabling them to handle increasingly complex real-world tasks. In our subsequent chapters, we will also experience the differences and advantages between different types of frameworks.</p>
+<h3 id="143-differences-between-workflow-and-agent">1.4.3 Differences Between Workflow and Agent<a class="headerlink" href="#143-differences-between-workflow-and-agent" title="Permanent link">&para;</a></h3>
+<p>After understanding the two modes of agents as "tools" and "collaborators," it is necessary to discuss the differences between Workflow and Agent. Although both aim to achieve task automation, their underlying logic, core characteristics, and applicable scenarios are fundamentally different.</p>
+<p>Simply put, <strong>Workflow makes AI execute instructions step by step, while Agent gives AI freedom to autonomously achieve goals.</strong></p>
+<div align="center">
+  <img src="imgs/1-figures/1757242319667-18.png" alt="Figure description" width="90%"/>
+  <p>Figure 1.6 Differences between Workflow and Agent</p>
+</div>
+
+<p>As shown in Figure 1.6, workflow is a traditional automation paradigm whose core is <strong>pre-defined, structured orchestration of a series of tasks or steps</strong>. It is essentially a precise, static flowchart that specifies which operations to execute under what conditions and in what order. A typical case: a company's expense reimbursement approval process. Employee submits reimbursement form (trigger) -&gt; If amount is less than 500 yuan, directly approved by department manager -&gt; If amount is greater than 500 yuan, first approved by department manager, then forwarded to CFO for approval -&gt; After approval, notify finance department to make payment. Every step and every judgment condition of the entire process is precisely preset.</p>
+<p>Unlike workflows, agents based on large language models are <strong>autonomous, goal-oriented systems</strong>. They not only execute preset instructions but can also understand the environment to a certain extent, reason, formulate plans, and dynamically take actions to achieve final goals. LLMs play the role of the "brain" in this process. A typical example is the intelligent travel assistant we wrote in Section 1.3. When we give it a new instruction, for example: <strong>"Hello, please help me check today's weather in Beijing, and then recommend a suitable tourist attraction based on the weather."</strong> Its processing fully demonstrates its autonomy:</p>
+<ol>
+<li><strong>Planning and Tool Invocation:</strong> The agent first breaks down the task into two steps: ① Query weather; ② Recommend attractions based on weather. Then, it autonomously selects and calls the "weather query API," passing "Beijing" as a parameter.</li>
+<li><strong>Reasoning and Decision-Making:</strong> Suppose the API returns "sunny, light breeze." The agent's LLM brain will reason based on this information: "Sunny days are suitable for outdoor activities." Then, based on this judgment, it will filter outdoor attractions in Beijing from its knowledge base or through search engine tools, such as the Forbidden City, Summer Palace, Temple of Heaven Park, etc.</li>
+<li><strong>Generate Results:</strong> Finally, the agent will synthesize the information and provide a complete, humanized answer: "Today's weather in Beijing is sunny with a light breeze, very suitable for outdoor activities. I recommend you visit the Summer Palace, where you can boat on Kunming Lake and enjoy the beautiful royal garden scenery."</li>
+</ol>
+<p>In this process, there are no hard-coded rules like <code>if weather=sunny then recommend Summer Palace</code>. If the weather is "rainy," the agent will autonomously reason and recommend indoor venues such as the National Museum or Capital Museum. <strong>This ability to dynamically reason and make decisions based on real-time information is the core value of agents.</strong></p>
+<h2 id="15-chapter-summary">1.5 Chapter Summary<a class="headerlink" href="#15-chapter-summary" title="Permanent link">&para;</a></h2>
+<p>In this chapter, we embarked on an introductory journey to explore agents. Our journey began with the most fundamental questions:</p>
+<ul>
+<li><strong>What are large language model-driven agents?</strong> We first clarified their definition and understood that modern agents are entities with capabilities. They are no longer just scripts executing preset programs but decision-makers capable of autonomous reasoning and tool use.</li>
+<li><strong>How do agents work?</strong> We delved into the operating mechanism of agent-environment interaction. We learned that this continuous closed loop is the foundation for agents to process information, make decisions, influence the environment, and adjust their behavior based on feedback.</li>
+<li><strong>How to build an agent?</strong> This was the practical core of this chapter. Using the "intelligent travel assistant" as an example, we built a complete agent driven by a real LLM.</li>
+<li><strong>What are the mainstream application paradigms of agents?</strong> Finally, we cast our vision toward broader application domains. We explored two mainstream agent interaction modes: one is "developer tools" represented by GitHub Copilot and Cursor that enhance human workflows; the other is "autonomous collaborators" represented by frameworks like CrewAI, MetaGPT, and AgentScope that can independently complete high-level goals. We also explained the differences between Workflow and Agent.</li>
+</ul>
+<p>Through this chapter's learning, we have established a foundational cognitive framework about agents. So, how did it evolve step by step from its initial conception to the present? In the next chapter, we will explore the development history of agents—a journey to trace back to the origins is about to begin!</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>Note</strong>: Some of the following exercises do not have standard answers. The focus is on cultivating learners' critical in-depth thinking and hands-on practical abilities regarding agent systems.</p>
+</blockquote>
+<ol>
+<li>Please analyze whether the <strong>subject</strong> in the following four <code>cases</code> qualifies as an agent. If so, what type of agent does it belong to (can be analyzed from multiple classification dimensions), and explain your reasoning:</li>
+</ol>
+<p><code>Case A</code>: <strong>A supercomputer conforming to von Neumann architecture</strong>, with peak computing power of up to 2 EFlops per second</p>
+<p><code>Case B</code>: <strong>Tesla's autonomous driving system</strong> is driving on a highway when it suddenly detects an obstacle ahead and needs to make a braking or lane-change decision within milliseconds</p>
+<p><code>Case C</code>: <strong>AlphaGo</strong> is playing against a human player and needs to evaluate the current situation and plan the optimal strategy for dozens of moves ahead</p>
+<p><code>Case D</code>: <strong>ChatGPT acting as an intelligent customer service</strong> is handling a user complaint and needs to query order information, analyze the problem cause, provide solutions, and soothe user emotions</p>
+<ol>
+<li>Suppose you need to design a task environment for an "intelligent fitness coach." This agent can:</li>
+<li>Monitor users' physiological data such as heart rate and exercise intensity through wearable devices</li>
+<li>Dynamically adjust training plans based on users' fitness goals (fat loss/muscle gain/endurance improvement)</li>
+<li>Provide real-time voice guidance and motion correction during user exercise</li>
+<li>Evaluate training effectiveness and provide dietary recommendations</li>
+</ol>
+<p>Please use the PEAS model to completely describe this agent's task environment and analyze what characteristics this environment has (such as partially observable, stochastic, dynamic, etc.).</p>
+<ol>
+<li>An e-commerce company is considering two approaches to handle after-sales refund requests:</li>
+</ol>
+<p>Approach A (<code>Workflow</code>): Design a fixed process, for example:</p>
+<p>A.1 For general products within 7 days, amounts <code>&lt; 100 RMB</code> are automatically approved; <code>100-500 RMB</code> are reviewed by customer service; <code>&gt; 500 RMB</code> require supervisor approval; special products (such as customized items) are always rejected</p>
+<p>A.2 For products beyond 7 days, regardless of amount, they can only be reviewed by customer service or approved by supervisors;</p>
+<p>Approach B (<code>Agent</code>): Build an agent system that understands refund policies, analyzes user historical behavior, evaluates product conditions, and autonomously decides whether to approve refunds</p>
+<p>Please analyze:
+   - What are the advantages and disadvantages of these two approaches?
+   - Under what circumstances is <code>Workflow</code> more suitable? When does <code>Agent</code> have advantages? If you were the head of this e-commerce company, which approach would you prefer?
+   - Is there an Approach C that can combine both approaches to achieve complementary strengths?</p>
+<ol>
+<li>Based on the intelligent travel assistant in Section 1.3, please consider how to add the following features (you can just describe the design ideas or further attempt code implementation):</li>
+</ol>
+<blockquote>
+<p><strong>Hint</strong>: Think about how to modify the <code>Thought-Action-Observation</code> loop to implement these features.</p>
+</blockquote>
+<ul>
+<li>Add a "memory" feature that allows the agent to remember user preferences (such as liking historical and cultural attractions, budget range, etc.)</li>
+<li>When recommended attraction tickets are sold out, the agent can automatically recommend alternative options</li>
+<li>
+<p>If the user consecutively rejects 3 recommendations, the agent can reflect and adjust its recommendation strategy</p>
+</li>
+<li>
+<p>Kahneman's "System 1" (fast intuition) and "System 2" (slow reasoning) theory<sup>[2]</sup> provides a good analogy for neuro-symbolic AI. Please first conceive a specific agent application scenario, then explain in the scenario:</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Hint</strong>: Medical diagnosis assistants, legal consulting robots, financial risk control systems, etc., are all common application scenarios</p>
+</blockquote>
+<ul>
+<li>Which tasks should be handled by "System 1"?</li>
+<li>Which tasks should be handled by "System 2"?</li>
+<li>
+<p>How do these two systems work together to achieve the final goal?</p>
+</li>
+<li>
+<p>Although large language model-driven agent systems demonstrate powerful capabilities, they still have many limitations. Please analyze the following questions:</p>
+</li>
+<li>Why do agents or agent systems sometimes produce "hallucinations" (generating seemingly reasonable but actually incorrect information)?</li>
+<li>In the case in Section 1.3, we set the maximum number of loops to 5. Without this limit, what problems might the agent encounter?</li>
+<li>How to evaluate an agent's "intelligence" level? Is using only accuracy metrics sufficient?</li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<p>[1] RUSSELL S, NORVIG P. Artificial Intelligence: A Modern Approach[M]. 4th ed. London: Pearson, 2020.</p>
+<p>[2] KAHNEMAN D. Thinking, Fast and Slow[M]. New York: Farrar, Straus and Giroux, 2011.</p>
+<hr />
+<h2 id="discussion-communication">💬 Discussion &amp; Communication<a class="headerlink" href="#discussion-communication" title="Permanent link">&para;</a></h2>
+<p>Have questions while learning this chapter? Want to share insights with other learners?</p>
+<p><strong>📝 Visit GitHub Discussions:</strong>
+- <a href="https://github.com/datawhalechina/Hello-Agents/discussions">💬 Exercises Discussion &amp; Q&amp;A</a>
+- Here you can:
+  - ✅ Ask questions about exercises
+  - ✅ Share your solutions and ideas
+  - ✅ Exchange experiences with other learners
+  - ✅ Get help and feedback from the community</p>
+<p><strong>💡 Tip:</strong> There's also a comment section at the bottom of each page for direct discussion!</p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "navigation.tracking", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
