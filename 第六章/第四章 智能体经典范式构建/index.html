@@ -2895,11 +2895,11 @@
 <li><strong>Observation (观察)：</strong> 这是执行<code>Action</code>后从外部工具返回的结果，例如搜索结果的摘要或API的返回值。</li>
 </ul>
 <p>智能体将不断重复这个 <strong>Thought -&gt; Action -&gt; Observation</strong> 的循环，将新的观察结果追加到历史记录中，形成一个不断增长的上下文，直到它在<code>Thought</code>中认为已经找到了最终答案，然后输出结果。这个过程形成了一个强大的协同效应：<strong>推理使得行动更具目的性，而行动则为推理提供了事实依据。</strong></p>
-<p>我们可以将这个过程形式化地表达出来，如图4.1所示。具体来说，在每个时间步 $t$，智能体的策略（即大语言模型 $\pi$）会根据初始问题 $q$ 和之前所有步骤的“行动-观察”历史轨迹 $((a_1,o_1),\dots,(a_{t-1},o_{t-1}))$，来生成当前的思考 $th_t$ 和行动 $a_t$：</p>
-<p>$$\left(th_t,a_t\right)=\pi\left(q,(a_1,o_1),\ldots,(a_{t-1},o_{t-1})\right)$$</p>
-<p>随后，环境中的工具 $T$ 会执行行动 $a_t$，并返回一个新的观察结果 $o_t$：</p>
-<p>$$o_t = T(a_t)$$</p>
-<p>这个循环不断进行，将新的 $(a_t,o_t)$ 对追加到历史中，直到模型在思考 $th_t$ 中判断任务已完成。</p>
+<p>我们可以将这个过程形式化地表达出来，如图4.1所示。具体来说，在每个时间步 <span class="arithmatex">\(t\)</span>，智能体的策略（即大语言模型 <span class="arithmatex">\(\pi\)</span>）会根据初始问题 <span class="arithmatex">\(q\)</span> 和之前所有步骤的“行动-观察”历史轨迹 <span class="arithmatex">\(((a_1,o_1),\dots,(a_{t-1},o_{t-1}))\)</span>，来生成当前的思考 <span class="arithmatex">\(th_t\)</span> 和行动 <span class="arithmatex">\(a_t\)</span>：</p>
+<div class="arithmatex">\[\left(th_t,a_t\right)=\pi\left(q,(a_1,o_1),\ldots,(a_{t-1},o_{t-1})\right)\]</div>
+<p>随后，环境中的工具 <span class="arithmatex">\(T\)</span> 会执行行动 <span class="arithmatex">\(a_t\)</span>，并返回一个新的观察结果 <span class="arithmatex">\(o_t\)</span>：</p>
+<div class="arithmatex">\[o_t = T(a_t)\]</div>
+<p>这个循环不断进行，将新的 <span class="arithmatex">\((a_t,o_t)\)</span> 对追加到历史中，直到模型在思考 <span class="arithmatex">\(th_t\)</span> 中判断任务已完成。</p>
 <div align="center">
   <img src="../imgs/4-figures/4-1.png" alt="ReAct范式中的“思考-行动-观察”协同循环" width="90%"/>
   <p>图 4.1 ReAct 范式中的“思考-行动-观察”协同循环</p>
@@ -3272,15 +3272,15 @@
 <li><strong>执行阶段 (Solving Phase)</strong>： 在获得完整的计划后，智能体进入执行阶段。它会<strong>严格按照计划中的步骤，逐一执行</strong>。每一步的执行都可能是一次独立的 LLM 调用，或者是对上一步结果的加工处理，直到计划中的所有步骤都完成，最终得出答案。</li>
 </ol>
 <p>这种“先谋后动”的策略，使得智能体在处理需要长远规划的复杂任务时，能够保持更高的目标一致性，避免在中间步骤中迷失方向。</p>
-<p>我们可以将这个两阶段过程进行形式化表达。首先，规划模型 $\pi_{\text{plan}}$ 根据原始问题 $q$ 生成一个包含 $n$ 个步骤的计划 $P = (p_1, p_2, \dots, p_n)$：</p>
-<p>$$
+<p>我们可以将这个两阶段过程进行形式化表达。首先，规划模型 <span class="arithmatex">\(\pi_{\text{plan}}\)</span> 根据原始问题 <span class="arithmatex">\(q\)</span> 生成一个包含 <span class="arithmatex">\(n\)</span> 个步骤的计划 <span class="arithmatex">\(P = (p_1, p_2, \dots, p_n)\)</span>：</p>
+<div class="arithmatex">\[
 P = \pi_{\text{plan}}(q)
-$$</p>
-<p>随后，在执行阶段，执行模型 $\pi_{\text{solve}}$ 会逐一完成计划中的步骤。对于第 $i$ 个步骤，其解决方案 $s_i$ 的生成会同时依赖于原始问题 $q$、完整计划 $P$ 以及之前所有步骤的执行结果 $(s_1, \dots, s_{i-1})$：</p>
-<p>$$
+\]</div>
+<p>随后，在执行阶段，执行模型 <span class="arithmatex">\(\pi_{\text{solve}}\)</span> 会逐一完成计划中的步骤。对于第 <span class="arithmatex">\(i\)</span> 个步骤，其解决方案 <span class="arithmatex">\(s_i\)</span> 的生成会同时依赖于原始问题 <span class="arithmatex">\(q\)</span>、完整计划 <span class="arithmatex">\(P\)</span> 以及之前所有步骤的执行结果 <span class="arithmatex">\((s_1, \dots, s_{i-1})\)</span>：</p>
+<div class="arithmatex">\[
 s_i = \pi_{\text{solve}}(q, P, (s_1, \dots, s_{i-1}))
-$$</p>
-<p>最终的答案就是最后一个步骤的执行结果 $s_n$。</p>
+\]</div>
+<p>最终的答案就是最后一个步骤的执行结果 <span class="arithmatex">\(s_n\)</span>。</p>
 <div align="center">
   <img src="../imgs/4-figures/4-2.png" alt="Plan-and-Solve范式的两阶段工作流" width="90%"/>
   <p>图 4.2 Plan-and-Solve 范式的两阶段工作流</p>
@@ -3515,11 +3515,11 @@ $$</p>
 <li><strong>遗漏信息</strong>：是否忽略了问题的某些关键约束或方面？ 根据评估，它会生成一段结构化的<strong>反馈 (Feedback)</strong>，指出具体的问题所在和改进建议。</li>
 <li><strong>优化 (Refinement)</strong>：最后，智能体将“初稿”和“反馈”作为新的上下文，再次调用大语言模型，要求它根据反馈内容对初稿进行修正，生成一个更完善的“修订稿”。</li>
 </ol>
-<p>如图4.3所示，这个循环可以重复进行多次，直到反思阶段不再发现新的问题，或者达到预设的迭代次数上限。我们可以将这个迭代优化的过程形式化地表达出来。假设 $O_i$ 是第 $i$ 次迭代产生的输出（$O_0$ 为初始输出），反思模型 $\pi_{\text{reflect}}$ 会生成针对 $O_i$ 的反馈 $F_i$：
+<p>如图4.3所示，这个循环可以重复进行多次，直到反思阶段不再发现新的问题，或者达到预设的迭代次数上限。我们可以将这个迭代优化的过程形式化地表达出来。假设 <span class="arithmatex">\(O_i\)</span> 是第 <span class="arithmatex">\(i\)</span> 次迭代产生的输出（<span class="arithmatex">\(O_0\)</span> 为初始输出），反思模型 <span class="arithmatex">\(\pi_{\text{reflect}}\)</span> 会生成针对 <span class="arithmatex">\(O_i\)</span> 的反馈 <span class="arithmatex">\(F_i\)</span>：
 $$
 F_i = \pi_{\text{reflect}}(\text{Task}, O_i)
 $$
-随后，优化模型 $\pi_{\text{refine}}$ 会结合原始任务、上一版输出以及反馈，生成新一版的输出 $O_{i+1}$：
+随后，优化模型 <span class="arithmatex">\(\pi_{\text{refine}}\)</span> 会结合原始任务、上一版输出以及反馈，生成新一版的输出 <span class="arithmatex">\(O_{i+1}\)</span>：
 $$
 O_{i+1} = \pi_{\text{refine}}(\text{Task}, O_i, F_i)
 $$</p>
@@ -3885,7 +3885,7 @@ $$</p>
 <li>为 <code>ReAct</code> 智能体添加一个"计算器"工具，使其能够处理复杂的数学计算问题（如"计算 <code>(123 + 456) × 789/ 12 = ?</code> 的结果"）</li>
 <li>设计并实现一个"工具选择失败"的处理机制:当智能体多次调用错误的工具或提供错误的参数时，系统应该如何引导它纠正？</li>
 <li>
-<p>思考:如果可调用工具的数量增加到$50$个甚至$100$个，当前的工具描述方式是否还能有效工作？在可调用工具数量随业务需求显著增加时，从工程角度如何优化工具的组织和检索机制？</p>
+<p>思考:如果可调用工具的数量增加到<span class="arithmatex">\(50\)</span>个甚至<span class="arithmatex">\(100\)</span>个，当前的工具描述方式是否还能有效工作？在可调用工具数量随业务需求显著增加时，从工程角度如何优化工具的组织和检索机制？</p>
 </li>
 <li>
 <p><code>Plan-and-Solve</code> 范式将任务分解为"规划"和"执行"两个阶段。请深入分析:</p>
@@ -3994,6 +3994,10 @@ $$</p>
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

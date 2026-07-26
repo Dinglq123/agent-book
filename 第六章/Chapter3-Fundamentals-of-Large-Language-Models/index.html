@@ -2352,40 +2352,40 @@
 <h3 id="311-from-n-gram-to-rnn">3.1.1 From N-gram to RNN<a class="headerlink" href="#311-from-n-gram-to-rnn" title="Permanent link">&para;</a></h3>
 <p><strong>Language Model (LM)</strong> is the core of natural language processing, and its fundamental task is to calculate the probability of a word sequence (i.e., a sentence) appearing. A good language model can tell us what kind of sentences are fluent and natural. In multi-agent systems, language models are the foundation for agents to understand human instructions and generate responses. This section will review the evolution from classical statistical methods to modern deep learning models, laying a solid foundation for understanding the subsequent Transformer architecture.</p>
 <p><strong>(1) Statistical Language Models and the N-gram Idea</strong></p>
-<p>Before the rise of deep learning, statistical methods were the mainstream of language models. The core idea is that the probability of a sentence appearing equals the product of the conditional probabilities of each word in the sentence. For a sentence S composed of words $w_1,w_2,\cdots,w_m$, its probability P(S) can be expressed as:</p>
-<p>$$P(S)=P(w_1,w_2,…,w_m)=P(w_1)⋅P(w_2∣w_1)⋅P(w_3∣w_1,w_2)⋯P(w_m∣w_1,…,w_{m−1})$$</p>
-<p>This formula is called the chain rule of probability. However, directly calculating this formula is almost impossible because conditional probabilities like $P(w_m∣w_1,\cdots,w_{m−1})$ are too difficult to estimate from a corpus, as the word sequence $w_1,\cdots,w_{m−1}$ may have never appeared in the training data.</p>
+<p>Before the rise of deep learning, statistical methods were the mainstream of language models. The core idea is that the probability of a sentence appearing equals the product of the conditional probabilities of each word in the sentence. For a sentence S composed of words <span class="arithmatex">\(w_1,w_2,\cdots,w_m\)</span>, its probability P(S) can be expressed as:</p>
+<div class="arithmatex">\[P(S)=P(w_1,w_2,…,w_m)=P(w_1)⋅P(w_2∣w_1)⋅P(w_3∣w_1,w_2)⋯P(w_m∣w_1,…,w_{m−1})\]</div>
+<p>This formula is called the chain rule of probability. However, directly calculating this formula is almost impossible because conditional probabilities like <span class="arithmatex">\(P(w_m∣w_1,\cdots,w_{m−1})\)</span> are too difficult to estimate from a corpus, as the word sequence <span class="arithmatex">\(w_1,\cdots,w_{m−1}\)</span> may have never appeared in the training data.</p>
 <div align="center">
   <img src="../imgs/3-figures/1757249275674-0.png" alt="Figure description" width="90%"/>
   <p>Figure 3.1 Schematic diagram of Markov assumption</p>
 </div>
 
-<p>To solve this problem, researchers introduced the <strong>Markov Assumption</strong>. Its core idea is: we don't need to trace back a word's entire history; we can approximately assume that a word's probability of appearing is only related to the limited $n−1$ words before it, as shown in Figure 3.1. Language models built on this assumption are called <strong>N-gram models</strong>. Here, "N" represents the context window size we consider. Let's look at some of the most common examples to understand this concept:</p>
+<p>To solve this problem, researchers introduced the <strong>Markov Assumption</strong>. Its core idea is: we don't need to trace back a word's entire history; we can approximately assume that a word's probability of appearing is only related to the limited <span class="arithmatex">\(n−1\)</span> words before it, as shown in Figure 3.1. Language models built on this assumption are called <strong>N-gram models</strong>. Here, "N" represents the context window size we consider. Let's look at some of the most common examples to understand this concept:</p>
 <ul>
-<li><strong>Bigram (when N=2)</strong>: This is the simplest case, where we assume a word's appearance is only related to the one word before it. Therefore, the complex conditional probability $P(w_i∣w_1,\cdots,w_{i−1})$ in the chain rule can be approximated to a more easily calculable form:</li>
+<li><strong>Bigram (when N=2)</strong>: This is the simplest case, where we assume a word's appearance is only related to the one word before it. Therefore, the complex conditional probability <span class="arithmatex">\(P(w_i∣w_1,\cdots,w_{i−1})\)</span> in the chain rule can be approximated to a more easily calculable form:</li>
 </ul>
-<p>$$P(w_{i}∣w_{1},…,w_{i−1})≈P(w_{i}∣w_{i−1})$$</p>
+<div class="arithmatex">\[P(w_{i}∣w_{1},…,w_{i−1})≈P(w_{i}∣w_{i−1})\]</div>
 <ul>
 <li><strong>Trigram (when N=3)</strong>: Similarly, we assume a word's appearance is only related to the two words before it:</li>
 </ul>
-<p>$$P(w_i∣w_1,…,w_{i−1})≈P(w_i∣w_{i−2},w_{i−1})$$</p>
-<p>These probabilities can be calculated through <strong>Maximum Likelihood Estimation (MLE)</strong> in large corpora. This term sounds complex, but its idea is very intuitive: what is most likely to appear is what we see most often in the data. For example, for a Bigram model, we want to calculate the probability $P(w_i∣w_{i−1})$ that the next word is $w_i$ after word $w_{i−1}$ appears. According to maximum likelihood estimation, this probability can be estimated through simple counting:</p>
-<p>$$P(w_i∣w_{i−1})=\frac{Count(w_{i−1},w_i)}{Count(w_{i−1})}$$</p>
+<div class="arithmatex">\[P(w_i∣w_1,…,w_{i−1})≈P(w_i∣w_{i−2},w_{i−1})\]</div>
+<p>These probabilities can be calculated through <strong>Maximum Likelihood Estimation (MLE)</strong> in large corpora. This term sounds complex, but its idea is very intuitive: what is most likely to appear is what we see most often in the data. For example, for a Bigram model, we want to calculate the probability <span class="arithmatex">\(P(w_i∣w_{i−1})\)</span> that the next word is <span class="arithmatex">\(w_i\)</span> after word <span class="arithmatex">\(w_{i−1}\)</span> appears. According to maximum likelihood estimation, this probability can be estimated through simple counting:</p>
+<div class="arithmatex">\[P(w_i∣w_{i−1})=\frac{Count(w_{i−1},w_i)}{Count(w_{i−1})}\]</div>
 <p>Here, the <code>Count()</code> function represents "counting":</p>
 <ul>
-<li>$Count(w_{i−1},w_i)$: represents the total number of times the word pair $(w_{i−1},w_i)$ appears consecutively in the corpus.</li>
-<li>$Count(w_{i−1})$: represents the total number of times the single word $w_{i−1}$ appears in the corpus.</li>
+<li><span class="arithmatex">\(Count(w_{i−1},w_i)\)</span>: represents the total number of times the word pair <span class="arithmatex">\((w_{i−1},w_i)\)</span> appears consecutively in the corpus.</li>
+<li><span class="arithmatex">\(Count(w_{i−1})\)</span>: represents the total number of times the single word <span class="arithmatex">\(w_{i−1}\)</span> appears in the corpus.</li>
 </ul>
-<p>The formula's meaning is: we use "the number of times word pair $Count(w_{i−1},w_i)$ appears" divided by "the total number of times word $Count(w_{i−1})$ appears" as an approximate estimate of $P(w_i∣w_{i−1})$.</p>
+<p>The formula's meaning is: we use "the number of times word pair <span class="arithmatex">\(Count(w_{i−1},w_i)\)</span> appears" divided by "the total number of times word <span class="arithmatex">\(Count(w_{i−1})\)</span> appears" as an approximate estimate of <span class="arithmatex">\(P(w_i∣w_{i−1})\)</span>.</p>
 <p>To make this process more concrete, let's manually perform a calculation. Suppose we have a mini corpus containing only the following two sentences: <code>datawhale agent learns</code>, <code>datawhale agent works</code>. Our goal is: using a Bigram (N=2) model, estimate the probability of the sentence <code>datawhale agent learns</code> appearing. According to the Bigram assumption, we examine consecutive pairs of words (i.e., word pairs) each time.</p>
-<p><strong>Step 1: Calculate the probability of the first word</strong> $P(datawhale)$ This is the number of times <code>datawhale</code> appears divided by the total number of words. <code>datawhale</code> appears 2 times, and the total number of words is 6.</p>
-<p>$$P(\text{datawhale}) = \frac{\text{Number of "datawhale" in total corpus}}{\text{Total number of words in corpus}} = \frac{2}{6} \approx 0.333$$</p>
-<p><strong>Step 2: Calculate conditional probability</strong> $P(agent∣datawhale)$ This is the number of times the word pair <code>datawhale agent</code> appears divided by the total number of times <code>datawhale</code> appears. <code>datawhale agent</code> appears 2 times, <code>datawhale</code> appears 2 times.</p>
-<p>$$P(\text{agent}|\text{datawhale}) =  \frac{\text{Count}(\text{datawhale agent})}{\text{Count}(\text{datawhale})} =  \frac{2}{2} = 1$$</p>
-<p><strong>Step 3: Calculate conditional probability</strong> $P(learns∣agent)$ This is the number of times the word pair <code>agent learns</code> appears divided by the total number of times <code>agent</code> appears. <code>agent learns</code> appears 1 time, <code>agent</code> appears 2 times.</p>
-<p>$$P(\text{learns}|\text{agent}) =  \frac{\text{Count(agent learns)}}{\text{Count(agent)}} =  \frac{1}{2} = 0.5$$</p>
+<p><strong>Step 1: Calculate the probability of the first word</strong> <span class="arithmatex">\(P(datawhale)\)</span> This is the number of times <code>datawhale</code> appears divided by the total number of words. <code>datawhale</code> appears 2 times, and the total number of words is 6.</p>
+<div class="arithmatex">\[P(\text{datawhale}) = \frac{\text{Number of "datawhale" in total corpus}}{\text{Total number of words in corpus}} = \frac{2}{6} \approx 0.333\]</div>
+<p><strong>Step 2: Calculate conditional probability</strong> <span class="arithmatex">\(P(agent∣datawhale)\)</span> This is the number of times the word pair <code>datawhale agent</code> appears divided by the total number of times <code>datawhale</code> appears. <code>datawhale agent</code> appears 2 times, <code>datawhale</code> appears 2 times.</p>
+<div class="arithmatex">\[P(\text{agent}|\text{datawhale}) =  \frac{\text{Count}(\text{datawhale agent})}{\text{Count}(\text{datawhale})} =  \frac{2}{2} = 1\]</div>
+<p><strong>Step 3: Calculate conditional probability</strong> <span class="arithmatex">\(P(learns∣agent)\)</span> This is the number of times the word pair <code>agent learns</code> appears divided by the total number of times <code>agent</code> appears. <code>agent learns</code> appears 1 time, <code>agent</code> appears 2 times.</p>
+<div class="arithmatex">\[P(\text{learns}|\text{agent}) =  \frac{\text{Count(agent learns)}}{\text{Count(agent)}} =  \frac{1}{2} = 0.5\]</div>
 <p><strong>Finally: Multiply the probabilities</strong> So, the approximate probability of the entire sentence is:</p>
-<p>$$P(\text{datawhale agent learns}) \approx  P(\text{datawhale}) \cdot  P(\text{agent}|\text{datawhale}) \cdot  P(\text{learns}|\text{agent}) \approx  0.333 \cdot 1 \cdot 0.5 \approx 0.167$$</p>
+<div class="arithmatex">\[P(\text{datawhale agent learns}) \approx  P(\text{datawhale}) \cdot  P(\text{agent}|\text{datawhale}) \cdot  P(\text{learns}|\text{agent}) \approx  0.333 \cdot 1 \cdot 0.5 \approx 0.167\]</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">collections</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Example corpus, consistent with the corpus in the case explanation above</span>
@@ -2433,7 +2433,7 @@
 <p>Its core idea can be divided into two steps:</p>
 <ol>
 <li><strong>Build a semantic space</strong>: Create a high-dimensional continuous vector space, then map each word in the vocabulary to a point in that space. This point (i.e., vector) is called a <strong>Word Embedding</strong> or word vector. In this space, semantically similar words have vectors that are close together in position. For example, the vectors of <code>agent</code> and <code>robot</code> will be very close, while the vectors of <code>agent</code> and <code>apple</code> will be far apart.</li>
-<li><strong>Learn the mapping from context to the next word</strong>: Utilize the powerful fitting ability of neural networks to learn a function. The input of this function is the word vectors of the previous $n−1$ words, and the output is the probability distribution of each word in the vocabulary appearing after the current context.</li>
+<li><strong>Learn the mapping from context to the next word</strong>: Utilize the powerful fitting ability of neural networks to learn a function. The input of this function is the word vectors of the previous <span class="arithmatex">\(n−1\)</span> words, and the output is the probability distribution of each word in the vocabulary appearing after the current context.</li>
 </ol>
 <div align="center">
   <img src="../imgs/3-figures/1757249275674-1.png" alt="Figure description" width="90%"/>
@@ -2441,7 +2441,7 @@
 </div>
 
 <p>As shown in Figure 3.2, in this architecture, word embeddings are automatically learned during model training. To complete the task of "predicting the next word," the model continuously adjusts the vector position of each word, ultimately making these vectors contain rich semantic information. Once we convert words into vectors, we can use mathematical tools to measure the relationships between them. The most commonly used method is <strong>Cosine Similarity</strong>, which measures their similarity by calculating the cosine of the angle between two vectors.</p>
-<p>$$\text{similarity}(\vec{a}, \vec{b}) = \cos(\theta) = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| |\vec{b}|}$$</p>
+<div class="arithmatex">\[\text{similarity}(\vec{a}, \vec{b}) = \cos(\theta) = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| |\vec{b}|}\]</div>
 <p>The meaning of this formula is:</p>
 <ul>
 <li>If two vectors have exactly the same direction, the angle is 0°, the cosine value is 1, indicating complete correlation.</li>
@@ -2596,15 +2596,15 @@
 <li><strong>Key (K)</strong>: Represents the "label" or "index" of tokens in the sentence that can be queried.</li>
 <li><strong>Value (V)</strong>: Represents the "content" or "information" carried by the token itself.</li>
 </ul>
-<p>These three vectors are all obtained by multiplying the original word embedding vector by three different, learnable weight matrices ($W^Q,W^K,W^V$). The entire computation process can be divided into the following steps, which we can imagine as an efficient open-book exam:</p>
+<p>These three vectors are all obtained by multiplying the original word embedding vector by three different, learnable weight matrices (<span class="arithmatex">\(W^Q,W^K,W^V\)</span>). The entire computation process can be divided into the following steps, which we can imagine as an efficient open-book exam:</p>
 <ul>
-<li>Prepare "exam questions" and "materials": For each word in the sentence, generate its $Q,K,V$ vectors through weight matrices.</li>
-<li>Calculate relevance scores: To calculate the new representation of word $A$, use word $A$'s $Q$ vector to perform dot product operations with the $K$ vectors of all words in the sentence (including $A$ itself). This score reflects the importance of other words for understanding word $A$.</li>
-<li>Stabilization and normalization: Divide all obtained scores by a scaling factor $\sqrt{d_{k}}$ ($d_{k}$ is the dimension of the $K$ vector) to prevent gradients from being too small, then use the Softmax function to convert scores into weights that sum to 1, which is the normalization process.</li>
-<li>Weighted sum: Multiply the weights obtained in the previous step by each word's corresponding $V$ vector, then add all results together. The final vector is the new representation of word $A$ after integrating global contextual information.</li>
+<li>Prepare "exam questions" and "materials": For each word in the sentence, generate its <span class="arithmatex">\(Q,K,V\)</span> vectors through weight matrices.</li>
+<li>Calculate relevance scores: To calculate the new representation of word <span class="arithmatex">\(A\)</span>, use word <span class="arithmatex">\(A\)</span>'s <span class="arithmatex">\(Q\)</span> vector to perform dot product operations with the <span class="arithmatex">\(K\)</span> vectors of all words in the sentence (including <span class="arithmatex">\(A\)</span> itself). This score reflects the importance of other words for understanding word <span class="arithmatex">\(A\)</span>.</li>
+<li>Stabilization and normalization: Divide all obtained scores by a scaling factor <span class="arithmatex">\(\sqrt{d_{k}}\)</span> (<span class="arithmatex">\(d_{k}\)</span> is the dimension of the <span class="arithmatex">\(K\)</span> vector) to prevent gradients from being too small, then use the Softmax function to convert scores into weights that sum to 1, which is the normalization process.</li>
+<li>Weighted sum: Multiply the weights obtained in the previous step by each word's corresponding <span class="arithmatex">\(V\)</span> vector, then add all results together. The final vector is the new representation of word <span class="arithmatex">\(A\)</span> after integrating global contextual information.</li>
 </ul>
 <p>This process can be summarized by a concise formula:</p>
-<p>$$\text{Attention}(Q,K,V)=\text{softmax}\left(\frac{QK^{T}}{\sqrt{d_{k}}}\right)V$$</p>
+<div class="arithmatex">\[\text{Attention}(Q,K,V)=\text{softmax}\left(\frac{QK^{T}}{\sqrt{d_{k}}}\right)V\]</div>
 <p>If only one attention calculation is performed (i.e., single-head), the model may only learn to focus on one type of association. For example, when processing "it," it might only learn to focus on the subject. But relationships in language are complex, and we want the model to simultaneously focus on multiple relationships (such as referential relationships, tense relationships, subordinate relationships, etc.). Multi-head attention mechanism emerged. Its idea is simple: instead of doing it all at once, divide it into several groups, do them separately, then merge.</p>
 <p>It splits the original Q, K, V vectors into h parts along the dimension (h is the number of "heads"), and each part independently performs a single-head attention calculation. This is like having h different "experts" examine the sentence from different perspectives, with each expert capturing a different feature relationship. Finally, the "opinions" (i.e., output vectors) of these h experts are concatenated, then integrated through a linear transformation to obtain the final output.</p>
 <div align="center">
@@ -2675,8 +2675,8 @@
 <p><strong>(3) Feed-Forward Neural Network</strong></p>
 <p>In each Encoder and Decoder layer, the multi-head attention sublayer is followed by a <strong>Position-wise Feed-Forward Network (FFN)</strong>. If the role of the attention layer is to "dynamically aggregate" relevant information from the entire sequence, then the role of the feed-forward network is to extract higher-order features from this aggregated information.</p>
 <p>The key to this name is "position-wise." It means this feed-forward network acts independently on each token vector in the sequence. In other words, for a sequence of length <code>seq_len</code>, this FFN is actually called <code>seq_len</code> times, processing one token each time. Importantly, all positions share the same set of network weights. This design both maintains the ability to independently process each position and greatly reduces the model's parameter count. This network's structure is very simple, consisting of two linear transformations and a ReLU activation function:</p>
-<p>$$\mathrm{FFN}(x)=\max\left(0, xW_{1}+b_{1}\right) W_{2}+b_{2}$$</p>
-<p>Where $x$ is the output of the attention sublayer. $W_1,b_1,W_2,b_2$ are learnable parameters. Typically, the output dimension <code>d_ff</code> of the first linear layer is much larger than the input dimension <code>d_model</code> (for example, <code>d_ff = 4 * d_model</code>), then after ReLU activation, it is mapped back to <code>d_model</code> dimension through the second linear layer. This "expand then shrink" design is believed to help the model learn richer feature representations.</p>
+<div class="arithmatex">\[\mathrm{FFN}(x)=\max\left(0, xW_{1}+b_{1}\right) W_{2}+b_{2}\]</div>
+<p>Where <span class="arithmatex">\(x\)</span> is the output of the attention sublayer. <span class="arithmatex">\(W_1,b_1,W_2,b_2\)</span> are learnable parameters. Typically, the output dimension <code>d_ff</code> of the first linear layer is much larger than the input dimension <code>d_model</code> (for example, <code>d_ff = 4 * d_model</code>), then after ReLU activation, it is mapped back to <code>d_model</code> dimension through the second linear layer. This "expand then shrink" design is believed to help the model learn richer feature representations.</p>
 <p>In our PyTorch skeleton, we can implement this module with the following code:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">PositionWiseFeedForward</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2702,19 +2702,19 @@
 <p>In each encoder and decoder layer of Transformer, all submodules (such as multi-head attention and feed-forward networks) are wrapped by an <code>Add &amp; Norm</code> operation. This combination ensures that Transformer can train stably.</p>
 <p>This operation consists of two parts:</p>
 <ul>
-<li><strong>Residual Connection (Add)</strong>: This operation directly adds the submodule's input <code>x</code> to the submodule's output <code>Sublayer(x)</code>. This structure solves the <strong>Vanishing Gradients</strong> problem in deep neural networks. During backpropagation, gradients can bypass the submodule and propagate forward directly, ensuring that even if the network has many layers, the model can be effectively trained. Its formula can be expressed as: $\text{Output} = x + \text{Sublayer}(x)$.</li>
+<li><strong>Residual Connection (Add)</strong>: This operation directly adds the submodule's input <code>x</code> to the submodule's output <code>Sublayer(x)</code>. This structure solves the <strong>Vanishing Gradients</strong> problem in deep neural networks. During backpropagation, gradients can bypass the submodule and propagate forward directly, ensuring that even if the network has many layers, the model can be effectively trained. Its formula can be expressed as: <span class="arithmatex">\(\text{Output} = x + \text{Sublayer}(x)\)</span>.</li>
 <li><strong>Layer Normalization (Norm)</strong>: This operation normalizes all features of a single sample, making its mean 0 and variance 1. This solves the <strong>Internal Covariate Shift</strong> problem during model training, keeping the input distribution of each layer stable, thereby accelerating model convergence and improving training stability.</li>
 </ul>
 <p><strong>3.1.2.5 Positional Encoding</strong></p>
 <p>We already understand that the core of Transformer is the self-attention mechanism, which captures dependencies by calculating relationships between any two tokens in a sequence. However, this computation method has an inherent problem: it does not contain any information about token order or position. For self-attention, the two sequences "agent learns" and "learns agent" are completely equivalent because it only cares about relationships between tokens and ignores their arrangement. To solve this problem, Transformer introduced <strong>Positional Encoding</strong>.</p>
 <p>The core idea of positional encoding is to add an additional "position vector" representing its absolute and relative position information to each token embedding vector in the input sequence. This position vector is not learned but directly calculated through a fixed mathematical formula. This way, even if two tokens (for example, two tokens both called <code>agent</code>) have the same embedding, because they are in different positions in the sentence, the vectors they ultimately input to the Transformer model will become unique due to adding different positional encodings. The positional encoding proposed in the original paper uses sine and cosine functions to generate, with the formula as follows:</p>
-<p>$$PE_{(pos,2i)}=\sin\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)，$$</p>
-<p>$$PE_{(pos,2i+1)}=\cos\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)$$</p>
+<div class="arithmatex">\[PE_{(pos,2i)}=\sin\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)，\]</div>
+<div class="arithmatex">\[PE_{(pos,2i+1)}=\cos\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)\]</div>
 <p>Where:</p>
 <ul>
-<li>$pos$ is the position of the token in the sequence (for example, $0$, $1$, $2$, ...)</li>
-<li>$i$ is the dimension index in the position vector (from $0$ to $d_{\text{model}}/2$)</li>
-<li>$d_{\text{model}}$ is the dimension of the word embedding vector (consistent with what we defined in the model)</li>
+<li><span class="arithmatex">\(pos\)</span> is the position of the token in the sequence (for example, <span class="arithmatex">\(0\)</span>, <span class="arithmatex">\(1\)</span>, <span class="arithmatex">\(2\)</span>, ...)</li>
+<li><span class="arithmatex">\(i\)</span> is the dimension index in the position vector (from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(d_{\text{model}}/2\)</span>)</li>
+<li><span class="arithmatex">\(d_{\text{model}}\)</span> is the dimension of the word embedding vector (consistent with what we defined in the model)</li>
 </ul>
 <p>Now, let's implement the <code>PositionalEncoding</code> module and complete the last part of our Transformer skeleton code.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">PositionalEncoding</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
@@ -2776,25 +2776,25 @@
 <p>If we compare large language models to an extremely capable "brain," then <strong>Prompt</strong> is the language we use to communicate with this "brain." Prompt engineering is the study of how to design precise prompts to guide the model to produce the responses we expect. For building agents, a carefully designed prompt can make collaboration and division of labor between agents efficient.</p>
 <p><strong>(1) Model Sampling Parameters</strong></p>
 <p>When using large models, you often see configurable parameters like <code>Temperature</code>. Their essence is to adjust the model's sampling strategy for "probability distribution" to match specific scenario needs. Configuring appropriate parameters can improve Agent performance in specific scenarios.</p>
-<p>The traditional probability distribution is calculated by the Softmax formula: $p_i = \frac{e^{z_i}}{\sum_{j=1}^k e^{z_j}}$. The essence of sampling parameters is to "readjust" or "truncate" the distribution based on different strategies, thereby changing the next token output by the large model.</p>
-<p><code>Temperature</code>: Temperature is a key parameter controlling the "randomness" and "determinism" of model output. Its principle is to introduce a temperature coefficient $T\gt0$, rewriting Softmax as $p_i^{(T)} = \frac{e^{z_i / T}}{\sum_{j=1}^k e^{z_j / T}}$.</p>
+<p>The traditional probability distribution is calculated by the Softmax formula: <span class="arithmatex">\(p_i = \frac{e^{z_i}}{\sum_{j=1}^k e^{z_j}}\)</span>. The essence of sampling parameters is to "readjust" or "truncate" the distribution based on different strategies, thereby changing the next token output by the large model.</p>
+<p><code>Temperature</code>: Temperature is a key parameter controlling the "randomness" and "determinism" of model output. Its principle is to introduce a temperature coefficient <span class="arithmatex">\(T\gt0\)</span>, rewriting Softmax as <span class="arithmatex">\(p_i^{(T)} = \frac{e^{z_i / T}}{\sum_{j=1}^k e^{z_j / T}}\)</span>.</p>
 <p>When T decreases, the distribution becomes "steeper," high-probability item weights are further amplified, generating more "conservative" text with higher repetition rates. When T increases, the distribution becomes "flatter," low-probability item weights increase, generating more "diverse" but possibly incoherent content.</p>
 <ul>
 <li>
-<p>Low temperature (0 $\leqslant$ Temperature $\lt$ 0.3): Output is more "precise, deterministic." Applicable scenarios: Factual tasks: such as Q&amp;A, data calculation, code generation; Rigorous scenarios: legal text interpretation, technical documentation writing, academic concept explanation, etc.</p>
+<p>Low temperature (0 <span class="arithmatex">\(\leqslant\)</span> Temperature <span class="arithmatex">\(\lt\)</span> 0.3): Output is more "precise, deterministic." Applicable scenarios: Factual tasks: such as Q&amp;A, data calculation, code generation; Rigorous scenarios: legal text interpretation, technical documentation writing, academic concept explanation, etc.</p>
 </li>
 <li>
-<p>Medium temperature (0.3 $\leqslant$ Temperature $\lt$ 0.7): Output is "balanced, natural." Applicable scenarios: Daily conversation: such as customer service interaction, chatbots; Regular creation: such as email writing, product copy, simple story creation.</p>
+<p>Medium temperature (0.3 <span class="arithmatex">\(\leqslant\)</span> Temperature <span class="arithmatex">\(\lt\)</span> 0.7): Output is "balanced, natural." Applicable scenarios: Daily conversation: such as customer service interaction, chatbots; Regular creation: such as email writing, product copy, simple story creation.</p>
 </li>
 <li>
-<p>High temperature (0.7 $\leqslant$ Temperature $\lt$ 2): Output is "innovative, divergent." Applicable scenarios: Creative tasks: such as poetry creation, science fiction story conception, advertising slogan brainstorming, artistic inspiration; Divergent thinking.</p>
+<p>High temperature (0.7 <span class="arithmatex">\(\leqslant\)</span> Temperature <span class="arithmatex">\(\lt\)</span> 2): Output is "innovative, divergent." Applicable scenarios: Creative tasks: such as poetry creation, science fiction story conception, advertising slogan brainstorming, artistic inspiration; Divergent thinking.</p>
 </li>
 </ul>
 <p><code>Top-k</code>: Its principle is to sort all tokens by probability from high to low, take the top k tokens to form a "candidate set," then "normalize" the probabilities of the filtered k tokens: $ \hat{p}<em>i = \frac{p_i}{\sum</em>{j \in \text{candidate set}} p_j}$</p>
 <ul>
 <li>Difference and connection with temperature sampling: Temperature sampling adjusts the probability distribution of all tokens (smooth or steep) through temperature T, without changing the number of candidate tokens (still considering all N). Top-k sampling limits the number of candidate tokens (only keeping the top k high-probability tokens) through the k value, then samples from them. When k=1, output is completely deterministic, degenerating to "greedy sampling."</li>
 </ul>
-<p><code>Top-p</code>: Its principle is to sort all tokens by probability from high to low, starting from the first token after sorting, gradually accumulating probabilities until the cumulative sum first reaches or exceeds threshold p: $\sum_{i \in S} p_{(i)} \geq p$. At this point, all tokens included in the accumulation process form the "nucleus set," and finally the nucleus set is normalized.</p>
+<p><code>Top-p</code>: Its principle is to sort all tokens by probability from high to low, starting from the first token after sorting, gradually accumulating probabilities until the cumulative sum first reaches or exceeds threshold p: <span class="arithmatex">\(\sum_{i \in S} p_{(i)} \geq p\)</span>. At this point, all tokens included in the accumulation process form the "nucleus set," and finally the nucleus set is normalized.</p>
 <ul>
 <li>Difference and connection with Top-k: Compared to Top-k with fixed truncation size, Top-p can dynamically adapt to the "long tail" characteristics of different distributions, with better adaptability to extreme cases of uneven probability distribution.</li>
 </ul>
@@ -3254,6 +3254,10 @@ Note that if temperature is set to 0, Top-k and Top-p become irrelevant because 
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

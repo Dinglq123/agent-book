@@ -2603,7 +2603,7 @@
 <h2 id="92-why-context-engineering-is-important">9.2 Why Context Engineering is Important<a class="headerlink" href="#92-why-context-engineering-is-important" title="Permanent link">&para;</a></h2>
 <p>Although models are getting faster and can handle larger data scales, we observe that: like humans, LLMs will "wander" or "get confused" at a certain point. Needle-in-a-haystack benchmarks reveal a phenomenon: <strong>context rot</strong>—as the number of tokens in the context window increases, the model's ability to accurately recall information from the context actually decreases.</p>
 <p>Different models may have smoother degradation curves, but this characteristic appears in almost all models. Therefore, <strong>context must be viewed as a limited resource with diminishing marginal returns</strong>. Just as humans have limited working memory capacity, LLMs also have an "attention budget". Each new token consumes part of this budget, so we need to be more careful about which tokens should be provided to the LLM.</p>
-<p>This scarcity is not accidental, but stems from the architectural constraints of LLMs. Transformers allow each token to establish associations with <strong>all</strong> tokens in the context, theoretically forming (n^2) pairwise attention relationships. As the context length grows, the model's ability to model these pairwise relationships is "stretched thin", naturally creating tension between "context scale" and "attention concentration". In addition, the model's attention patterns come from the training data distribution—short sequences are usually more common than long sequences, so the model has less experience with "full-context dependencies" and fewer specialized parameters.</p>
+<p>This scarcity is not accidental, but stems from the architectural constraints of LLMs. Transformers allow each token to establish associations with <strong>all</strong> tokens in the context, theoretically forming <span class="arithmatex">\(n^2\)</span> pairwise attention relationships. As the context length grows, the model's ability to model these pairwise relationships is "stretched thin", naturally creating tension between "context scale" and "attention concentration". In addition, the model's attention patterns come from the training data distribution—short sequences are usually more common than long sequences, so the model has less experience with "full-context dependencies" and fewer specialized parameters.</p>
 <p>Techniques such as position encoding interpolation can allow models to "adapt" to sequences longer than during training at inference time, but at the cost of some precision in understanding token positions. Overall, these factors together form a <strong>performance gradient</strong> rather than a "cliff-like" collapse: models are still powerful in long contexts, but compared to short contexts, their precision in information retrieval and long-range reasoning will decline.</p>
 <p>Based on the above reality, <strong>conscious context engineering</strong> becomes a necessity for building robust agents.</p>
 <h3 id="921-the-anatomy-of-effective-context">9.2.1 The "Anatomy" of Effective Context<a class="headerlink" href="#921-the-anatomy-of-effective-context" title="Permanent link">&para;</a></h3>
@@ -5247,6 +5247,10 @@
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

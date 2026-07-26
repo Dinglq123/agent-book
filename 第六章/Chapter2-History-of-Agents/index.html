@@ -2752,11 +2752,11 @@
 
 <p>The specific steps of this loop are as follows:</p>
 <ol>
-<li>At time step t, the agent observes the current state $S_{t}$ of the environment.</li>
-<li>Based on state $S_{t}$, the agent selects an action $A_{t}$ according to its internal <strong>Policy (π)</strong> and executes it. A policy is essentially a mapping from states to actions, defining the agent's behavior.</li>
-<li>After receiving action $A_{t}$, the environment transitions to a new state $S_{t+1}$.</li>
-<li>Simultaneously, the environment feeds back an immediate reward $R_{t+1}$ to the agent.</li>
-<li>The agent uses this feedback (new state $S_{t+1}$ and reward $R_{t+1}$) to update and optimize its internal policy to make better decisions in the future. This update process is learning.</li>
+<li>At time step t, the agent observes the current state <span class="arithmatex">\(S_{t}\)</span> of the environment.</li>
+<li>Based on state <span class="arithmatex">\(S_{t}\)</span>, the agent selects an action <span class="arithmatex">\(A_{t}\)</span> according to its internal <strong>Policy (π)</strong> and executes it. A policy is essentially a mapping from states to actions, defining the agent's behavior.</li>
+<li>After receiving action <span class="arithmatex">\(A_{t}\)</span>, the environment transitions to a new state <span class="arithmatex">\(S_{t+1}\)</span>.</li>
+<li>Simultaneously, the environment feeds back an immediate reward <span class="arithmatex">\(R_{t+1}\)</span> to the agent.</li>
+<li>The agent uses this feedback (new state <span class="arithmatex">\(S_{t+1}\)</span> and reward <span class="arithmatex">\(R_{t+1}\)</span>) to update and optimize its internal policy to make better decisions in the future. This update process is learning.</li>
 </ol>
 <p>The agent's learning goal is not to maximize the immediate reward at a certain time step but to maximize the <strong>Cumulative Reward</strong> from the current moment to the future, also called <strong>Return</strong>. This means the agent needs to have "foresight"; sometimes to obtain greater future rewards, it needs to sacrifice current immediate rewards (for example, the "sacrifice" strategy in Go). Through continuous exploration, feedback collection, and policy optimization in the above loop, the agent can ultimately learn to make autonomous decisions and long-term planning in complex dynamic environments.</p>
 <h3 id="243-pre-training-based-on-large-scale-data">2.4.3 Pre-training Based on Large-Scale Data<a class="headerlink" href="#243-pre-training-based-on-large-scale-data" title="Permanent link">&para;</a></h3>
@@ -2984,6 +2984,10 @@
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

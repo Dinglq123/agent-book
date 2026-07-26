@@ -2807,9 +2807,9 @@
 </ul>
 <p>针对上述显存占用，ZeRO 提出了三种不断递进的优化策略：</p>
 <ol>
-<li>ZeRO-1，对模型状态中的 Adam 状态参数进行分片，即每张卡只存储 $\frac{1}{N}$ 的 Adam 状态参数，其他参数仍然保持每张卡一份。</li>
-<li>ZeRO-2，继续对模型梯度进行分片，每张卡只存储 $\frac{1}{N}$ 的模型梯度和 Adam 状态参数，仅模型参数保持每张卡一份。</li>
-<li>ZeRO-3，将模型参数也进行分片，每张卡只存储 $\frac{1}{N}$ 的模型梯度、模型参数和 Adam 状态参数。</li>
+<li>ZeRO-1，对模型状态中的 Adam 状态参数进行分片，即每张卡只存储 <span class="arithmatex">\(\frac{1}{N}\)</span> 的 Adam 状态参数，其他参数仍然保持每张卡一份。</li>
+<li>ZeRO-2，继续对模型梯度进行分片，每张卡只存储 <span class="arithmatex">\(\frac{1}{N}\)</span> 的模型梯度和 Adam 状态参数，仅模型参数保持每张卡一份。</li>
+<li>ZeRO-3，将模型参数也进行分片，每张卡只存储 <span class="arithmatex">\(\frac{1}{N}\)</span> 的模型梯度、模型参数和 Adam 状态参数。</li>
 </ol>
 <p>可以看出，随着分片的参数量不断增加，每张卡需要占用的显存也不断减少。当然，分片的增加也就意味着训练中通信开销的增加，一般而言，每张卡的 GPU 利用率 ZeRO-1 最高而 ZeRO-3 最低。具体使用什么策略，需要结合计算资源的情况和需要训练的模型体量动态确定。</p>
 <p>除去计算资源的要求，训练数据本身也是预训练 LLM 的一个重大挑战。训练一个 LLM，至少需要数百 B 甚至上 T 的预训练语料。根据研究，LLM 所掌握的知识绝大部分都是在预训练过程中学会的，因此，为了使训练出的 LLM 能够覆盖尽可能广的知识面，预训练语料需要组织多种来源的数据，并以一定比例进行混合。目前，主要的开源预训练语料包括 CommonCrawl、C4、Github、Wikipedia 等。不同的 LLM 往往会在开源预训练语料基础上，加入部分私有高质量语料，再基于自己实验得到的最佳配比来构造预训练数据集。事实上，数据配比向来是预训练 LLM 的“核心秘籍”，不同的配比往往会相当大程度影响最终模型训练出来的性能。例如，下表展示了 LLaMA 的预训练数据及配比：</p>
@@ -3029,9 +3029,9 @@ output=[MASK]&lt;completion_1&gt;[MASK]&lt;completion_2&gt;[MASK]&lt;completion_
 <ol>
 <li>从 SFT 之后的 LLM 初始化两个模型分别作为 Actor Model 和 Ref Model；从训练的 RM 初始化两个模型分别作为 Reward Model 和 Critic Model；</li>
 <li>输入一个 Prompt，Actor Model 和 Ref Model 分别就 Prompt 生成回复；</li>
-<li>Actor Response 和 Ref Response 计算 KL 散度： $r_{KL} = -\theta_{KL}D_{KL}(\pi_{PPO}(y|x)||\pi_{base}(y|x))$ 其中， $\pi_{PPO}(y|x)$ 即为 Actor Model 的输出，而 $\pi_{base}(y|x)$ 即为 Ref Model 的输出， $\theta_{KL}D_{KL}$ 即是计算 KL 散度的方法；</li>
+<li>Actor Response 和 Ref Response 计算 KL 散度： <span class="arithmatex">\(r_{KL} = -\theta_{KL}D_{KL}(\pi_{PPO}(y|x)||\pi_{base}(y|x))\)</span> 其中， <span class="arithmatex">\(\pi_{PPO}(y|x)\)</span> 即为 Actor Model 的输出，而 <span class="arithmatex">\(\pi_{base}(y|x)\)</span> 即为 Ref Model 的输出， <span class="arithmatex">\(\theta_{KL}D_{KL}\)</span> 即是计算 KL 散度的方法；</li>
 <li>Actor Response 分别输入到 Reward Model 和 Critic Model 进行打分，其中，Reward Model 输出的是回复对应的标量奖励，Critic Model 还会输出累加奖励（即从i位置到最后的累积奖励）；</li>
-<li>计算的 KL 散度、两个模型的打分均输入到奖励函数中，计算奖励： $loss = -(kl_{ctl} \cdot r_{KL} + \gamma \cdot V_{t+1} - V_{t}) \log P(A_t|V_t)$ ，这里的 $kl_{ctl}$ 是控制 KL 散度对结果影响的权重参数， $\gamma$ 是控制下一个时间（也就是样本）打分对结果影响的权重参数， $V_t$ 是 Critic Model 的打分输出， $A_t$ 则是 Reward Model 的打分输出;</li>
+<li>计算的 KL 散度、两个模型的打分均输入到奖励函数中，计算奖励： <span class="arithmatex">\(loss = -(kl_{ctl} \cdot r_{KL} + \gamma \cdot V_{t+1} - V_{t}) \log P(A_t|V_t)\)</span> ，这里的 <span class="arithmatex">\(kl_{ctl}\)</span> 是控制 KL 散度对结果影响的权重参数， <span class="arithmatex">\(\gamma\)</span> 是控制下一个时间（也就是样本）打分对结果影响的权重参数， <span class="arithmatex">\(V_t\)</span> 是 Critic Model 的打分输出， <span class="arithmatex">\(A_t\)</span> 则是 Reward Model 的打分输出;</li>
 <li>根据奖励函数分别计算出的 actor loss 和 critic loss，更新 Actor Model 的参数和 Critic Model 的参数；注意，Actor Model 和 Critic Model 的参数更新方法是不同的，此处就不再一一赘述了，感兴趣的读者可以深入研究强化学习的相关理论。</li>
 </ol>
 <p>在上述过程中，因为要使用到四个模型，显存占用会数倍于 SFT。例如，如果我们 RM 和 LLM 都是用 7B 的体量，PPO 过程中大概需要 240G（4张 80G A100，每张卡占用 60G）显存来进行模型加载。那么，为什么我们需要足足四个模型呢？Actor Model 和 Critic Model 较为容易理解，而之所以我们还需要保持原参数不更新的 Ref Model 和 Reward Model，是为了限制模型的更新不要过于偏离原模型以至于丢失了 Pretrain 和 SFT 赋予的能力。</p>
@@ -3104,6 +3104,10 @@ output=[MASK]&lt;completion_1&gt;[MASK]&lt;completion_2&gt;[MASK]&lt;completion_
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

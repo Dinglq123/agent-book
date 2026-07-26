@@ -2565,11 +2565,11 @@
 <li><strong>Observation (Observing):</strong> This is the result returned from the external tool after executing the <code>Action</code>, such as a summary of search results or an API return value.</li>
 </ul>
 <p>The agent will continuously repeat this <strong>Thought -&gt; Action -&gt; Observation</strong> loop, appending new observation results to the history to form a continuously growing context until it determines in <code>Thought</code> that it has found the final answer and then outputs the result. This process forms a powerful synergy: <strong>reasoning makes actions more purposeful, while actions provide factual basis for reasoning.</strong></p>
-<p>We can formally express this process, as shown in Figure 4.1. Specifically, at each time step $t$, the agent's policy (i.e., the large language model $\pi$) generates the current thought $th_t$ and action $a_t$ based on the initial question $q$ and the historical trajectory of all previous "action-observation" steps $((a_1,o_1),\dots,(a_{t-1},o_{t-1}))$:</p>
-<p>$$\left(th_t,a_t\right)=\pi\left(q,(a_1,o_1),\ldots,(a_{t-1},o_{t-1})\right)$$</p>
-<p>Subsequently, the tool $T$ in the environment executes action $a_t$ and returns a new observation result $o_t$:</p>
-<p>$$o_t = T(a_t)$$</p>
-<p>This loop continues, appending new $(a_t,o_t)$ pairs to the history until the model determines in thought $th_t$ that the task is complete.</p>
+<p>We can formally express this process, as shown in Figure 4.1. Specifically, at each time step <span class="arithmatex">\(t\)</span>, the agent's policy (i.e., the large language model <span class="arithmatex">\(\pi\)</span>) generates the current thought <span class="arithmatex">\(th_t\)</span> and action <span class="arithmatex">\(a_t\)</span> based on the initial question <span class="arithmatex">\(q\)</span> and the historical trajectory of all previous "action-observation" steps <span class="arithmatex">\(((a_1,o_1),\dots,(a_{t-1},o_{t-1}))\)</span>:</p>
+<div class="arithmatex">\[\left(th_t,a_t\right)=\pi\left(q,(a_1,o_1),\ldots,(a_{t-1},o_{t-1})\right)\]</div>
+<p>Subsequently, the tool <span class="arithmatex">\(T\)</span> in the environment executes action <span class="arithmatex">\(a_t\)</span> and returns a new observation result <span class="arithmatex">\(o_t\)</span>:</p>
+<div class="arithmatex">\[o_t = T(a_t)\]</div>
+<p>This loop continues, appending new <span class="arithmatex">\((a_t,o_t)\)</span> pairs to the history until the model determines in thought <span class="arithmatex">\(th_t\)</span> that the task is complete.</p>
 <div align="center">
   <img src="../imgs/4-figures/4-1.png" alt="Think-Act-Observe synergistic loop in ReAct paradigm" width="90%"/>
   <p>Figure 4.1 Think-Act-Observe Synergistic Loop in ReAct Paradigm</p>
@@ -2940,15 +2940,15 @@
 <li><strong>Solving Phase</strong>: After obtaining the complete plan, the agent enters the execution phase. It will <strong>strictly execute according to the steps in the plan, one by one</strong>. Each step's execution may be an independent LLM call or processing of the previous step's results, until all steps in the plan are completed and the final answer is obtained.</li>
 </ol>
 <p>This "plan before acting" strategy enables the agent to maintain higher goal consistency when handling complex tasks requiring long-term planning, avoiding getting lost in intermediate steps.</p>
-<p>We can formally express this two-stage process. First, the planning model $\pi_{\text{plan}}$ generates a plan $P = (p_1, p_2, \dots, p_n)$ containing $n$ steps based on the original question $q$:</p>
-<p>$$
+<p>We can formally express this two-stage process. First, the planning model <span class="arithmatex">\(\pi_{\text{plan}}\)</span> generates a plan <span class="arithmatex">\(P = (p_1, p_2, \dots, p_n)\)</span> containing <span class="arithmatex">\(n\)</span> steps based on the original question <span class="arithmatex">\(q\)</span>:</p>
+<div class="arithmatex">\[
 P = \pi_{\text{plan}}(q)
-$$</p>
-<p>Subsequently, in the execution phase, the execution model $\pi_{\text{solve}}$ will complete the steps in the plan one by one. For the $i$-th step, the generation of its solution $s_i$ will depend on the original question $q$, the complete plan $P$, and the execution results of all previous steps $(s_1, \dots, s_{i-1})$:</p>
-<p>$$
+\]</div>
+<p>Subsequently, in the execution phase, the execution model <span class="arithmatex">\(\pi_{\text{solve}}\)</span> will complete the steps in the plan one by one. For the <span class="arithmatex">\(i\)</span>-th step, the generation of its solution <span class="arithmatex">\(s_i\)</span> will depend on the original question <span class="arithmatex">\(q\)</span>, the complete plan <span class="arithmatex">\(P\)</span>, and the execution results of all previous steps <span class="arithmatex">\((s_1, \dots, s_{i-1})\)</span>:</p>
+<div class="arithmatex">\[
 s_i = \pi_{\text{solve}}(q, P, (s_1, \dots, s_{i-1}))
-$$</p>
-<p>The final answer is the execution result of the last step $s_n$.</p>
+\]</div>
+<p>The final answer is the execution result of the last step <span class="arithmatex">\(s_n\)</span>.</p>
 <div align="center">
   <img src="../imgs/4-figures/4-2.png" alt="Two-stage workflow of Plan-and-Solve paradigm" width="90%"/>
   <p>Figure 4.2 Two-Stage Workflow of Plan-and-Solve Paradigm</p>
@@ -3183,11 +3183,11 @@ $$</p>
 <li><strong>Missing Information</strong>: Are some key constraints or aspects of the problem overlooked? Based on the evaluation, it generates structured <strong>Feedback</strong>, pointing out specific problems and improvement suggestions.</li>
 <li><strong>Refinement</strong>: Finally, the agent uses the "first draft" and "feedback" as new context, calls the large language model again, and asks it to revise the first draft based on the feedback content, generating a more complete "revised draft."</li>
 </ol>
-<p>As shown in Figure 4.3, this loop can be repeated multiple times until the reflection phase no longer finds new problems or reaches a preset iteration limit. We can formally express this iterative optimization process. Assuming $O_i$ is the output produced by the $i$-th iteration ($O_0$ is the initial output), the reflection model $\pi_{\text{reflect}}$ generates feedback $F_i$ for $O_i$:
+<p>As shown in Figure 4.3, this loop can be repeated multiple times until the reflection phase no longer finds new problems or reaches a preset iteration limit. We can formally express this iterative optimization process. Assuming <span class="arithmatex">\(O_i\)</span> is the output produced by the <span class="arithmatex">\(i\)</span>-th iteration (<span class="arithmatex">\(O_0\)</span> is the initial output), the reflection model <span class="arithmatex">\(\pi_{\text{reflect}}\)</span> generates feedback <span class="arithmatex">\(F_i\)</span> for <span class="arithmatex">\(O_i\)</span>:
 $$
 F_i = \pi_{\text{reflect}}(\text{Task}, O_i)
 $$
-Subsequently, the refinement model $\pi_{\text{refine}}$ combines the original task, the previous version's output, and feedback to generate a new version's output $O_{i+1}$:
+Subsequently, the refinement model <span class="arithmatex">\(\pi_{\text{refine}}\)</span> combines the original task, the previous version's output, and feedback to generate a new version's output <span class="arithmatex">\(O_{i+1}\)</span>:
 $$
 O_{i+1} = \pi_{\text{refine}}(\text{Task}, O_i, F_i)
 $$</p>
@@ -3662,6 +3662,10 @@ $$</p>
     
     
       <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
