@@ -8,7 +8,6 @@ theme:
   language: zh
   features:
     - navigation.sections
-
     - navigation.top
     - navigation.tracking
     - search.suggest
@@ -54,10 +53,10 @@ nav:
   - 首页: index.md
 
   - 第一部分 NLP 基础:
-    - 1.1 NLP基础概念: 第一章/1.1 NLP基础概念.md
-    - 1.2 Transformer架构: 第一章/1.2 Transformer架构.md
-    - 1.3 预训练语言模型: 第一章/1.3 预训练语言模型.md
-    - 1.4 大语言模型: 第一章/1.4 大语言模型.md
+    - 1.1 NLP基础概念: 第一章/第一章 NLP基础概念.md
+    - 1.2 Transformer架构: 第一章/第二章 Transformer架构.md
+    - 1.3 预训练语言模型: 第一章/第三章 预训练语言模型.md
+    - 1.4 大语言模型: 第一章/第四章 大语言模型.md
 
   - 第二部分 提示工程:
     - 2.1 概述: 第二章/readme.md
@@ -71,39 +70,50 @@ nav:
     - 2.9 聊天机器人: 第二章/8. 聊天机器人 Chatbot.md
     - 2.10 总结: 第二章/9. 总结 Summary.md
 
-  - 第三部分 RAG 检索增强生成:
-    - 3.1 RAG 简介: 第五章/01_RAG_intro.md
-    - 3.2 准备工作: 第五章/02_preparation.md
-    - 3.3 四步构建RAG: 第五章/03_get_start_rag.md
-    - 3.4 数据加载: 第五章/04_data_load.md
-    - 3.5 文本分块: 第五章/05_text_chunking.md
-    - 3.6 向量嵌入: 第五章/06_vector_embedding.md
-    - 3.7 多模态嵌入: 第五章/07_multimodal_embedding.md
-    - 3.8 向量数据库: 第五章/08_vector_db.md
-    - 3.9 Milvus 实践: 第五章/09_milvus.md
-    - 3.10 索引优化: 第五章/10_index_optimization.md
-    - 3.11 混合检索: 第五章/11_hybrid_search.md
-    - 3.12 查询构建: 第五章/12_query_construction.md
-    - 3.13 文本到SQL: 第五章/13_text2sql.md
-    - 3.14 查询重构: 第五章/14_query_rewriting.md
-    - 3.15 检索进阶: 第五章/15_advanced_retrieval_techniques.md
-    - 3.16 格式化生成: 第五章/16_formatted_generation.md
-    - 3.17 系统评估: 第五章/18_system_evaluation.md
-    - 3.18 评估工具: 第五章/19_common_tools.md
+  - 第三部分 模型调用与 API:
+    - 3.1 概述: 第三章/README.md
+    - 3.2 核心参数: 第三章/01_核心参数.md
+    - 3.3 HTTP API 与 SDK: 第三章/02_HTTP API、Python SDK 与 Java SDK.md
+    - 3.4 深度思考: 第三章/03_深度思考.md
+    - 3.5 思考模式: 第三章/04_思考模式.md
+    - 3.6 流式消息: 第三章/05_流式消息.md
+    - 3.7 工具调用: 第三章/06_工具调用.md
+    - 3.8 上下文缓存: 第三章/07_上下文缓存.md
+    - 3.9 结构化输出: 第三章/08_结构化输出.md
+
+  - 第四部分 RAG 检索增强生成:
+    - 4.1 RAG 简介: 第五章/01_RAG_intro.md
+    - 4.2 准备工作: 第五章/02_preparation.md
+    - 4.3 四步构建RAG: 第五章/03_get_start_rag.md
+    - 4.4 数据加载: 第五章/04_data_load.md
+    - 4.5 文本分块: 第五章/05_text_chunking.md
+    - 4.6 向量嵌入: 第五章/06_vector_embedding.md
+    - 4.7 多模态嵌入: 第五章/07_multimodal_embedding.md
+    - 4.8 向量数据库: 第五章/08_vector_db.md
+    - 4.9 Milvus 实践: 第五章/09_milvus.md
+    - 4.10 索引优化: 第五章/10_index_optimization.md
+    - 4.11 混合检索: 第五章/11_hybrid_search.md
+    - 4.12 查询构建: 第五章/12_query_construction.md
+    - 4.13 文本到SQL: 第五章/13_text2sql.md
+    - 4.14 查询重构: 第五章/14_query_rewriting.md
+    - 4.15 检索进阶: 第五章/15_advanced_retrieval_techniques.md
+    - 4.16 格式化生成: 第五章/16_formatted_generation.md
+    - 4.17 系统评估: 第五章/18_system_evaluation.md
+    - 4.18 评估工具: 第五章/19_common_tools.md
     - 附. Python虚拟环境: 第五章/virtualenv.md
 
-  - 第四部分 智能体 Agent:
-    - 4.1 初识智能体: 第六章/第一章 初识智能体.md
-    - 4.2 智能体发展史: 第六章/第二章 智能体发展史.md
-    - 4.3 大语言模型基础: 第六章/第三章 大语言模型基础.md
-    - 4.4 经典范式构建: 第六章/第四章 智能体经典范式构建.md
-    - 4.5 低代码平台搭建: 第六章/第五章 基于低代码平台的智能体搭建.md
-    - 4.6 框架开发实践: 第六章/第六章 框架开发实践.md
-    - 4.7 构建Agent框架: 第六章/第七章 构建你的Agent框架.md
-    - 4.8 记忆与检索: 第六章/第八章 记忆与检索.md
-    - 4.9 上下文工程: 第六章/第九章 上下文工程.md
-    - 4.10 智能体通信协议: 第六章/第十章 智能体通信协议.md
-    - 4.11 智能旅行助手: 第六章/第十一章 智能旅行助手.md
+  - 第五部分 智能体 Agent:
+    - 5.1 初识智能体: 第六章/第一章 初识智能体.md
+    - 5.2 智能体发展史: 第六章/第二章 智能体发展史.md
+    - 5.3 大语言模型基础: 第六章/第三章 大语言模型基础.md
+    - 5.4 经典范式构建: 第六章/第四章 智能体经典范式构建.md
+    - 5.5 低代码平台搭建: 第六章/第五章 基于低代码平台的智能体搭建.md
+    - 5.6 框架开发实践: 第六章/第六章 框架开发实践.md
+    - 5.7 构建Agent框架: 第六章/第七章 构建你的Agent框架.md
+    - 5.8 记忆与检索: 第六章/第八章 记忆与检索.md
+    - 5.9 上下文工程: 第六章/第九章 上下文工程.md
+    - 5.10 智能体通信协议: 第六章/第十章 智能体通信协议.md
+    - 5.11 智能旅行助手: 第六章/第十一章 智能旅行助手.md
 
-  - 第五部分 本地模型部署:
-    - 5.1 从 Ollama 到 vLLM: 第八章/第八章 本地模型运行与管理：从 Ollama 入门到 vLLM 服务化部署.md
+  - 第六部分 本地模型部署:
+    - 6.1 从 Ollama 到 vLLM: 第八章/第八章 本地模型运行与管理：从 Ollama 入门到 vLLM 服务化部署.md
