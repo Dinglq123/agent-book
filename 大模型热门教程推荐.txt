@@ -1,0 +1,210 @@
+大模型热门学习教程推荐（国内可访问）
+整理时间：2026-07-26
+筛选标准：国内可直连、内容质量高、持续更新
+
+
+一、入门必看
+
+1. 吴恩达《ChatGPT Prompt Engineering for Developers》
+   提示工程入门圣经，面向开发者
+   https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/
+
+2. 李宏毅《生成式AI导论》
+   台大课程，深入浅出，B站有搬运
+   https://www.bilibili.com/video/BV1TD4y1m7ZV
+
+3. 吴恩达《Building Systems with ChatGPT API》
+   用API构建LLM应用
+   https://www.deeplearning.ai/short-courses/building-systems-with-chatgpt/
+
+4. 吴恩达《LangChain for LLM Application Development》
+   LangChain入门
+   https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/
+
+
+二、提示工程
+
+5. Prompt Engineering Guide
+   GitHub 5万+ star，最全提示工程指南
+   https://github.com/dair-ai/Prompt-Engineering-Guide
+
+6. 提示工程指南中文版
+   上一条的中文翻译
+   https://www.promptingguide.ai/zh
+
+7. Learn Prompting
+   免费开源提示工程课程，有中文
+   https://learnprompting.org/zh-Hans/
+
+
+三、RAG & 检索增强
+
+8. LangChain 官方文档
+   RAG开发首选框架
+   https://python.langchain.com/docs/
+
+9. LlamaIndex 官方文档
+   数据索引+RAG框架
+   https://docs.llamaindex.ai/
+
+10. 吴恩达《LangChain: Chat with Your Data》
+    用LangChain构建RAG
+    https://www.deeplearning.ai/short-courses/langchain-chat-with-your-data/
+
+11. 吴恩达《Advanced RAG》
+    高级检索增强技术
+    https://www.deeplearning.ai/short-courses/advanced-retrieval-for-ai/
+
+
+四、Agent 智能体
+
+12. 吴恩达《AI Agentic Design Patterns》
+    Agent 四大设计模式
+    https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/
+
+13. 吴恩达《Multi AI Agent Systems》
+    多Agent系统
+    https://www.deeplearning.ai/short-courses/multi-ai-agent-systems-with-crewai/
+
+14. Anthropic《Building Effective Agents》
+    Anthropic官方Agent最佳实践
+    https://www.anthropic.com/engineering/building-effective-agents
+
+15. Dify 官方教程
+    低代码Agent平台，工作流101共10课
+    https://docs.dify.ai/zh/learn/tutorials/workflow-101/lesson-01
+
+
+五、模型部署 & 推理
+
+16. Ollama 官方文档
+    本地运行大模型首选
+    https://ollama.com/
+
+17. vLLM 官方文档
+    生产级推理引擎
+    https://docs.vllm.ai/
+
+18. llama.cpp
+    CPU/边缘设备推理
+    https://github.com/ggerganov/llama.cpp
+
+19. FastChat (Vicuna)
+    多模型服务框架
+    https://github.com/lm-sys/FastChat
+
+20. Xinference
+    国人开源，一键部署多模型
+    https://github.com/xorbitsai/inference
+
+
+六、微调 & 训练
+
+21. LLaMA-Factory
+    国内最火微调框架，GUI操作
+    https://github.com/hiyouga/LLaMA-Factory
+
+22. Unsloth
+    2倍速微调，显存节省80%
+    https://github.com/unslothai/unsloth
+
+23. HuggingFace Transformers 文档
+    模型训练基础
+    https://huggingface.co/docs/transformers
+
+24. 吴恩达《Finetuning LLMs》
+    微调入门课程
+    https://www.deeplearning.ai/short-courses/finetuning-large-language-models/
+
+
+七、动手项目 & 实战
+
+25. Datawhale《动手学大模型》
+    国内社区开源，中文友好
+    https://github.com/datawhalechina/llm-cookbook
+
+26. 动手学深度学习 (d2l-ai)
+    李沐经典，有PyTorch版
+    https://zh.d2l.ai/
+
+27. LLMs-from-scratch
+    从零构建ChatGPT
+    https://github.com/rasbt/LLMs-from-scratch
+
+28. FastGPT
+    国人开源的AI知识库搭建平台
+    https://github.com/labring/FastGPT
+
+
+八、在线平台 & 模型服务
+
+29. 智谱AI开放平台
+    GLM系列，国内API
+    https://open.bigmodel.cn/
+
+30. 阿里百炼
+    通义系列，国内API
+    https://bailian.console.aliyun.com/
+
+31. 百度千帆
+    文心系列，国内API
+    https://console.bce.baidu.com/qianfan/
+
+32. 硅基流动 SiliconFlow
+    模型API聚合，国内
+    https://siliconflow.cn/
+
+33. ModelScope 魔搭社区
+    阿里模型库，国内
+    https://modelscope.cn/
+
+34. OpenXLab 浦源
+    上海AI Lab模型平台
+    https://openxlab.org.cn/
+
+
+九、系统设计 & 进阶
+
+35. 吴恩达《Generative AI for Everyone》
+    AI通识课
+    https://www.deeplearning.ai/courses/generative-ai-for-everyone/
+
+36. 陈天奇《MLC-LLM》
+    端侧部署与大模型编译优化
+    https://github.com/mlc-ai/mlc-llm
+
+37. NVIDIA Generative AI 学习路径
+    官方认证课程
+    https://learn.nvidia.com/
+
+38. 微软《Generative AI for Beginners》
+    18课入门体系
+    https://github.com/microsoft/generative-ai-for-beginners
+
+
+十、资讯 & 论文追踪
+
+39. Papers With Code
+    论文+代码+排行榜
+    https://paperswithcode.com/
+
+40. HuggingFace Daily Papers
+    每日AI论文精选
+    https://huggingface.co/papers
+
+41. 机器之心
+    国内AI媒体
+    https://jiqizhixin.com/
+
+42. 量子位
+    国内AI资讯
+    https://qbitai.com/
+
+
+推荐学习路线：
+
+入门通识 → 提示工程 → API调用 → RAG构建 → Agent开发 → 模型微调 → 生产部署
+   ↓          ↓          ↓         ↓          ↓          ↓           ↓
+ d2l.ai   Prompting  LangChain  Llamaindex  Dify/CrewAI  LLaMA-Factory  vLLM/Ollama
+
+优先推荐带「吴恩达」标签的课程——短小精悍、有代码、有字幕。
